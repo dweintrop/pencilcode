@@ -1,0 +1,896 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"asse",
+				"assessments"
+			],
+			[
+				"Ass",
+				"AssessEvent	(imported, instance)"
+			],
+			[
+				"text",
+				"textAlign"
+			],
+			[
+				"cont",
+				"continuation-assessment"
+			],
+			[
+				"max",
+				"max_length"
+			],
+			[
+				"hdi",
+				"hdi_1b"
+			],
+			[
+				"hdi_",
+				"hdi_1b"
+			],
+			[
+				"load",
+				"loadModel"
+			],
+			[
+				"ke",
+				"keypress	keypress"
+			],
+			[
+				"asses",
+				"assessmevent	(local, instance)"
+			],
+			[
+				"assess",
+				"assessmevent_id"
+			],
+			[
+				"grass-to",
+				"grass-to-burn-counter"
+			],
+			[
+				"ac",
+				"activeModel"
+			],
+			[
+				"model",
+				"ModelAdmin"
+			],
+			[
+				"two",
+				"two-columns"
+			],
+			[
+				"select",
+				"selectBoxIt"
+			],
+			[
+				"student",
+				"student_login(request, errors)	(global, function)"
+			],
+			[
+				"teacher",
+				"TeacherManager"
+			],
+			[
+				"dis",
+				"displayPage"
+			],
+			[
+				"header",
+				"header"
+			],
+			[
+				"end",
+				"endblock"
+			],
+			[
+				"ass",
+				"assessmevent_id	(local, instance)"
+			],
+			[
+				"error",
+				"errors"
+			],
+			[
+				"http",
+				"HttpResponse"
+			],
+			[
+				"Asses",
+				"ASSESSMENTS"
+			],
+			[
+				"Assess",
+				"AssessEvent"
+			],
+			[
+				"Http",
+				"HttpResponse	(imported, instance)"
+			],
+			[
+				"section",
+				"sections_by_teacher	(local, instance)"
+			],
+			[
+				"Student",
+				"StudentLoginForm	(imported, instance)"
+			],
+			[
+				"For",
+				"ForeignKey"
+			],
+			[
+				"date",
+				"DateField"
+			],
+			[
+				"for",
+				"ForeignKey"
+			],
+			[
+				"tabl",
+				"tableSet"
+			],
+			[
+				"inde",
+				"indexible"
+			],
+			[
+				"fbt",
+				"fbTableField"
+			],
+			[
+				"fb",
+				"fbTableField"
+			],
+			[
+				"graph",
+				"graphAPIRoot"
+			],
+			[
+				"show",
+				"showContents"
+			],
+			[
+				"json",
+				"jQuery.parseJSON	jQuery.parseJSON"
+			],
+			[
+				"login",
+				"loginResponse"
+			],
+			[
+				"start",
+				"startTheAssessment"
+			],
+			[
+				"vi",
+				"visibility"
+			],
+			[
+				"set",
+				"setHtmlVisibility"
+			],
+			[
+				"question",
+				"question"
+			],
+			[
+				"at",
+				"attr"
+			],
+			[
+				"skill",
+				"skill-intro"
+			],
+			[
+				"border-s",
+				"border-style"
+			],
+			[
+				"se",
+				"selected"
+			],
+			[
+				"site",
+				"siteGraph"
+			],
+			[
+				"selected",
+				"selectedIndex"
+			],
+			[
+				"moti",
+				"motionChartOptions"
+			],
+			[
+				"options",
+				"optionQ13_site2"
+			],
+			[
+				"opt",
+				"optionsQ12_1"
+			],
+			[
+				"ge",
+				"getDataTable"
+			],
+			[
+				"q",
+				"query"
+			],
+			[
+				"draw",
+				"drawVisualization"
+			],
+			[
+				"dataTable",
+				"dataTable2"
+			],
+			[
+				"SSE",
+				"SSEUrban	(local, instance)"
+			],
+			[
+				"write",
+				"writerow"
+			],
+			[
+				"outfile",
+				"outfileWriter	(local, instance)"
+			],
+			[
+				"run",
+				"runNum	(local, instance)"
+			],
+			[
+				"w",
+				"write	(builtin, function)"
+			],
+			[
+				"ree",
+				"readInModelData"
+			],
+			[
+				"entry",
+				"entry_22"
+			],
+			[
+				"inpu",
+				"inputId"
+			],
+			[
+				"v",
+				"value"
+			],
+			[
+				"teach",
+				"teacher_dropdown"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"package",
+				"Package Control: Enable Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"instal",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"install",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"install ",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"install pack",
+				"Package Control: Install Package"
+			],
+			[
+				"list p",
+				"Package Control: List Packages"
+			],
+			[
+				"list pa",
+				"Package Control: List Packages"
+			],
+			[
+				"bro",
+				"Preferences: Browse Packages"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				"git:bl",
+				"Git: Blame"
+			],
+			[
+				"html",
+				"Snippet: html"
+			],
+			[
+				"git statu",
+				"Git: Status"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"comi",
+				"Git: Commit"
+			],
+			[
+				"git cu",
+				"Git: Custom Command"
+			],
+			[
+				"git push",
+				"Git: Push Current Branch"
+			],
+			[
+				"push",
+				"Git: Push Current Branch"
+			],
+			[
+				"commit",
+				"Git: Commit"
+			],
+			[
+				"git ad",
+				"Git: Add Current File"
+			],
+			[
+				"git c",
+				"Git: Commit"
+			],
+			[
+				"git",
+				"Git: Push"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/dnw882/Dropbox (SESP)/workspace/pencilcode"
+	],
+	"file_history":
+	[
+		"/Users/dnw882/Dropbox (SESP)/workspace/droplet/src/controller.coffee",
+		"/Users/dnw882/Dropbox (SESP)/workspace/droplet/example/example-js.html",
+		"/Users/dnw882/Dropbox (SESP)/workspace/droplet/Gruntfile.coffee",
+		"/Users/dnw882/Dropbox (SESP)/workspace/droplet/node_modules/grunt-bowercopy/node_modules/bower/node_modules/mout/lang/isPlainObject.js",
+		"/Users/dnw882/Dropbox (SESP)/workspace/droplet/node_modules/grunt-contrib-cssmin/node_modules/maxmin/node_modules/gzip-size/node_modules/browserify-zlib/node_modules/pako/dist/pako_inflate.js",
+		"/Users/dnw882/Dropbox (SESP)/workspace/droplet/node_modules/grunt-bowercopy/node_modules/bower/node_modules/mout/date/parseIso.js",
+		"/Users/dnw882/Dropbox (SESP)/workspace/droplet/package.json",
+		"/Users/dnw882/Dropbox (SESP)/workspace/droplet/node_modules/grunt-contrib-watch/node_modules/tiny-lr-fork/node_modules/qs/test/browser/jquery.js",
+		"/Users/dnw882/Dropbox (SESP)/workspace/droplet/node_modules/grunt/node_modules/underscore.string/test/test_underscore/vendor/jquery.js",
+		"/Users/dnw882/Dropbox (SESP)/workspace/droplet/node_modules/grunt-mocha-spawn/node_modules/mocha/node_modules/ms/test/support/jquery.js",
+		"/Users/dnw882/Dropbox (SESP)/workspace/droplet/node_modules/grunt/node_modules/grunt-legacy-log/node_modules/underscore.string/test/test_underscore/vendor/jquery.js",
+		"/Users/dnw882/Dropbox (SESP)/workspace/droplet/node_modules/grunt-bowercopy/test/golden_files/jquery.ui.widget.js",
+		"/Users/dnw882/Dropbox (SESP)/workspace/droplet/node_modules/grunt-bowercopy/test/golden_files/jquery.ui.core.js",
+		"/Users/dnw882/Dropbox (SESP)/workspace/droplet/docs/javascript.html",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/staticfiles/admin/css/login.css",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/assess/templates/student_login.html",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/assess/templates/sets/cps1.html",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/assess/templates/sets/uni1.html",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/assess/static/netLogo/gasLab.html",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/assess/static/netLogo/pb3.html",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/assess/static/netLogo/pb2.html",
+		"/Users/dnw882/Dropbox (SESP)/workspace/classbuilder/src/edu/northwestern/dnw/classbuilder/ClassBuilderPlugin.java",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/oas/models.py",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/assess/forms.py",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/staticfiles/css/main.css",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/staticfiles/css/selectBoxIt.css",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/assess/settings.py",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/oas/admin.py",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/assess/templates/student_registration.html",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/assess/templates/base.html",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/TODO.txt",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/assess/urls.py",
+		"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite/assess/views.py",
+		"/Users/dweintrop/Dropbox (SESP)/NU-Projects/ct-stem-assessite/oas/models.py",
+		"/Users/dweintrop/Dropbox (SESP)/NU-Projects/ct-stem-assessite/assess/static/how_to_add_static_files.txt",
+		"/Users/dweintrop/Dropbox (SESP)/NU-Projects/ct-stem-assessite/assess/static/js/selectBoxIt.min.js",
+		"/Users/dweintrop/Dropbox (SESP)/NU-Projects/ct-stem-assessite/staticfiles/css/main.css",
+		"/Users/dweintrop/Dropbox/NU/NU - Projects/ct-stem-assessite/assess/static/netLogo/climate_change.html",
+		"/Users/dweintrop/Dropbox/NU/NU - Projects/ct-stem-assessite/assess/templates/sets/uni1.html",
+		"/Users/dweintrop/Dropbox/NU/NU - Projects/ct-stem-assessite/assess/static/css/tortoise.css",
+		"/Users/dweintrop/Dropbox/NU/NU - Projects/ct-stem-assessite/assess/templates/sets/cps1.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/staticfiles/netLogo/climate_change.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/staticfiles/netLogo/pb1.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/staticfiles/netLogo/netlogo-icon.jpg",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/oas/admin.py",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/guest_registration.html",
+		"/Users/dweintrop/Box Documents/CT-STEM - active development/Assessment/Items/website/ct-stem-map.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/netLogo/climate_change.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/js/tortoise/engine.js",
+		"/Users/dweintrop/Dropbox/NU/Grants:Fellowships/CT-STEM/CT-STEM public site/public_html/index.php",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/oas/views.py",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/views.py",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/student_login.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/css/main.css",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/urls.py",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/assessment_complete.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/base.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/sets/uni1.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/sets/HDI.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/forms.py",
+		"/Users/dweintrop/Desktop/frog-pond-notes.txt",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/student_registration.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/sets/set-base.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/js/HDI.js",
+		"/Users/dweintrop/Box Documents/CT-STEM - active development/Assessment/Items/website/HDI/HDI-v2.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/sets/purple_bugs.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/css/jquery.dataTables.css",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/sets/warblers.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/sets/cps1.html",
+		"/Users/dweintrop/Desktop/test.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/js/warbler_charts.js",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/sets/versions.txt",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/settings.py",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/.gitignore",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/how_to_add_static_files.txt",
+		"/Users/dweintrop/Box Documents/CT-STEM - active development/Assessment/Items/website/warblers/WarblerPop_v3.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/TODO.txt",
+		"/Users/dweintrop/Desktop/iframe.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/js/jquery.dataTables.js",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/css/jquery.dataTables_themeroller.css",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/css/jquery-ui-1.8.14.custom.css",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/css/tortoise.css",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/netLogo/pb4.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/netLogo/pb3.html",
+		"/Users/dweintrop/Dropbox/Dave/misc/generalInfo.txt",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/netLogo/pb2.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/netLogo/pb1.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/netLogo/pb1.nlogo",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/oas/models.py",
+		"/Users/dweintrop/Dropbox/NU/Classes/2013_Fall/Theory_Dev/Methods_of_Theory_Development_notes.txt",
+		"/Users/dweintrop/Dropbox/NU/CCL/uri_meeting_minutes.txt",
+		"/Users/dweintrop/Movies/CT-STEM/where_are_my_videos.txt",
+		"/Users/dweintrop/Dropbox/NU/Classes/2011_Fall/Complex Networks/data/dweintrop_facebook.gdf",
+		"/Users/dweintrop/Box Documents/CT-STEM - active development/Assessment/Items/website/HDI/HDI.js",
+		"/Users/dweintrop/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/dweintrop/Box Documents/CT-STEM - active development/Assessment/jnlp_generator.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/js/main.js",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/netLogo/climate_change.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/js/selectBoxIt.min.js",
+		"/Users/dweintrop/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/static/css/selectBoxIt.css",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/includes/footer.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/templates/includes/header.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/manage.py",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/assess/wsgi.py",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/assess/settings.py",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/assess/templates/student_login.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/requirements.txt",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/Procfile",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess/assess/views.py",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/static/js/ct-stem.js",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/static/css/codemirror.css",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/urls.py",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/static/css/main.css",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/static/js/main.js",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/templates/static/css/main.css",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/settings.py",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/templates/static/css/print.css",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/oas/admin.py",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/templates/sets/cps1.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/templates/sets/PB.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/templates/sets/CPS1.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/templates/sets/warblers.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/templates/sets/HDI.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/templates/sets/warblers",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/templates/student_login.html",
+		"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/templates/student_status.html",
+		"/Users/dweintrop/Library/Application Support/Sublime Text 2/Packages/JsFormat/JsFormat.sublime-settings"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/dnw882/Dropbox (SESP)/workspace/droplet",
+			"/Users/dnw882/Dropbox (SESP)/NU-Projects/ct-stem-assessite",
+			"/Users/dweintrop/Dropbox (SESP)/NU-Projects/ct-stem-assessite",
+			"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess",
+			"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess*.html",
+			"/Users/dweintrop/Dropbox/NU/Projects/ct-stem-assessite/assess",
+			"/Users/dweintrop/Dropbox/NU/Projects/ct-stem/assess/assess/",
+			"/Users/dweintrop/Dropbox/NU/Grants:Fellowships/CT-STEM/Shared/CT-STEM/Assessment/Items/website",
+			"*.*",
+			"*.html",
+			"CensusData.py",
+			"data-output.txt",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"performMeltAnimation",
+			"toggleBlocks",
+			"toggleblocks",
+			"livereload",
+			"droplet.js",
+			"piano",
+			"example-js",
+			"500",
+			"violet",
+			"75",
+			"500",
+			"highcharts",
+			"widget",
+			"title",
+			"highcharts-title",
+			"x=\"197",
+			"highcharts-title",
+			"number of flower",
+			"netlogo code",
+			"pb",
+			"bug",
+			"pb_",
+			"is_ipad",
+			"ipad_compatible",
+			"else",
+			"\"dro",
+			"burn",
+			"fire",
+			"guest",
+			"window.location",
+			"gettime",
+			"millisecond",
+			"milisecond",
+			"pseudocode",
+			"ime",
+			"obstracel",
+			"grey",
+			"datetime",
+			"date",
+			"time",
+			"datetime",
+			"unicode",
+			"desc",
+			"asc",
+			"radio",
+			"length",
+			"size",
+			"empty",
+			"order_by",
+			"static",
+			"engine",
+			"sponsor-",
+			"selectboxit",
+			"csrf",
+			"form",
+			"img",
+			"brow",
+			"browser",
+			"onchange",
+			"code",
+			"codemirror",
+			"tick-counter",
+			"addmoni",
+			".addsl",
+			"widgets",
+			"this.data",
+			"boot",
+			"graphcontain",
+			"graph",
+			"addview",
+			"widgets",
+			"widgets.",
+			"widget",
+			"widgets",
+			"widget",
+			"go()",
+			"data.add",
+			"drawpl",
+			"goog",
+			"codevisi",
+			"GoogleGraph",
+			"useGoogleGraph",
+			"setup",
+			"a.",
+			"a",
+			"/>\n",
+			"required",
+			"red",
+			"widget",
+			"ethni",
+			"id_eth",
+			"hdi_4a",
+			"figures",
+			"model1-input",
+			"hdi_1c",
+			"hdi_1b",
+			"hdi_1a",
+			"hdi_1",
+			"mograph",
+			"version",
+			"are you",
+			"drawgo",
+			"poll",
+			"body",
+			"settings",
+			"base_dir",
+			"staticfiles",
+			"admin",
+			"mail+_ad",
+			"\\n-",
+			"br/",
+			"switch",
+			"8",
+			"12",
+			"wrapp",
+			"dynamic",
+			"keypre",
+			"filter",
+			"drawgoogle",
+			"dataTable",
+			"example",
+			"datatable",
+			"assessments",
+			"image",
+			"pb_2",
+			"pb_1",
+			"warb_8a",
+			"pb_3"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"fp_",
+			"\\n",
+			"uni",
+			"CO<sub>2</sub>",
+			" ",
+			"error-msg",
+			"class=\"class-msg\"",
+			"/static/images",
+			"Englew",
+			"'",
+			".png",
+			"warbler_by_year",
+			", ",
+			"",
+			", age",
+			" , rural",
+			" ",
+			"\\t",
+			"warbler_charts",
+			"Homewood",
+			"Oak Lawn",
+			"Elmhurst",
+			"Morton Grove",
+			"Highland Park",
+			"\"",
+			"../images/",
+			"../css/",
+			"../images/",
+			"style=\"width:160px;\"",
+			"class=\"signup-padding\"",
+			"color",
+			"\\n",
+			", ",
+			"",
+			", "
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 100.0
+	},
+	"project": "pencilcode.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"login.h",
+				"assess/templates/student_login.html"
+			],
+			[
+				"log",
+				"staticfiles/admin/css/login.css"
+			],
+			[
+				"model",
+				"oas/models.py"
+			],
+			[
+				"model.",
+				"oas/models.py"
+			],
+			[
+				"admin",
+				"oas/admin.py"
+			],
+			[
+				"view.",
+				"assess/views.py"
+			],
+			[
+				"form",
+				"assess/forms.py"
+			],
+			[
+				"main.",
+				"staticfiles/css/main.css"
+			],
+			[
+				"selectboxit",
+				"assess/static/js/selectBoxIt.min.js"
+			],
+			[
+				"select",
+				"staticfiles/css/selectBoxIt.css"
+			],
+			[
+				"base",
+				"assess/templates/base.html"
+			],
+			[
+				"student",
+				"assess/templates/student_login.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 293.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

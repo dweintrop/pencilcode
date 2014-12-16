@@ -1,0 +1,5 @@
+Launch:
+from terminal: 
+grunt devserve
+then in another tab, launch devchrome (by typing devchrome)
+then hit: http://pencilcode.net.dev/

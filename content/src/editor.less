@@ -334,6 +334,11 @@ body.modal #overlay {
   border: 0
 }
 
+#filename {
+  /* add extra space so cursor is visible when editing */
+  padding: 3px 2px 2px 2px;
+}
+
 #owner {
   color: #000
 }
@@ -351,10 +356,22 @@ body.modal #overlay {
   color: blue
 }
 
-.panetitle {
+.panebox {
+  overflow: hidden;
   position: absolute;
   top: 56px;
+  bottom: 0;
+}
+
+.framed .panebox {
+  top: 0;
+}
+
+.panetitle {
+  position: absolute;
+  top: 0;
   height: 28px;
+  width: 100%;
   background: #1e90ff;
   padding: 0 12px;
   color: #87ceeb;
@@ -427,31 +444,29 @@ body.modal #overlay {
 
 .pane {
   position: absolute;
-  top: 84px;
+  top: 28px;
   bottom: 0;
+  width: 100%;
   background: #f5f5f5;
   border-left: 1px solid #fff;
   border-right: 1px solid #fff;
-  z-index: 0
 }
 
 .back {
   left: -50%;
-  width: 50%
+  width: 50%;
 }
 
 .left {
   left: 0;
-  width: 50%
-}
-
-.left.pane {
-  z-index: 1
+  width: 50%;
+  z-index: 1;
 }
 
 .right {
   left: 50%;
-  width: 50%
+  width: 50%;
+  z-index: 0;
 }
 
 .rightpal {
@@ -480,6 +495,10 @@ body.modal #middle {
   top: 50%;
   right: 50%;
   margin-right: -28px;
+}
+
+.framed #middle, .framed .vcenter {
+  margin-top: -28px;
 }
 
 .hcenter {
@@ -576,7 +595,7 @@ body, .panetitle, #owner {
   left: 0;
   width: 100%;
   background-color: #fff;
-  overflow: hidden
+  overflow: visible;
 }
 
 .htmlmark:before, .cssmark:before, .jsmark:before {
@@ -697,7 +716,7 @@ body#pencildoc #diigolet-csm {
   display: none
 }
 
-.panetitle.left .gear {
+.panebox.left .gear {
   display: inline-block;
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARBAMAAADJQ1rJAAAAFVBMVEUAAAD///////////////////////9Iz20EAAAABnRSTlMAr++f37+5/Na4AAAATElEQVQI12MAArM0AQYICEsLgLLU0hRAFHOSW1pamlMyAwNbGgQwMIilpQlACKa0RAYGxrQkoMK0BNwEQh1CL9w8hB0wezHcIgZ2HwD3DBrdizr+iAAAAABJRU5ErkJggg==");
   background-repeat: no-repeat;
@@ -716,8 +735,6 @@ body#pencildoc #diigolet-csm {
   overflow: hidden;
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABlBMVEXS8OD///9kZDOcAAAAI0lEQVR42u3OIQ4AAAzCQPj/p7EYksmRUHeuoDXcEXvwVgkB3egCQVh7Ml4AAAAASUVORK5CYII=");
   background-position: center;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
 }
 
 .preview iframe {

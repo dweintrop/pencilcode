@@ -1,6 +1,6 @@
 /**
-*  Ajax Autocomplete for jQuery, version 1.2.15
-*  (c) 2014 Tomas Kirda
+*  Ajax Autocomplete for jQuery, version 1.2.18
+*  (c) 2015 Tomas Kirda
 *
 *  Ajax Autocomplete for jQuery is freely distributable under the terms of an MIT-style license.
 *  For details, see the web site: https://github.com/devbridge/jQuery-Autocomplete
@@ -74,6 +74,7 @@
                 onSearchStart: noop,
                 onSearchComplete: noop,
                 onSearchError: noop,
+                preserveInput: false,
                 containerClass: 'autocomplete-suggestions',
                 tabDisabled: false,
                 dataType: 'text',
@@ -196,6 +197,7 @@
             that.el.on('blur.autocomplete', function () { that.onBlur(); });
             that.el.on('focus.autocomplete', function () { that.onFocus(); });
             that.el.on('change.autocomplete', function (e) { that.onKeyUp(e); });
+            that.el.on('input.autocomplete', function (e) { that.onKeyUp(e); });
         },
 
         onFocus: function () {
@@ -610,7 +612,13 @@
         },
 
         hide: function () {
-            var that = this;
+            var that = this,
+                container = $(that.suggestionsContainer);
+
+            if ($.isFunction(that.options.onHide) && that.visible) {
+                that.options.onHide.call(that.element, container);
+            }
+
             that.visible = false;
             that.selectedIndex = -1;
             clearInterval(that.onChangeInterval);
@@ -620,11 +628,11 @@
 
         suggest: function () {
             if (this.suggestions.length === 0) {
-				if (this.options.showNoSuggestionNotice) {
-					this.noSuggestions();
-				} else {
-					this.hide();
-				}
+                if (this.options.showNoSuggestionNotice) {
+                    this.noSuggestions();
+                } else {
+                    this.hide();
+                }
                 return;
             }
 
@@ -670,7 +678,7 @@
                 html += '<div class="' + className + '" data-index="' + i + '">' + formatResult(suggestion, value) + '</div>';
             });
 
-            this.adjustContainerWidth();      
+            this.adjustContainerWidth();
 
             noSuggestionsContainer.detach();
             container.html(html);
@@ -686,7 +694,7 @@
             if (options.autoSelectFirst) {
                 that.selectedIndex = 0;
                 container.scrollTop(0);
-                container.children().first().addClass(classSelected);
+                container.children('.' + className).first().addClass(classSelected);
             }
 
             that.visible = true;
@@ -889,7 +897,9 @@
                 $(that.suggestionsContainer).scrollTop(offsetTop - that.options.maxHeight + heightDelta);
             }
 
-            that.el.val(that.getValue(that.suggestions[index].value));
+            if (!that.options.preserveInput) {
+                that.el.val(that.getValue(that.suggestions[index].value));
+            }
             that.signalHint(null);
         },
 
@@ -900,7 +910,7 @@
 
             that.currentValue = that.getValue(suggestion.value);
 
-            if (that.currentValue !== that.el.val()) {
+            if (that.currentValue !== that.el.val() && !that.options.preserveInput) {
                 that.el.val(that.currentValue);
             }
 

@@ -17,8 +17,9 @@ class HeadRequest(urllib2.Request):
 # Some sites redirect image urls to http urls, or don't like hotlinking.
 # Blacklist these as we find them.
 blacklist = set([
-   'www.public-domain-image.com',
-   'pixabay.com'
+   'atom.smasher.org',
+   'pixabay.com',
+   'www.public-domain-image.com'
 ])
 cross_origin_ok = set([
    'upload.wikimedia.org'
@@ -39,9 +40,9 @@ def normname(name):
      "".join(c for c in name if c.isalnum() or c in keepcharacters)
      ).strip('-')
   safe = re.sub('^s-', '', safe)
-  safe = re.sub('^([^-]+-)?t(?:ransparent)?-', '\\1trans-', safe)
+  safe = re.sub('^((?:[^-]+-)?)t(?:ransparent)?-', '\\1trans-', safe)
   safe = re.sub('\.jpg$', '.jpeg', safe)
-  return safe
+  return safe.lower()
 
 def application(env, start_response):
   redirect_url = None
@@ -150,10 +151,7 @@ def application(env, start_response):
         except urllib2.HTTPError, e:
           print 'for', filename, 'probe of', candidate, 'returned', e.code
           continue
-        if origin is None or u.hostname in cross_origin_ok:
-          redirect_url = candidate
-        else:
-          redirect_url = '/proxy/' +  candidate
+        redirect_url = candidate
         cache[filename] = redirect_url
         file(fullname, 'wb').write(redirect_url)
         break
@@ -162,6 +160,12 @@ def application(env, start_response):
     print e
     pass
   finally:
+    if (origin is None or
+        urlparse.urlparse(redirect_url).hostname in cross_origin_ok or
+        redirect_url.startswith('/proxy/')):
+      pass
+    else:
+      redirect_url = '/proxy/' +  redirect_url
 
     start_response('302 Redirect', [('Location', redirect_url.encode('utf-8'))])
   return []

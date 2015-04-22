@@ -20,12 +20,16 @@ exports.initialize = function(app) {
   // Set up preprocessor to break url into site and user and filepath.
   if (config.host) {
     app.use(function(req, res, next) {
-      var index = req.hostname.lastIndexOf(app.locals.config.host);
+      var index = !req.hostname ? -1 :
+          req.hostname.lastIndexOf(app.locals.config.host);
       if (index == -1) {
         if (req.path.length > 1 &&
             !/\.(?:pac|appcache|js|png)$/.test(req.path)) {
           utils.errorExit('Host ' + req.hostname + ' not part of domain ' +
-              app.locals.config.host);
+              app.locals.config.host +
+              ' ip:' + req.connection.remoteAddress +
+              ' ua:' + req.get('User-Agent') +
+              ' url:' + req.url);
         }
       } else {
         // Remove the '.' separator.
@@ -62,7 +66,10 @@ exports.initialize2 = function(app) {
     next();
   });
 
-  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.urlencoded({
+    extended: false,
+    limit: '10mb'
+  }));
 
   app.use('/load', function(req, res) {
     load.handleLoad(req, res, app, 'json');
@@ -80,28 +87,22 @@ exports.initialize2 = function(app) {
       req.url.replace(/^((?:[^\/]*\/\/[^\/]*)?\/)/, "$1" + user + "/");
     rawUserData(req, res, next);
   }
-  function expandedUserData(req, res, next) {
-    if (!/(?:\.(?:js|css|html|txt|xml|json|png|gif|jpg|jpeg|ico|bmp|pdf))$/.
-        test(req.url)) {
-      load.handleLoad(req, res, app, 'run');
-    }
-    else {
-      staticUserData(req, res, next);
-    }
-  }
-  function bareUserData(req, res, next) {
-    if (!/(?:\.(?:js|css|html|txt|xml|json|png|gif|jpg|jpeg|ico|bmp|pdf))$/.
-        test(req.url)) {
-      // This strips metadata off of the file.
-      load.handleLoad(req, res, app, 'code');
-    }
-    else {
-      staticUserData(req, res, next);
+  function userDataPrinter(style) {
+    return function (req, res, next) {
+      // if (!/(?:\.(?:js|css|html|txt|xml|json|png|gif|jpg|jpeg|ico|bmp|pdf))$/.
+      if (!/(?:\.(?:png|gif|jpg|jpeg|ico|bmp|pdf))$/.
+          test(req.url)) {
+        load.handleLoad(req, res, app, style);
+      }
+      else {
+        staticUserData(req, res, next);
+      }
     }
   }
-  app.use('/code', bareUserData);
-  app.use('/home', expandedUserData);
-  app.use('/run', expandedUserData);
+  app.use('/code', userDataPrinter('code'));
+  app.use('/home', userDataPrinter('run'));
+  app.use('/run', userDataPrinter('run'));
+  app.use('/print', userDataPrinter('print'));
 
   if (config.dirs.staticdir) {
     if (config.servesrc) {

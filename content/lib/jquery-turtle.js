@@ -8361,7 +8361,7 @@ $.turtle = function turtle(id, options) {
   // Set up test console.
   if (!('panel' in options) || options.panel) {
     var seeopt = {
-      title: 'test panel (type help for help)',
+      title: 'test panel (type help for help!)',
       abbreviate: [undefined, helpok],
       consolehook: seehelphook
     };

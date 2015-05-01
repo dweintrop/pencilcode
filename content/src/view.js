@@ -2276,11 +2276,16 @@ function setPaneEditorData(pane, doc, filename, useblocks) {
     $('.droplet-hover-div').tooltipster({position: 'right', interactive: true});
   });
 
+
+  // bubble up droplet events to pencil code
   dropletEditor.on('selectpalette', function(p) {
     fireEvent('selectpalette', [pane, p]);
   });
   dropletEditor.on('pickblock', function(p) {
     fireEvent('pickblock', [pane, p]);
+  });
+  dropletEditor.on('block-drop', function(p) {
+    fireEvent('block-drop', [pane, p]);
   });
 
   dropletEditor.on('linehover', function(ev) {
@@ -2773,6 +2778,8 @@ function updateMeta(paneState) {
     paneState.meta.css = paneState.cssEditor.getValue();
   }
 }
+
+
 function getPaneEditorData(pane) {
   var paneState = state.pane[pane];
   if (!paneState.editor) {
@@ -2784,6 +2791,7 @@ function getPaneEditorData(pane) {
   var metaCopy = copyJSON(paneState.meta);
   return {data: text, mime: paneState.mimeType, meta: metaCopy };
 }
+
 
 // Marks a line of the editor using the given CSS class
 // (using 1-based line numbering).

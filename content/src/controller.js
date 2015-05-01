@@ -262,6 +262,34 @@ view.on('pickblock', function(pane, blockid) {
   logEvent('~pickblock', { id: blockid });
 });
 
+view.on('block-drop', function(pane, block) {
+  nuLogEvent('block-drop', view.getPaneEditorData(pane));
+});
+
+function nuLogEvent(source, paneData) {
+  var logData = {
+    'student_id' : $('#id_student_id').val(),
+    'project_name' : modelatpos('left').filename,
+    'condition' : '',
+    'run_type' : source,
+    'program' : paneData.data,
+    'greyedout_blocks' : '',
+    'projectHTML' : paneData.meta ? paneData.meta.html + '' : '',
+    'projectCSS' : paneData.meta ? paneData.meta.css + '' : ''
+  }
+
+  // push data to somewhere (tbd)
+  // $.ajax({
+  //   type: "POST",
+  //   url: "/snapRun/",
+  //   data: logData
+  // }).done(function( msg ) {
+  //   console.log(msg);
+  // });
+
+  console.log( source + JSON.stringify(logData));
+}
+
 //
 // Now setup event handlers.  Each event handler corresponds to
 // an ID (as specified in updateTopControls() above) and
@@ -465,9 +493,12 @@ function runAction() {
   // Provide instant (momentary) feedback that the program is now running.
   debug.stopButton('flash');
   runCodeAtPosition('right', newdata, filename, false);
+  
   logCodeEvent('run', filename, newdata.data,
       view.getPaneEditorBlockMode(paneatpos('left')),
       view.getPaneEditorLanguage(paneatpos('left')));
+  nuLogEvent('run', doc);
+
   if (!specialowner()) {
     // Remember the most recently run program.
     cookie('recent', window.location.href,
@@ -720,6 +751,7 @@ view.on('toggleblocks', function(p, useblocks) {
       code = (doc && doc.data) || model.pane[p].data.data;
   logCodeEvent('toggle', filename, code, useblocks,
       view.getPaneEditorLanguage(p));
+  nuLogEvent('toggle', doc);
 });
 
 function saveAction(forceOverwrite, loginPrompt, doneCallback) {
@@ -788,6 +820,7 @@ function saveAction(forceOverwrite, loginPrompt, doneCallback) {
       logCodeEvent('save', filename, newdata.data,
           view.getPaneEditorBlockMode(paneatpos('left')),
           view.getPaneEditorLanguage(paneatpos('left')));
+      nuLogEvent('save', doc);
       if (modelatpos('left').filename == filename) {
         var oldmtime = modelatpos('left').data.mtime || 0;
         if (mtime) {
@@ -1147,6 +1180,7 @@ function saveAs() {
         logCodeEvent('save', newFilename, doc.data,
             view.getPaneEditorBlockMode(pp),
             view.getPaneEditorLanguage(pp));
+        nuLogEvent('save', doc);
         var oldmtime = mp.data.mtime || 0;
         if (m.mtime) {
           mp.data.mtime = Math.max(m.mtime, oldmtime);
@@ -1883,6 +1917,7 @@ function createNewFileIntoPosition(position, filename, text, meta) {
   view.notePaneEditorCleanData(pane, {data: ''});
   mpp.running = false;
   logCodeEvent('new', filename, text, mode, view.getPaneEditorLanguage(pane));
+  nuLogEvent('new', view.getPaneEditorData(pane));
 }
 
 
@@ -1945,8 +1980,8 @@ function loadFileIntoPosition(position, filename, isdir, forcenet, cb) {
         noteIfUnsaved(posofpane(pane));
         updateTopControls(false);
         cb && cb();
-        logCodeEvent('load', filename, m.data, mode,
-            view.getPaneEditorLanguage(pane));
+        logCodeEvent('load', filename, m.data, mode, view.getPaneEditorLanguage(pane));
+        nuLogEvent('load', view.getPaneEditorData(pane));
       }
     });
   }

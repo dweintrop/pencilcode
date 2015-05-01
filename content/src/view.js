@@ -123,6 +123,7 @@ window.pencilcode.view = {
     return changeEditorText(state.pane[pane], text);
   },
   getPaneEditorData: getPaneEditorData,
+  getPaneEditorFloatingBlocks: getPaneEditorFloatingBlocks,
   setPaneEditorBlockMode: setPaneEditorBlockMode,
   getPaneEditorBlockMode: getPaneEditorBlockMode,
   setPaneEditorBlockOptions: setPaneEditorBlockOptions,
@@ -2525,6 +2526,18 @@ function getPaneEditorData(pane) {
   return {data: text, mime: paneState.mimeType, meta: metaCopy };
 }
 
+function getPaneEditorFloatingBlocks(pane) {
+  var paneState = state.pane[pane];
+  if (!paneState.editor) {
+    return null;
+  }
+  paneState.dropletEditor.floatingBlocks;
+  var floatingBlocksString = '';
+  paneState.dropletEditor.floatingBlocks.map(function(block){
+    floatingBlocksString += block.block.stringify() + '|';
+  });
+  return floatingBlocksString;
+}
 
 // Marks a line of the editor using the given CSS class
 // (using 1-based line numbering).

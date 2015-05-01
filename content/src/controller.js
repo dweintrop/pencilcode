@@ -266,14 +266,18 @@ view.on('block-drop', function(pane, dropType) {
   nuLogEvent('block-drop-' + dropType, view.getPaneEditorData(pane));
 });
 
-function nuLogEvent(dropType, paneData) {
+// DW - probably want to pass the whole pane in here so I can get the floating blocks off it
+function nuLogEvent(source, paneData) {
+
+  //floatingBlocks = view.getPaneEditorFloatingBlocks(pane);
+
   var logData = {
     'student_id' : $('#id_student_id').val(),
     'project_name' : modelatpos('left').filename,
     'condition' : '',
-    'run_type' : dropType,
+    'run_type' : source,
     'program' : paneData.data,
-    'greyedout_blocks' : '',
+    'floating_blocks' : '', // floatingBlocks,
     'projectHTML' : paneData.meta ? paneData.meta.html + '' : '',
     'projectCSS' : paneData.meta ? paneData.meta.css + '' : ''
   }
@@ -287,7 +291,7 @@ function nuLogEvent(dropType, paneData) {
   //   console.log(msg);
   // });
 
-  console.log( dropType + JSON.stringify(logData));
+  console.log( JSON.stringify(logData));
 }
 
 //

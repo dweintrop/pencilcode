@@ -262,16 +262,16 @@ view.on('pickblock', function(pane, blockid) {
   logEvent('~pickblock', { id: blockid });
 });
 
-view.on('block-drop', function(pane, block) {
-  nuLogEvent('block-drop', view.getPaneEditorData(pane));
+view.on('block-drop', function(pane, dropType) {
+  nuLogEvent('block-drop-' + dropType, view.getPaneEditorData(pane));
 });
 
-function nuLogEvent(source, paneData) {
+function nuLogEvent(dropType, paneData) {
   var logData = {
     'student_id' : $('#id_student_id').val(),
     'project_name' : modelatpos('left').filename,
     'condition' : '',
-    'run_type' : source,
+    'run_type' : dropType,
     'program' : paneData.data,
     'greyedout_blocks' : '',
     'projectHTML' : paneData.meta ? paneData.meta.html + '' : '',
@@ -287,7 +287,7 @@ function nuLogEvent(source, paneData) {
   //   console.log(msg);
   // });
 
-  console.log( source + JSON.stringify(logData));
+  console.log( dropType + JSON.stringify(logData));
 }
 
 //

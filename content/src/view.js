@@ -2014,7 +2014,10 @@ function setPaneEditorData(pane, doc, filename, useblocks) {
           {
             mode: dropletMode,
             palette: paletteForMimeType(visibleMimeType),
-            modeOptions: dropletOptionsForMimeType(visibleMimeType)
+            modeOptions: dropletOptionsForMimeType(visibleMimeType),
+      
+            // DW - enable hybrid blocks/text mode
+            showPaletteInTextMode: true
           });
   // Set up fonts - once they are loaded.
   whenCodeFontLoaded(function () {

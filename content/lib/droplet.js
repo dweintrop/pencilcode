@@ -11192,9 +11192,9 @@ if(i=this.variable instanceof Z){if(this.variable.isArray()||this.variable.isObj
         } else if (renderPoint.x - this.scrollOffsets.main.x < 0) {
           renderPoint.x = this.scrollOffsets.main.x;
         }
-        this.fireEvent('block-drop', ['floatging']);
         this.addMicroUndoOperation(new ToFloatingOperation(this.draggingBlock, renderPoint, this));
         this.floatingBlocks.push(new FloatingBlockRecord(this.draggingBlock, renderPoint));
+        this.fireEvent('block-drop', ['floating']);
         this.draggingBlock = null;
         this.draggingOffset = null;
         this.lastHighlight = null;

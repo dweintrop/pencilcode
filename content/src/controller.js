@@ -279,26 +279,28 @@ function nuLogEvent(source, pane) {
   var floatingBlocks = view.getPaneEditorFloatingBlocks(pane);
 
   var logData = {
-    'student_id' : $('#id_student_id').val(),
+    'student_id' : '11', //$('#id_student_id').val(),
+    'assignment' : 'girls-club',
     'project_name' : modelatpos('left').filename,
-    'condition' : '',
-    'run_type' : source,
+    'condition' : 'girls-club', // study condition
+    'editorMode' : 'blocks', // state of droplet editor
+    'eventType' : source,
     'program' : paneData.data,
-    'floating_blocks' : floatingBlocks,
+    'floatingBlocks' : floatingBlocks,
     'projectHTML' : paneData.meta ? paneData.meta.html + '' : '',
     'projectCSS' : paneData.meta ? paneData.meta.css + '' : ''
   }
 
-  // push data to somewhere (tbd)
-  // $.ajax({
-  //   type: "POST",
-  //   url: "/snapRun/",
-  //   data: logData
-  // }).done(function( msg ) {
-  //   console.log(msg);
-  // });
+  console.log( "posted: " + JSON.stringify(logData));
 
-  console.log( JSON.stringify(logData));
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:8000/pencilCoder/",
+    data: logData
+  }).done(function( msg ) {
+    console.log(msg);
+  });
+
 }
 
 //

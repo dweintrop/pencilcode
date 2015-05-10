@@ -11,7 +11,7 @@
 <style>
 </style>
 <body>
-<div id="overlay">
+<!-- <div id="overlay">
 <div class="about" id="intro">
 <h1 style="margin-top:0">About Pencil Code</h1>
 <p>Pencil Code is a collaborative programming site for drawing
@@ -69,7 +69,7 @@ Contribute to the development of Pencil Code at
 &nbsp;&mdash;
 <a href="mailto:info@pencilcode.net" target="_top"
 >info@pencilcode.net</a>.
-</div>
+</div> -->
 
 <!--
 <div class="loginblock">
@@ -89,12 +89,14 @@ Contribute to the development of Pencil Code at
 <div class="row">
 <div class="col-xs-6 vpadding">
 <!-- branding -->
-<a class="pclogo pull-left aboutlink" href="#about"><div class="pctext"><div class="pcline1">Pencil</div><div class="pcline2">Code</div></div><img src="/image/vpencil-20-64.png"></a>
+<a class="pclogo pull-left aboutlink" href="http://pencilcode.net" target="_blank"><div class="pctext"><div class="pcline1">Pencil</div><div class="pcline2">Code</div></div><img src="/image/vpencil-20-64.png"></a>
 </div>
+
 <div class="col-xs-6 vpadding">
 <!-- login bar -->
-<ul class="pull-right list-inline"><li class="btn btn-clear" id="newaccount"><span class="glyphicon glyphicon-star newicon"></span> New Account<li class="btn btn-clear" style="opacity:0" id="showlogin"><span class="glyphicon glyphicon-log-in loginicon"></span> Login</ul>
+<!-- <ul class="pull-right list-inline"><li class="btn btn-clear" id="newaccount"><span class="glyphicon glyphicon-star newicon"></span> New Account<li class="btn btn-clear" style="opacity:0" id="showlogin"><span class="glyphicon glyphicon-log-in loginicon"></span> Login</ul> -->
 </div>
+
 </div>
 <!--# include file="promoline.html" -->
 <!-- splash row -->
@@ -119,6 +121,15 @@ invent a program that will change the world.
 <iframe id="demo" style="min-height:300px;height:100%;width:100%;border:0"></iframe>
 </div>
 </div>
+
+<div class="row topline">
+<div class="col-sm-12 vpadding text-center">
+  <a href="http://pencil.cc">pencil.cc</a> is a research project run by David Weintrop.<br/>
+  It is built on top of the <a href="http://pencilcode.net/" target="_blank">Pencil Code</a> environment.<br/><br/>
+  For more information about Pencil Code, including teacher materials, sample activites, <br/> and links to the source code, please visit the main <a href="http://pencilcode.net/" target="_blank">Pencil Code</a> site.
+</div>
+</div>
+<!-- 
 <div class="row topline">
 <div class="col-sm-12 vpadding text-center">
 <h2 style="padding:10px 0">Resources</h2>
@@ -147,8 +158,9 @@ and copy.
 </div>
 </div>
 </div>
+ -->
 </body>
-<script>
+<script> 
 // Preload support.
 function loadusers(data) {
   loadusers.data = data;
@@ -275,11 +287,11 @@ $('#showlogin').on('click', function() {
   });
   $('#user').focus();
 });
-$('a.aboutlink').click(function() {
-  location.hash = '#about';
-  $('#overlay,.about').show();
-  return false;
-});
+// $('a.aboutlink').click(function() {
+//   location.hash = '#about';
+//   $('#overlay,.about').show();
+//   return false;
+// });
 function closeoverlay() {
  $('#video').html('');
  $('#overlay,.about,.loginblock').hide();

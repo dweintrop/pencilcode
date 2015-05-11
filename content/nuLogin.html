@@ -167,7 +167,13 @@ Contribute to the development of Pencil Code at
   </div>
 </div>
 
-<p style="text-align:center"><a class="btn btn-primary" style="font-size:133%" href="/edit/first">Let's Go!</a>
+<input id="condition" style="display:none;"/>
+
+<div class="col-sm-12 text-center">
+  <span id="msg">&nbsp;</span>
+</div>
+
+<p style="text-align:center"><span id="login-btn" class="btn btn-primary" style="font-size:133%">Let's Go!</span>
 </div>
 
 <div class="col-sm-6 vpadding">
@@ -306,17 +312,19 @@ $(function() {
   //   $('#login').prop('disabled', !found);
   //   return true;
   // };
-  // function keyFromPassword(username, p) {
-  //   if (!p) { return ''; }
-  //   if (/^[0-9]{3}$/.test(p)) { return p; }
-  //   var key = '';
-  //   var prng = new Math.seedrandom('turtlebits:' + username + ':' + p + '.');
-  //   for (var j = 0; j < 3; j++) {
-  //     key += Math.floor(prng() * 10);
-  //   }
-  //   return key;
-  // }
-  // $('#login').on('click', tryLogin);
+
+  function keyFromPassword(username, p) {
+    if (!p) { return ''; }
+    if (/^[0-9]{3}$/.test(p)) { return p; }
+    var key = '';
+    var prng = new Math.seedrandom('turtlebits:' + username + ':' + p + '.');
+    for (var j = 0; j < 3; j++) {
+      key += Math.floor(prng() * 10);
+    }
+    return key;
+  }
+
+  $('#login-btn').on('click', tryLogin);
   // $('#pass,#user').on('keyup', function(e) {
   //   $('#msg').text('');
   //   if (e.which == 13) {
@@ -327,25 +335,25 @@ $(function() {
   //     }
   //   }
 
-  // function tryLogin() {
-  //   var user = $('#user').val().toLowerCase().trim();
-  //   if (!user) return;
-  //   $('#msg').text('Logging in...');
-  //   var key = keyFromPassword(user, $('#pass').val());
-  //   $.getJSON('//' + user + '.' + location.hostname +
-  //       '/save/?mode=setkey&key=' + key + '&data=' + key).done(function(resp) {
-  //     if (resp.keyset) {
-  //       window.location =
-  //          '//' + user + '.' + location.hostname +
-  //               '/edit/#login=' + user + ':' + (key ? key : '');
-  //     } else {
-  //       $('#pass').select().focus();
-  //       $('#msg').text('Wrong password.');
-  //     }
-  //   }).fail(function() {
-  //     $('#msg').text('Network error.');
-  //   });
-  // }
+  function tryLogin() {
+    var user = $('#user').val().toLowerCase().trim();
+    if (!user) return;
+    $('#msg').text('Logging in...');
+    var key = keyFromPassword(user, $('#pass').val());
+    $.getJSON('//' + user + '.' + location.hostname +
+        '/save/?mode=setkey&key=' + key + '&data=' + key).done(function(resp) {
+      if (resp.keyset) {
+        window.location =
+           '//' + user + '.' + location.hostname +
+                '/edit/#login=' + user + ':' + (key ? key : '');
+      } else {
+        $('#pass').select().focus();
+        $('#msg').text('Wrong password.');
+      }
+    }).fail(function() {
+      $('#msg').text('Network error.');
+    });
+  }
 
   $(".toggle-login").on('click', function(e) {
     $("#student-login").toggle();
@@ -400,7 +408,7 @@ $(function() {
           .remove()
           .add({ value: '', text: 'Please Select Your Name' })
         $(data['values']).each(function(index, element) {
-          $('#student_dropdown').data("selectBox-selectBoxIt").add({ value: element[0], text: element[1] });
+          $('#student_dropdown').data("selectBox-selectBoxIt").add({ studentID: element.studentID, condition: element.condition, value: element.username, text: element.name, password: element.password });
         });
 
         $('#assignment_dropdown').data("selectBox-selectBoxIt").enable();
@@ -434,13 +442,11 @@ $(function() {
     // pair_dropdown.add({ value: '', text: 'I\'m not listed'});
   });
 
-  $("#student_dropdown").change(function() {
-    $("#student_id").val(this.options[this.selectedIndex].value);
-    (this.options[this.selectedIndex].value == '') ? $("#studentId-div").show() : $("#studentId-div").hide();
-  });
-  $("#pair_dropdown").change(function() {
-    $("#pair_id").val(this.options[this.selectedIndex].value);
-    (this.options[this.selectedIndex].value == '') ? $("#pairId-div").show() : $("#pairId-div").hide();
+  $("#student_dropdown").change(function(e, select) {
+    var selected = this.options[this.selectedIndex]
+    $("#user").val(selected.value);
+    $("#pass").val(selected.getAttribute('password'));
+    $("#condition").val(selected.getAttribute('condition'))
   });
 
 });
@@ -467,16 +473,17 @@ window.addEventListener('touchstart', motion);
 $('#newaccount').on('click', function() {
   window.location = '/edit/intro#new';
 });
-$('#showlogin').on('click', function() {
-  if ($(this).css('opacity') == 0) return;
-  $('#overlay,.loginblock').show();
-  var ofs = $('#showlogin').offset();
-  $('.loginblock').css({
-    top: ofs.top - 8 + 1,
-    right: $(document).width() - (ofs.left + $('#showlogin').outerWidth()) - 8
-  });
-  $('#user').focus();
-});
+
+// $('#showlogin').on('click', function() {
+//   if ($(this).css('opacity') == 0) return;
+//   $('#overlay,.loginblock').show();
+//   var ofs = $('#showlogin').offset();
+//   $('.loginblock').css({
+//     top: ofs.top - 8 + 1,
+//     right: $(document).width() - (ofs.left + $('#showlogin').outerWidth()) - 8
+//   });
+//   $('#user').focus();
+// });
 // $('a.aboutlink').click(function() {
 //   location.hash = '#about';
 //   $('#overlay,.about').show();

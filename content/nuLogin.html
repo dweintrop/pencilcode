@@ -167,6 +167,7 @@ Contribute to the development of Pencil Code at
   </div>
 </div>
 
+<input id="studentID" style="display:none;"/>
 <input id="condition" style="display:none;"/>
 
 <div class="col-sm-12 text-center">
@@ -345,7 +346,8 @@ $(function() {
       if (resp.keyset) {
         window.location =
            '//' + user + '.' + location.hostname +
-                '/edit/#login=' + user + ':' + (key ? key : '');
+                '/edit/#login=' + user + ':' + (key ? key : '') 
+                + '?condition=' + $('#condition').val() + '&studentID=' + $('#studentID') ;
       } else {
         $('#pass').select().focus();
         $('#msg').text('Wrong password.');
@@ -360,6 +362,9 @@ $(function() {
     $("#guest-login").toggle();
     $("#user").val("");
     $("#pass").val("");
+    // just assume the default PC unless student overrides (maybe change this to hybrid in the future)
+    $("#condition").val("default-PC");  
+    $("#studentID").val("guest");  
   });
 
   $("select").selectBoxIt({
@@ -447,6 +452,7 @@ $(function() {
     $("#user").val(selected.value);
     $("#pass").val(selected.getAttribute('password'));
     $("#condition").val(selected.getAttribute('condition'))
+    $("#studentID").val(selected.getAttribute('studentID'))
   });
 
 });

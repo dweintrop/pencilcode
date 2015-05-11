@@ -16,7 +16,7 @@ proxy.on('error', function() {
 
 function rewriteRules(req, res, next) {
   var u = parseUrl(req);
-  if (u.pathname == '/') { u.pathname = '/nuLogin.html'; }
+  if (u.pathname == '/') { u.pathname = '/welcome.html'; }
   else if (/^\/edit\//.test(u.pathname)) {
     if (/^frame\./.test(req.headers['host'])) {
       u.pathname = '/framed.html';

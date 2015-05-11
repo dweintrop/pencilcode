@@ -1,0 +1,597 @@
+<!doctype html>
+<html>
+<head>
+<title>Pencil Code</title>
+<meta name="description" content="Pencil is a collaborative programming site for drawing art, playing music, and creating games. Pencil is also a place to experiment with mathematical functions, geometry, graphing, webpages, simulations, and algorithms. Programs are open for all to see and copy.">
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:400|Source+Code+Pro:400,700">
+<link rel="stylesheet" type="text/css" href="/nuLogin.css">
+<link rel="stylesheet" type="text/css" href="/lib/selectBoxIt.css">
+<link rel="icon" sizes="192x192" href="/apple-touch-icon.png">
+<link rel="shortcut icon" sizes="16x16" href="/favicon.ico" />
+<style>
+</style>
+<body>
+<!-- <div id="overlay">
+<div class="about" id="intro">
+<h1 style="margin-top:0">About Pencil Code</h1>
+<p>Pencil Code is a collaborative programming site for drawing
+art, playing music, and creating games.  It is also
+a place to experiment with mathematical functions, geometry,
+graphing, webpages, simulations, and algorithms.  Programs are
+open for all to see and copy.
+<p><a target="_blank"
+href="//www.youtube.com/watch?v=JJzFD4EdeuY"
+data-vimeo="79743491"
+>Watch a video overview</a> or
+<a href="//www.youtube.com/watch?v=edN07wcbj2w"
+data-vimeo="79743492" target="_blank"
+>watch a video tutorial</a>.
+</p>
+<div id="video"></div>
+<p>The main language is Coffeescript.  Professional software engineers
+use Coffeescript to build complex websites, but Coffeescript code can
+also be very simple.
+<p>Pencil Code can also be used to explore and learn Javascript, HTML,
+and CSS: when you are ready, just find the "gear" button to adjust languages.
+<p>Programs preload the pencilcode library to use
+turtle graphics functions.
+Pencil Code is all <a href="/license.html" target="_blank">open source</a>.
+Hang out on the <a href="/group" target="_blank">Pencil Code
+discussion forum</a> or check out
+<a href="//pencilcode.net/material/reference.pdf" target="_blank"
+>the quick reference</a>
+or
+<a href="//guide.pencilcode.net/" target="_blank">the online guide</a>
+to find out more.  There is also an illustrated
+<a href="//pencilcode.net/book" target="_blank">Pencil Code book</a> with more than 100 small projects.
+<p>Anybody can save programs and web pages, but read the
+<a href="/terms.html" target="_blank">Terms of Service</a> and the
+<a href="/privacy.html" target="_blank">Privacy Policy</a> first.
+Two rules:
+<p><u>Be Nice.</u> Do not mess up other peoples' work.
+<strong>Do not post content that detracts from education on the site.</strong>
+This a learning space that is not locked down
+(for example, passwords are optional). So feel free to explore, create,
+and link, but also please be considerate.
+<p><u>Be Careful.</u> Do not depend on Pencil Code to keep your data safe.
+Data posted here is public, and data is not secured from loss.
+<strong>Do not post private or personally identifiable
+information.</strong>  Passwords on Pencil Code
+do not prevent malicious interference.
+<p class="bottomnote"
+>The Pencil Code Foundation, Inc., is devoted to advancing computer
+science education by making programming as simple and as
+powerful as using a pencil.
+Contribute to the development of Pencil Code at
+<a href="http://dev.pencilcode.net/" target="_blank"
+>dev.pencilcode.net</a> or
+<a href="https://github.com/PencilCode">github</a>.
+&nbsp;&mdash;
+<a href="mailto:info@pencilcode.net" target="_top"
+>info@pencilcode.net</a>.
+</div> -->
+
+<!--
+<div class="loginblock">
+<label class="toggler">
+<span id=msg></span>&nbsp; <span class="glyphicon glyphicon-log-in loginicon"></span> Login</ul></label>
+<label>Name: <input id=user></label>
+<label>Password: <input type=password id=pass></label>
+<label><button id=login disabled>Login <span id=asuser></span></button></label>
+</div>
+-->
+
+</div>
+<!-- end of overlay -->
+
+
+<div class="container shadowcard">
+<div class="row">
+<div class="col-xs-6 vpadding">
+<!-- branding -->
+<a class="pclogo pull-left aboutlink" href="http://pencilcode.net" target="_blank"><div class="pctext"><div class="pcline1">Pencil</div><div class="pcline2">Code</div></div><img src="/image/vpencil-20-64.png"></a>
+</div>
+
+<div class="col-xs-6 vpadding">
+<!-- login bar -->
+<!-- <ul class="pull-right list-inline"><li class="btn btn-clear" id="newaccount"><span class="glyphicon glyphicon-star newicon"></span> New Account<li class="btn btn-clear" style="opacity:0" id="showlogin"><span class="glyphicon glyphicon-log-in loginicon"></span> Login</ul> -->
+</div>
+
+</div>
+<!--# include file="promoline.html" -->
+<!-- splash row -->
+<div class="row topline">
+<div class="col-sm-6 vpadding">
+
+<div id="student-login">
+
+  <h2 class="text-center" style="color:#4e015c;">Student Login <span class="toggle-login">(not a student?)</span></h2>
+
+  <div class="row">
+    <div class="input-label col-sm-4 text-right"> 
+      Class: 
+    </div>
+    <div class="col-sm-6">
+      <select class="selectBoxIt" name="class_dropdown" id="class_dropdown">
+        <option value="">Please Select Class:</option>
+        <option value="Lindbloom">Lindbloom Girls Club</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-label col-sm-4 text-right"> 
+      Student:
+    </div>  
+    <div class="col-sm-6"> 
+      <select class="selectBoxIt" id="student_dropdown" name="student_dropdown" disabled>
+        <option value="">Please Select Class:</option>
+      </select>
+    </div>
+  </div>  
+
+  <div class="row">
+    <div class="input-label col-sm-4 text-right"> 
+      Assignment:
+    </div>  
+    <div class="col-sm-6"> 
+      <select class="selectBoxIt" id="assignment_dropdown" name="assignment_dropdown" disabled>
+        <option value="">Please Select Assignment:</option>
+        <option value="pcDay1">Pencil Code Day 1</option>
+        <option value="pcDay2">Pencil Code Day 2</option>
+      </select>
+    </div>
+  </div>
+  
+</div>
+
+<div id="guest-login" style="display:none;">
+  <h2 class="text-center" style="color:#4e015c;">
+    Guest Login <span class="toggle-login">(Are you a student?)</span></h2>
+  <div class="row">
+    <div class="input-label col-sm-4 text-right"> 
+      Username:
+    </div>  
+    <div class="col-sm-6">
+      <input id="user">
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-label col-sm-4 text-right"> 
+      Password:
+    </div>  
+    <div class="col-sm-6">
+      <input type="password" id="pass">
+    </div>
+  </div>
+</div>
+
+<input id="studentID" style="display:none;"/>
+<input id="condition" style="display:none;"/>
+
+<div class="col-sm-12 text-center">
+  <span id="msg">&nbsp;</span>
+</div>
+
+<p style="text-align:center"><span id="login-btn" class="btn btn-primary" style="font-size:133%">Let's Go!</span>
+</div>
+
+<div class="col-sm-6 vpadding">
+<iframe id="demo" style="min-height:300px;height:100%;width:100%;border:0"></iframe>
+</div>
+</div>
+
+
+<div class="row topline">
+<div id="student_surveys" style="line-height:18pt">
+    <h3 style="cursor:pointer; margin-bottom: 0; padding: 0;"><span id="survey-arrow" style="font-size:16px;">►</span>&nbsp;Student Online Forms</h3>
+    <div class="form_list">
+      <a href="https://docs.google.com/a/u.northwestern.edu/forms/d/19UOwdiAS5zPKTDA7Spx0io9JIQZB9r9yBBEYOGvtKh4/viewform" target="_blank"> Student Questionnaire (v. 3)</a> <br/>    
+      <a href="#" onclick="window.location = (new Date().getTime() % 2 == 0) ? 'https://docs.google.com/a/u.northwestern.edu/forms/d/1PevJO1hKf_ofdA56iwfhVZKmPtffsPwPLA6Sd10dDak/viewform': 'https://docs.google.com/a/u.northwestern.edu/forms/d/1N5XYGyAOyAkgZOwi4RyKfkKQrFhOgFpZ-FhAKYjayD4/viewform';" target="_blank"> Programming Concepts Questionnaire (v. 3)</a> <br/>
+
+      <a href="https://docs.google.com/a/u.northwestern.edu/forms/d/1-bQ1y3VOViBl6ZJq-4MCsg-ahsl5qwOGcXAI92DhC9s/viewform" target="_blank"> Out-of-class Interview Schedule Questionnaire</a> <br/>     
+
+      <a href="https://docs.google.com/a/u.northwestern.edu/forms/d/1fHZMBGWS5XrNPpQCduih0s6_MB6ymLSOE3HC6enks_w/viewform" target="_blank"> Exploring Computer Science Questionnaire</a> <br/>              
+     
+    </div>
+  </div>
+
+    <div id="student_resources" style="line-height:16pt">
+      <h3 style="cursor:pointer; margin-bottom: 0; padding: 0;"><span id="resource-arrow" style="font-size:16px;">►</span>&nbsp;Resources</h3>
+      <div class="form_list">
+        Javac Setup<br/>
+        <div style="color:black; font-size: 9.5pt;padding:2px;">
+        1. Download <a href="http://javaseer.herokuapp.com/setup/" style="text-decoration:underline;">this</a> file and save it.<br/>
+        2. Open up a Terminal. To do this, open Launchpad by hitting the F4 button (at the top of the keyboard), then click on Other, the click on Terminal. <br/>
+        3. When the terminal window opens, type: <span style="font-family:courier">cd Downloads</span> then hit return<br/>
+        4. Type: <span style="font-family:courier">sh setup.sh [Your Student ID number] [Your Name]</span>.<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; For example, if you played for the Blackhawks you might type: <span style="font-family:courier">sh setup.sh 88 Patrick Kane</span><br/>
+        5. You should see a message that says: "alias has been setup. please close then reopen the terminal."<br/> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you do not see this message, please raise your hand.<br/>
+        6. Close the terminal windown then open a new terminal window following the instructions in step 2.<br/>
+        7. In the terminal, type: <span style="font-family:courier">javac testing</span><br/>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="row topline">
+<div class="col-sm-12 vpadding text-center">
+  <a href="http://pencil.cc">pencil.cc</a> is a research project run by <a href="http://www.sesp.northwestern.edu/profile/?p=21536&/DavidWeintrop/" target="_blank">David Weintrop</a> designed to 
+  understand the differences<br/>between blocks-based, text-based, 
+  and hybrid blocks/text programming environments.<br/>
+  It is built on top of the <a href="http://pencilcode.net/" target="_blank">Pencil Code</a> environment.<br/><br/>
+  For more information about Pencil Code, including teacher materials, sample activites, <br/> and links to the source code, please visit the main <a href="http://pencilcode.net/" target="_blank">Pencil Code</a> site.<br/><br/>
+  For more information about the study, please contact <a href="mailto:dweintrop@u.northwestern.edu">David Weintrop</a>.
+</div>
+</div>
+<!-- 
+<div class="row topline">
+<div class="col-sm-12 vpadding text-center">
+<h2 style="padding:10px 0">Resources</h2>
+<ul class="list-inline spaced">
+<li><a class="aboutlink" href="#about">About Pencil Code</a>
+<li><a href="//guide.pencilcode.net/">Material for Teachers</a>
+<li><a href="//book.pencilcode.net/">Pencil Code Book</a>
+</ul>
+<ul class="list-inline spaced">
+<li><a href="/edit/untitled">Open Blank Editor</a>
+<li><a href="//share.pencilcode.net/">Shared Student Projects</a>
+<li><a href="/home/">Browse All Users</a>
+</ul>
+<ul class="list-inline spaced">
+<li><a href="//activity.pencilcode.net/">Printable Activities</a>
+<li><a href="//blog.pencilcode.net/">Pencil Code Blog</a>
+<li><a href="//dev.pencilcode.net/">Contributors</a>
+</ul>
+</div>
+</div>
+<div class="row topline">
+<div class="col-sm-12 vpadding text-center">
+<p>Pencil Code supports CoffeeScript, Javascript, CSS, and HTML.
+<p>Everything posted on Pencil Code is public and free to view, share,
+and copy.
+</div>
+</div>
+</div>
+ -->
+</body>
+<script> 
+// Preload support.
+function loadusers(data) {
+  loadusers.data = data;
+  loadusers.callback && loadusers.callback(data);
+}
+loadusers.then = function(callback) {
+  if (loadusers.data) { callback(loadusers.data); }
+  else { loadusers.callback = callback; }
+}
+</script>
+<script src="/load/?callback=loadusers"></script>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/jquery-ui.min.js"></script>
+<script src="/lib/jquery.autocomplete.min.js"></script>
+<script src="/lib/seedrandom.js"></script>
+<script src="/lib/selectBoxIt.min.js"></script>
+<script>
+$(function() {
+	loadusers.then(function(data) {
+
+// 	// populate dropdown w/ users
+
+
+
+  if (!data || data.directory != '/' || !data.list) return;
+  var users = data.list.filter(function(x) {
+    return /d/.test(x.mode); });
+  users.sort(function(a, b) { return b.mtime - a.mtime; });
+  var usernames = users.map(function(u) { return u.name; });
+  
+  console.log(users);
+
+  });
+
+  //$('#showlogin').css('opacity', 1);
+  // $('#user').on('change', validateUser);
+  // $('#user').autocomplete({
+  //   autoSelectFirst: true,
+  //   triggerSelectOnValidInput: false,
+  //   lookup: usernames,
+  //   forceFixPosition: true,
+  //   onSelect: function() { validateUser(); setTimeout(function() {
+  //     if (!document.activeElement ||
+  //         !$(document.activeElement).closest('.loginblock').length) {
+  //       $('#pass').select().focus();
+  //     }
+  //   }, 0)}
+  // });
+  // function validateUser(e) {
+  //   var user = $('#user').val().toLowerCase().trim();
+  //   var found = usernames.indexOf(user) >= 0;
+  //   $('#asuser').text(found ? ' as ' + user : '');
+  //   $('#login').prop('disabled', !found);
+  //   return true;
+  // };
+
+  function keyFromPassword(username, p) {
+    if (!p) { return ''; }
+    if (/^[0-9]{3}$/.test(p)) { return p; }
+    var key = '';
+    var prng = new Math.seedrandom('turtlebits:' + username + ':' + p + '.');
+    for (var j = 0; j < 3; j++) {
+      key += Math.floor(prng() * 10);
+    }
+    return key;
+  }
+
+  $('#login-btn').on('click', tryLogin);
+  // $('#pass,#user').on('keyup', function(e) {
+  //   $('#msg').text('');
+  //   if (e.which == 13) {
+  //     if ($(this).attr('id') == 'user') {
+  //       $('#pass').focus();
+  //     } else {
+  //       tryLogin();
+  //     }
+  //   }
+
+  function tryLogin() {
+    var user = $('#user').val().toLowerCase().trim();
+    if (!user) return;
+    $('#msg').text('Logging in...');
+    var key = keyFromPassword(user, $('#pass').val());
+    $.getJSON('//' + user + '.' + location.hostname +
+        '/save/?mode=setkey&key=' + key + '&data=' + key).done(function(resp) {
+      if (resp.keyset) {
+        window.location =
+           '//' + user + '.' + location.hostname +
+                '/edit/#login=' + user + ':' + (key ? key : '') 
+                + '?condition=' + $('#condition').val() + '&studentID=' + $('#studentID') ;
+      } else {
+        $('#pass').select().focus();
+        $('#msg').text('Wrong password.');
+      }
+    }).fail(function() {
+      $('#msg').text('Network error.');
+    });
+  }
+
+  $(".toggle-login").on('click', function(e) {
+    $("#student-login").toggle();
+    $("#guest-login").toggle();
+    $("#user").val("");
+    $("#pass").val("");
+    // just assume the default PC unless student overrides (maybe change this to hybrid in the future)
+    $("#condition").val("default-PC");  
+    $("#studentID").val("guest");  
+  });
+
+  $("select").selectBoxIt({
+    autoWidth: false
+  });
+
+  $( "#student_surveys" ).accordion({
+    collapsible: true,
+    active: false,
+    autoHeight: true,
+    beforeActivate: function( event, ui) {
+      $('#survey-arrow').html( $('#survey-arrow').html() == '►' ? '▼' : '►');
+      }
+  });
+
+  $( "#student_resources" ).accordion({
+    collapsible: true,
+    active: false,
+    heightStyle: "content",
+    beforeActivate: function( event, ui) {
+      $('#resource-arrow').html( $('#resource-arrow').html() == '►' ? '▼' : '►');
+    }
+  });
+
+  $("#class_dropdown").change(function(e, select){
+    var val = select.selectbox.val();
+    if (!val) {
+      $('#student_dropdown')
+        .prop('disabled', true)
+        .data("selectBox-selectBoxIt")
+        .remove()
+        .add({vale: "", text: "Please Select Class"});
+      $('#assignment_dropdown').data("selectBox-selectBoxIt").disable();
+      return;
+    }
+
+    $.ajax( {
+      url: 'http://localhost:8000/get_data/Students/',
+      dataType : 'json',
+      data: {'filter': val} 
+    })
+      .done( function (data) {
+        $('#student_dropdown')
+          .prop('disabled', false)
+          .data("selectBox-selectBoxIt")
+          .remove()
+          .add({ value: '', text: 'Please Select Your Name' })
+        $(data['values']).each(function(index, element) {
+          $('#student_dropdown').data("selectBox-selectBoxIt").add({ studentID: element.studentID, condition: element.condition, value: element.username, text: element.name, password: element.password });
+        });
+
+        $('#assignment_dropdown').data("selectBox-selectBoxIt").enable();
+      });
+    // });
+
+    // var period = $(this).val();
+
+    // var student_dropdown = $("#student_dropdown").data("selectBox-selectBoxIt");
+    
+    // if (period != '') {
+    //  student_dropdown.enable();
+    // } else {
+    //  student_dropdown.disable();
+    //  return;             
+    // }
+
+    // // clear/initialize student dropdowns
+    // student_dropdown.remove();
+    // student_dropdown.add({ value: '0', text: 'Select Name'});
+          
+    // pair_dropdown.remove();
+    // pair_dropdown.add({ value: '0', text: 'Select Pair\'s Name'});
+
+    // for (var i = 0; i < data[period].length; i++) {
+    //   student_dropdown.add({ value: data[period][i].id, text: data[period][i].name });
+    //   pair_dropdown.add({ value: data[period][i].id, text: data[period][i].name });
+    // }
+
+    // student_dropdown.add({ value: '', text: 'I\'m not listed'});
+    // pair_dropdown.add({ value: '', text: 'I\'m not listed'});
+  });
+
+  $("#student_dropdown").change(function(e, select) {
+    var selected = this.options[this.selectedIndex]
+    $("#user").val(selected.value);
+    $("#pass").val(selected.getAttribute('password'));
+    $("#condition").val(selected.getAttribute('condition'))
+    $("#studentID").val(selected.getAttribute('studentID'))
+  });
+
+});
+
+// Demo Animation
+var index = 0;
+var count = 3;
+var sleeptime = +(new Date) + 100 * 1000;
+function motion() {
+  sleeptime = Math.max(sleeptime, +(new Date) + 30 * 1000);
+}
+function advance() {
+  if (+(new Date) > sleeptime || $('#overlay').is(':visible')) return;
+  document.getElementById('demo').src =
+     "//promo.pencilcode.net/home/promo" + (index++);
+  if (index >= count) { index = 0; }
+}
+// Now start the animation and things.
+advance();
+setInterval(advance, 26000);
+window.addEventListener('mousemove', motion);
+window.addEventListener('touchstart', motion);
+// New account link
+$('#newaccount').on('click', function() {
+  window.location = '/edit/intro#new';
+});
+
+// $('#showlogin').on('click', function() {
+//   if ($(this).css('opacity') == 0) return;
+//   $('#overlay,.loginblock').show();
+//   var ofs = $('#showlogin').offset();
+//   $('.loginblock').css({
+//     top: ofs.top - 8 + 1,
+//     right: $(document).width() - (ofs.left + $('#showlogin').outerWidth()) - 8
+//   });
+//   $('#user').focus();
+// });
+// $('a.aboutlink').click(function() {
+//   location.hash = '#about';
+//   $('#overlay,.about').show();
+//   return false;
+// });
+// function closeoverlay() {
+//  $('#video').html('');
+//  $('#overlay,.about,.loginblock').hide();
+//  if (location.hash.length > 1) {
+//    if (window.history.pushState) {
+//      window.history.pushState(null, null, window.location.pathname);
+//    } else {
+//      location.hash = '';
+//    }
+//  }
+// }
+// $('#overlay').click(function(e) {
+//   if (e.target == this || $(e.target).is('.loginblock .toggler')) {
+//     closeoverlay();
+//   }
+// });
+// $('#overlay').keydown(function(e) {
+//   if (e.which == 27) {
+//     closeoverlay();
+//   }
+// });
+// $(window).on('hashchange load', function() {
+//   if (/\babout\b/.test(location.hash)) {
+//     $('#overlay,.about').show();
+//   } else {
+//     $('#overlay,.about,.loginblock').hide();
+//   }
+// });
+
+// // Video clicking setup
+// // Detect if youtube is blocked.
+// var ytpresent = true;
+// var ytprobe = new Image();
+// ytprobe.onerror = function(){
+//   ytpresent = false;
+// };
+// ytprobe.src = "//youtube.com/favicon.ico?r=" + Math.random();
+// $('a[data-vimeo]').click(function(e) {
+//   if (ytpresent) {
+//     var href = $(this).attr('href');
+//     var match = /youtube.com.*v=([^&">]*)/.exec(href);
+//     if (match && match[1]) {
+//       if ($('#video iframe').attr('src') &&
+//           $('#video iframe').attr('src').indexOf(match[1]) >= 0) {
+//         $('#video').html('');
+//         return false;
+//       } else {
+//         $('#video').html(
+//           '<iframe type="text/html" width="640" height="390" ' +
+//           'src="//www.youtube.com/embed/' + match[1] +
+//           '?autoplay=1&origin=' +
+//           location.protocol + '//' + location.host + '" ' +
+//           'frameborder="0"></iframe>');
+//         return false;
+//       }
+//     }
+//   } else {
+//     var vimeo = $(this).data('vimeo');
+//     if (vimeo) {
+//       if ($('#video iframe').attr('src') &&
+//           $('#video iframe').attr('src').indexOf(vimeo) >= 0) {
+//         $('#video').html('');
+//         return false;
+//       } else {
+//         $('#video').html(
+//           '<iframe type="text/html" width="640" height="390" ' +
+//           'src="//player.vimeo.com/video/' + vimeo +
+//           '?autoplay=1" ' +
+//           'frameborder="0"></iframe>');
+//         return false;
+//       }
+//     }
+//   }
+//   return true;
+// });
+
+function preload(urls) {
+  for (var i = 0; i < urls.length; ++i) {
+    var o = new Image();
+    o.src = urls[i];
+  }
+}
+
+window.pencilcode = {domain: location.hostname};
+
+setTimeout(function() {
+  preload(['/editor.js', '/editor.css', '/folder_32.png', '/droplet.css',
+           '/lib/ace/ace.js', '/lib/ace/mode-coffee.js',
+           '/lib/ace/theme-chrome.js', ]);
+}, 700);
+
+// (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+// (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+// m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+// })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+// ga('create', 'UA-45359764-1', window.pencilcode.domain);
+// ga('send', 'pageview');
+// });
+</script>
+</html>

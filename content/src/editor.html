@@ -15,6 +15,12 @@
 <link rel="stylesheet" type="text/css" href="//<!--#echo var="site"-->/lib/droplet.css">
 </head>
 <body id="pencildoc">
+
+<!-- nu study student state vars -->
+<input id="studentID" style="display:none;"/>
+<input id="condition" style="display:none;"/>
+<input id="assignment" style="display:none;"/>
+
 <div id="overflow">
 <div id="overlay"></div>
 <div id="notification"><div><div></div></div></div>
@@ -50,7 +56,19 @@ pencilcode.domain,
 '<span id="filename" title="Edit to move or rename" style="user-select:text;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text">',
 htmlEscape(location.pathname.replace(/^\/(?:[^\/]*\/)?|\/$/g, '')),
 '</span>'].join(''));
+
+document.getElementById('studentID').value = getParameterByName('studentID');
+document.getElementById('condition').value = getParameterByName('condition');
+document.getElementById('assignment').value = getParameterByName('assignment');
 })();
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.href);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
 </script></nobr></td>
 <td id="topright"><nobr id="buttonbar"></nobr></td></tr></table>
 <div id="alphapanebox" class="back panebox">

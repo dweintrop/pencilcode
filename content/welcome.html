@@ -296,9 +296,17 @@ $(function() {
     $.getJSON('//' + user + '.' + location.hostname +
         '/save/?mode=setkey&key=' + key + '&data=' + key).done(function(resp) {
       if (resp.keyset) {
+        var queryString = 'studentID=' + $('#studentID').val() + '&condition=' + $('#condition').val();
+        if ($('#user').val() == 'guest') {
+          queryString += '&assignment=' + $('#guest_name').val()
+        } else {
+          queryString += '&assignment=' + $('#assignment_dropdown').val()
+        }
+
         window.location =
            '//' + user + '.' + location.hostname +
-                '/edit/#login=' + user + ':' + (key ? key : '');
+                '/edit/#login=' + user + ':' + (key ? key : '') 
+                + '?' + queryString;
       } else {
         $('#pass').select().focus();
         $('#msg').text('Wrong password.');
@@ -313,7 +321,7 @@ $(function() {
     $("#guest-login").toggle();
     // just assume the default PC unless student overrides (maybe change this to hybrid in the future)
     $("#condition").val("default-PC");  
-    $("#studentID").val("guest");
+    $("#studentID").val("99");
     $("#user").val("guest");
     $("#pass").val("password");  
   });

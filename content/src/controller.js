@@ -279,11 +279,11 @@ function nuLogEvent(source, pane) {
   var floatingBlocks = view.getPaneEditorFloatingBlocks(pane);
 
   var logData = {
-    'student_id' : '11', //$('#id_student_id').val(),
-    'assignment' : 'girls-club',
+    'student_id' : $('#studentID').val(),
+    'assignment' : $('#assignment').val(),
     'project_name' : modelatpos('left').filename,
     'hostname' : location.host,
-    'condition' : 'girls-club', // study condition
+    'condition' : $('#condition').val(),
     'editorMode' : 'blocks', // state of droplet editor
     'eventType' : source,
     'program' : paneData.data,

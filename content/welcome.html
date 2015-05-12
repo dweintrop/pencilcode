@@ -297,7 +297,7 @@ $(function() {
         '/save/?mode=setkey&key=' + key + '&data=' + key).done(function(resp) {
       if (resp.keyset) {
         var queryString = 'studentID=' + $('#studentID').val() + '&condition=' + $('#condition').val();
-        if ($('#user').val() == 'guest') {
+        if ($('#user').val() == 'guest2015') {
           queryString += '&assignment=' + $('#guest_name').val()
         } else {
           queryString += '&assignment=' + $('#assignment_dropdown').val()
@@ -322,7 +322,7 @@ $(function() {
     // just assume the default PC unless student overrides (maybe change this to hybrid in the future)
     $("#condition").val("default-PC");  
     $("#studentID").val("99");
-    $("#user").val("guest");
+    $("#user").val("guest2015");
     $("#pass").val("password");  
   });
 

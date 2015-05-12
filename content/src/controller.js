@@ -275,6 +275,7 @@ function nuLogEvent(source, pane) {
     'student_id' : '11', //$('#id_student_id').val(),
     'assignment' : 'girls-club',
     'project_name' : modelatpos('left').filename,
+    'hostname' : location.host,
     'condition' : 'girls-club', // study condition
     'editorMode' : 'blocks', // state of droplet editor
     'eventType' : source,

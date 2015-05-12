@@ -98,12 +98,74 @@ Contribute to the development of Pencil Code at
 <!-- splash row -->
 <div class="row topline">
 <div class="col-sm-6 vpadding">
-<h1 style="font-size:48px;margin:42px 0 10px;text-align:center;text-shadow:0 0 8px white;"><nobr>Dream it.</nobr> <nobr>Code it.</nobr></h1>
-<p>Learn professional programming languages using
-an editor that lets you work in either blocks or text.
-Create art, music, games, and stories. Or
-invent a program that will change the world.
-<p style="text-align:center"><a class="btn btn-primary" style="font-size:133%" href="/edit/first">Let's play!</a>
+<div id="student-login">
+
+  <h2 class="text-center" style="color:#4e015c;">Student Login <span class="toggle-login">(not a student?)</span></h2>
+
+  <div class="row">
+    <div class="input-label col-sm-4 text-right"> 
+      Class: 
+    </div>
+    <div class="col-sm-6">
+      <select class="selectBoxIt" name="class_dropdown" id="class_dropdown">
+        <option value="">Please Select Class:</option>
+        <option value="Lindbloom">Lindbloom Girls Club</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-label col-sm-4 text-right"> 
+      Student:
+    </div>  
+    <div class="col-sm-6"> 
+      <select class="selectBoxIt" id="student_dropdown" name="student_dropdown" disabled>
+        <option value="">Please Select Class:</option>
+      </select>
+    </div>
+  </div>  
+
+  <div class="row">
+    <div class="input-label col-sm-4 text-right"> 
+      Assignment:
+    </div>  
+    <div class="col-sm-6"> 
+      <select class="selectBoxIt" id="assignment_dropdown" name="assignment_dropdown" disabled>
+        <option value="">Please Select Assignment:</option>
+        <option value="pcDay1">Pencil Code Day 1</option>
+        <option value="pcDay2">Pencil Code Day 2</option>
+      </select>
+    </div>
+  </div>
+  
+</div>
+
+<div id="guest-login" style="display:none;">
+  <h2 class="text-center" style="color:#4e015c;">
+    Guest Login <span class="toggle-login">(Are you a student?)</span></h2>
+  <div class="row">
+    <div class="input-label col-sm-4 text-right"> 
+      Name:
+    </div>  
+    <div class="col-sm-6">
+      <input id="guest_name">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+</div>
+
+<input id="user" style="display:none;">
+<input type="password" id="pass" style="display:none;">
+<input id="studentID" style="display:none;"/>
+<input id="condition" style="display:none;"/>
+
+<div class="col-sm-12 text-center">
+  <span id="msg">&nbsp;</span>
+</div>
+
+<p style="text-align:center"><span id="login-btn" class="btn btn-primary" style="font-size:133%">Let's Go!</span>
 </div>
 <div class="col-sm-6 vpadding">
 <iframe id="demo" style="min-height:300px;height:100%;width:100%;border:0"></iframe>
@@ -245,7 +307,106 @@ $(function() {
       $('#msg').text('Network error.');
     });
   }
-})();
+
+  $(".toggle-login").on('click', function(e) {
+    $("#student-login").toggle();
+    $("#guest-login").toggle();
+    // just assume the default PC unless student overrides (maybe change this to hybrid in the future)
+    $("#condition").val("default-PC");  
+    $("#studentID").val("guest");
+    $("#user").val("guest");
+    $("#pass").val("password");  
+  });
+
+  $("select").selectBoxIt({
+    autoWidth: false
+  });
+
+  $( "#student_surveys" ).accordion({
+    collapsible: true,
+    active: false,
+    autoHeight: true,
+    beforeActivate: function( event, ui) {
+      $('#survey-arrow').html( $('#survey-arrow').html() == '►' ? '▼' : '►');
+      }
+  });
+
+  $( "#student_resources" ).accordion({
+    collapsible: true,
+    active: false,
+    heightStyle: "content",
+    beforeActivate: function( event, ui) {
+      $('#resource-arrow').html( $('#resource-arrow').html() == '►' ? '▼' : '►');
+    }
+  });
+
+  $("#class_dropdown").change(function(e, select){
+    var val = select.selectbox.val();
+    if (!val) {
+      $('#student_dropdown')
+        .prop('disabled', true)
+        .data("selectBox-selectBoxIt")
+        .remove()
+        .add({vale: "", text: "Please Select Class"});
+      $('#assignment_dropdown').data("selectBox-selectBoxIt").disable();
+      return;
+    }
+
+    $.ajax( {
+      url: 'http://localhost:8000/get_data/Students/',
+      dataType : 'json',
+      data: {'filter': val} 
+    })
+      .done( function (data) {
+        $('#student_dropdown')
+          .prop('disabled', false)
+          .data("selectBox-selectBoxIt")
+          .remove()
+          .add({ value: '', text: 'Please Select Your Name' })
+        $(data['values']).each(function(index, element) {
+          $('#student_dropdown').data("selectBox-selectBoxIt").add({ studentID: element.studentID, condition: element.condition, value: element.username, text: element.name, password: element.password });
+        });
+
+        $('#assignment_dropdown').data("selectBox-selectBoxIt").enable();
+      });
+    // });
+
+    // var period = $(this).val();
+
+    // var student_dropdown = $("#student_dropdown").data("selectBox-selectBoxIt");
+    
+    // if (period != '') {
+    //  student_dropdown.enable();
+    // } else {
+    //  student_dropdown.disable();
+    //  return;             
+    // }
+
+    // // clear/initialize student dropdowns
+    // student_dropdown.remove();
+    // student_dropdown.add({ value: '0', text: 'Select Name'});
+          
+    // pair_dropdown.remove();
+    // pair_dropdown.add({ value: '0', text: 'Select Pair\'s Name'});
+
+    // for (var i = 0; i < data[period].length; i++) {
+    //   student_dropdown.add({ value: data[period][i].id, text: data[period][i].name });
+    //   pair_dropdown.add({ value: data[period][i].id, text: data[period][i].name });
+    // }
+
+    // student_dropdown.add({ value: '', text: 'I\'m not listed'});
+    // pair_dropdown.add({ value: '', text: 'I\'m not listed'});
+  });
+
+  $("#student_dropdown").change(function(e, select) {
+    var selected = this.options[this.selectedIndex]
+    $("#user").val(selected.value);
+    $("#pass").val(selected.getAttribute('password'));
+    $("#condition").val(selected.getAttribute('condition'));
+    $("#studentID").val(selected.getAttribute('studentID'));
+  });
+
+});
 
 // Demo Animation
 var index = 0;

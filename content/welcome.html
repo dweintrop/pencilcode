@@ -151,22 +151,19 @@ Contribute to the development of Pencil Code at
     Guest Login <span class="toggle-login">(Are you a student?)</span></h2>
   <div class="row">
     <div class="input-label col-sm-4 text-right"> 
-      Username:
+      Name:
     </div>  
     <div class="col-sm-6">
-      <input id="user">
+      <input id="guest_name">
     </div>
   </div>
   <div class="row">
-    <div class="input-label col-sm-4 text-right"> 
-      Password:
-    </div>  
-    <div class="col-sm-6">
-      <input type="password" id="pass">
-    </div>
+    &nbsp;
   </div>
 </div>
 
+<input id="user" style="display:none;">
+<input type="password" id="pass" style="display:none;">
 <input id="studentID" style="display:none;"/>
 <input id="condition" style="display:none;"/>
 
@@ -360,11 +357,11 @@ $(function() {
   $(".toggle-login").on('click', function(e) {
     $("#student-login").toggle();
     $("#guest-login").toggle();
-    $("#user").val("");
-    $("#pass").val("");
     // just assume the default PC unless student overrides (maybe change this to hybrid in the future)
     $("#condition").val("default-PC");  
-    $("#studentID").val("guest");  
+    $("#studentID").val("guest");
+    $("#user").val("guest");
+    $("#pass").val("password");  
   });
 
   $("select").selectBoxIt({
@@ -451,8 +448,8 @@ $(function() {
     var selected = this.options[this.selectedIndex]
     $("#user").val(selected.value);
     $("#pass").val(selected.getAttribute('password'));
-    $("#condition").val(selected.getAttribute('condition'))
-    $("#studentID").val(selected.getAttribute('studentID'))
+    $("#condition").val(selected.getAttribute('condition'));
+    $("#studentID").val(selected.getAttribute('studentID'));
   });
 
 });

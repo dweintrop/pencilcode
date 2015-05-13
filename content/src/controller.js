@@ -527,6 +527,10 @@ view.on('logout', function() {
       { expires: -1, path: '/', domain: window.pencilcode.domain });
   updateTopControls(false);
   view.flashNotification('Logged out.');
+
+  // After logout -> go to login screen
+  nuLogEvent('logout', paneatpos('left'));
+  window.location = 'http://' + window.pencilcode.domain;
 });
 
 view.on('login', function() {

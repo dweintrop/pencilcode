@@ -286,9 +286,6 @@ $(function() {
     return /d/.test(x.mode); });
   users.sort(function(a, b) { return b.mtime - a.mtime; });
   var usernames = users.map(function(u) { return u.name; });
-  
-  console.log(users);
-
   });
 
   //$('#showlogin').css('opacity', 1);

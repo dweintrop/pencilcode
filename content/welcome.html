@@ -258,36 +258,17 @@ and copy.
 <script src="/lib/seedrandom.js"></script>
 <script>
 $(function() {
+  loadusers.then(function(data) {
 
-(function() {
-  var usernames = {};
-  $('#showlogin').css('opacity', 1);
-  $('#user').on('change', validateUser);
-  $('#user').autocomplete({
-    autoSelectFirst: true,
-    triggerSelectOnValidInput: false,
-    serviceUrl: '/load/',
-    paramName: 'prefix',
-    preventBadQueries: false, // To allow exact-match probing.
-    params: { count: 12 },
-    transformResult: function(response) {
-      response = JSON.parse(response);
-      return {
-        suggestions: response.list.filter(function(item) {
-          return item.mode.indexOf('d') >= 0;
-        }).map(function(item) {
-          usernames[item.name] = true;
-          return { value: item.name }
-        })
-      };
-    },
-    forceFixPosition: true,
-    onSelect: function() { validateUser(); setTimeout(function() {
-      if (!document.activeElement ||
-          !$(document.activeElement).closest('.loginblock').length) {
-        $('#pass').select().focus();
-      }
-    }, 0)}
+//  // populate dropdown w/ users
+
+
+
+  if (!data || data.directory != '/' || !data.list) return;
+  var users = data.list.filter(function(x) {
+    return /d/.test(x.mode); });
+  users.sort(function(a, b) { return b.mtime - a.mtime; });
+  var usernames = users.map(function(u) { return u.name; });
   });
   function validateUser(e) {
     var user = $('#user').val().toLowerCase().trim();

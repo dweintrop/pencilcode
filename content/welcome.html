@@ -160,6 +160,7 @@ Contribute to the development of Pencil Code at
 <input type="password" id="pass" style="display:none;">
 <input id="studentID" style="display:none;"/>
 <input id="condition" style="display:none;"/>
+<input id="assignment" style="display:none;"/>
 
 <div class="col-sm-12 text-center">
   <span id="msg">&nbsp;</span>
@@ -299,24 +300,38 @@ $(function() {
     }
   });
   function tryLogin() {
+    
     var user = $('#user').val().toLowerCase().trim();
-    if (!user) return;
+    if (!user) {
+      $('#msg').text('Please select name.');
+      return;
+    }
+
+    if (!$('#assignment').val()) {
+      $('#msg').text('Please select an assignment.');
+      return;
+    }
+
     $('#msg').text('Logging in...');
+    var urlRoot = '//' + user + '.' + location.hostname;
     var key = keyFromPassword(user, $('#pass').val());
-    $.getJSON('//' + user + '.' + location.hostname +
+    $.getJSON(urlRoot +
         '/save/?mode=setkey&key=' + key + '&data=' + key).done(function(resp) {
       if (resp.keyset) {
-        var queryString = 'studentID=' + $('#studentID').val() + '&condition=' + $('#condition').val();
-        if ($('#user').val() == 'guest2015') {
-          queryString += '&assignment=' + $('#guest_name').val()
-        } else {
-          queryString += '&assignment=' + $('#assignment_dropdown').val()
-        }
+        var queryString = 'studentID=' + $('#studentID').val() 
+            + '&condition=' + $('#condition').val()
+            + '&assignment=' + $('#assignment').val();
 
-        window.location =
-           '//' + user + '.' + location.hostname +
-                '/edit/#login=' + user + ':' + (key ? key : '') 
+        var filename = $('#assignment').val();
+        // if guest login - go to different file based on entered name
+        if ($('#user').val() == 'guest2015') {
+          var filename = $('#guest_name').val().toLowerCase().replace(/ /g,'');
+        } 
+        
+        window.location = urlRoot + '/edit/' 
+                + filename + '/#login=' + user + ':' + (key ? key : '') 
                 + '?' + queryString;
+
       } else {
         $('#pass').select().focus();
         $('#msg').text('Wrong password.');
@@ -334,6 +349,7 @@ $(function() {
     $("#studentID").val("99");
     $("#user").val("guest2015");
     $("#pass").val("password");  
+    $("#assignment").val("guest_play");  
   });
 
   $("select").selectBoxIt({
@@ -422,6 +438,10 @@ $(function() {
     $("#pass").val(selected.getAttribute('password'));
     $("#condition").val(selected.getAttribute('condition'));
     $("#studentID").val(selected.getAttribute('studentID'));
+  });
+
+  $("#assignment_dropdown").change(function(e, select){
+    $('#assignment').val(select.selectbox.val());
   });
 
 });

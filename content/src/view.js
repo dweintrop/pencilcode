@@ -629,7 +629,7 @@ function showButtons(buttonlist) {
     } else {
       var submenu = '';
       if (buttonlist[j].menu) {
-        submenu = ' <div class="droparrow">&#x25be;<ul>';
+        submenu = ' <div class="droparrow">&#x25be;<ul id=' + buttonlist[j].id + '-list >';
         for (var k = 0; k < buttonlist[j].menu.length; ++k) {
           var item = buttonlist[j].menu[k];
           var title = item.title ? ' title="' + item.title + '"' : '';
@@ -658,6 +658,42 @@ function showButtons(buttonlist) {
       e.preventDefault();
       return false;
     }
+  });
+
+// DW-TODO: be more clever about how to add this
+  var refHome = "http://ref.pencilcode.net/";
+  var quickRefContent = '<div><span class="category-label">Move:</span><ul>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + 'turtle/fd.html">fd</a>' + 
+    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/bk.html">bk</a>' + 
+    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/rt.html">rt</a>' + 
+    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/lt.html">lt</a></li>' + 
+    '<li><a target="reference" class="ref-link" href="http://gym.pencilcode.net/ref/curves.html">curves</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/speed.html">speed</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + '/turtle/home.html">home</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/turnto.html">turnto</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + '/turtle/moveto.html">moveto</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/movexy.html">movexy</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + '/turtle/jumpto.html">jumpto</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/jumpxy.html">jumpxy</a></li>' +
+    
+    '<span class="category-label">Art:</span><ul>' + 
+    '<li><a target="reference" class="ref-link" href="' + refHome + '/turtle/colors.html">colors</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + '/turtle/pen.html">pen</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/dot.html">dot</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/box.html">box</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/fill.html">fill</a></li>' +
+    '</ul></div>'
+
+  $('#reference').tooltipster({ 
+    animation: 'fade',
+    autoClose: false, //for debugging
+    content: $(quickRefContent),
+    functionReady: hideTooltipsterListener,
+    interactive: true,
+    minWidth: '200',
+    multiple: true,
+    position: 'bottom',
+    theme: 'tooltipster-pc-quick-ref'
   });
 
   // Enable tooltipster for any new buttons.
@@ -748,8 +784,44 @@ function flashThumbnail(imageDataUrl) {
 }
 
 ///////////////////////////////////////////////////////////////////////////
-// SHARE DIALOG
+//  QUICK REFERENCE
 ///////////////////////////////////////////////////////////////////////////
+
+$('#refframe').on('load', function() {
+  try {
+    // Do nothing if there is nothing to show.
+    if (this.contentWindow.location.href == 'about:blank') { return; }
+  } catch (e) { }
+  if (!$('#ref-overlay').is(':visible')) {
+    var width = $('#ref-overlay .ref-overlay-box-50').width();
+    $('#ref-overlay .ref-overlay-box-50').css({width: 0});
+    $('#ref-overlay').show();
+    $('#ref-overlay .ref-overlay-box-50').animate({width: width});
+  }
+});
+
+$('#ref-overlay .closebox, #ref-overlay').on('click', function() {
+  $('#ref-overlay .ref-overlay-box-50').animate({'width': 0})
+  .queue(function(next) {
+    $('#ref-overlay').hide();
+    $('#ref-overlay .ref-overlay-box-50').css({width: ''});
+    $('#refframe').each(function() {
+      this.contentWindow.location.href = 'about:blank';
+    });
+    next();
+  });
+});
+
+function hideTooltipsterListener() {
+  $('.ref-link').on('click', function() {
+    $('#reference').tooltipster('hide');
+  });
+}
+
+///////////////////////////////////////////////////////////////////////////
+//  SHARE DIALOG
+///////////////////////////////////////////////////////////////////////////
+
 
 function showShareDialog(opts) {
   if (!opts) {

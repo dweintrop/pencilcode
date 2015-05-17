@@ -1,12 +1,31 @@
-.tooltipster-light {
+.tooltipster-quick-ref {
 	border-radius: 5px; 
 	border: 1px solid #cccccc;
 	background: #ededed;
 	color: #666666;
 }
-.tooltipster-light .tooltipster-content {
+.tooltipster-quick-ref .tooltipster-content {
 	font-family: Arial, sans-serif;
 	font-size: 14px;
 	line-height: 16px;
 	padding: 8px 10px;
 }
+
+
+.tooltipster-quick-ref .tooltipster-content button {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+} 

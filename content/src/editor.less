@@ -259,7 +259,7 @@ body.modal #overlay {
   color: gray;
 }
 
-#topright button:not([disabled]):hover, #overlay button:not([disabled]):hover, #overlay .zeroclipboard-is-hover {
+#topright button:not([disabled]):hover, #overlay button:not([disabled]):hover, #overlay .zeroclipboard-is-hover, #tooltipster-content button:nover {
   box-shadow: 0 0 7px #000;
   color: black;
 }
@@ -1327,3 +1327,74 @@ body#pencildoc #diigolet-csm {
 .droplet-palette-group-header-selected.quantumdeeporange {
   background-color: #FFAB91
 }
+
+#ref-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+
+.ref-overlay-box-50 {
+  position: absolute;
+  max-height: 80%;
+  width: 720px;
+  margin: auto;
+  margin-right: 20px;
+  left: 0;
+  right: 0;
+  height: 640px;
+  bottom: 50px;
+}
+
+.heavyframe {
+  border: 3px solid black;
+  box-shadow: 0 0 10px black;
+  height: 100%;
+  width: 100%;
+  background: whitesmoke;
+}
+
+.closebox {
+  font-size: 30px;
+  position: absolute;
+  right: 3px;
+  top: 0;
+  padding: 5px;
+  text-shadow: 0 0 5px white;
+  z-index: 2;
+}
+
+.closebox:hover {
+  color: crimson;
+  text-shadow: 0 0 5px white, 0 0 10px white;
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+.glyphicon {
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  margin-right: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.glyphicon-remove-circle:before {
+  content: "\e088";
+}
+
+
+
+

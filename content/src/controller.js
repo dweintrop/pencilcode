@@ -227,7 +227,12 @@ function updateTopControls(addHistory) {
     if (m.data && m.data.file) {
       buttons.push({
         id: 'guide', label: '<span class=helplink>Guide</span>',
-        title: 'Open online guide'});
+        title: 'Open online guide'});      
+      buttons.push({
+        id: 'reference', 
+        label: 'Quick Reference',
+        menu: [ ]
+        });
     }
   }
   // buttons.push({id: 'done', label: 'Done', title: 'tooltip text'});

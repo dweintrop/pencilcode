@@ -12,6 +12,7 @@
 </style>
 <link rel="stylesheet" type="text/css" href="//<!--#echo var="site"-->/editor.css">
 <link rel="stylesheet" type="text/css" href="//<!--#echo var="site"-->/lib/tooltipster/css/tooltipster.css">
+<link rel="stylesheet" type="text/css" href="//<!--#echo var="site"-->/lib/tooltipster/css/themes/tooltipster-pc-quick-ref.css">
 <link rel="stylesheet" type="text/css" href="//<!--#echo var="site"-->/lib/droplet.css">
 </head>
 <body id="pencildoc">
@@ -94,7 +95,26 @@ function getParameterByName(name) {
 </div>
 <div id="charlie" class="pane"></div>
 </div>
-<div id="guidepane"><div class="guidetitle">guide</div><div class="guidepreview"><iframe></iframe></div></div>
+<div id="guidepane">
+  <div class="guidetitle">guide</div>
+  <div class="guidepreview"><iframe></iframe></div>
+</div>
+
+
+<div id="ref-overlay">
+  <div class="ref-overlay-box-50">
+  <iframe id="refframe" name="reference" class="heavyframe"></iframe>
+  <div class="closebox glyphicon glyphicon-remove-circle">
+  </div>
+  </div>
+</div>
+
+<script>
+
+</script>
+
+
+
 </div><!-- end clip -->
 <script src="/load<!--#echo var="filepath"-->?callback=preload"></script>
 <script src="/lib/ace/ace.js"></script>

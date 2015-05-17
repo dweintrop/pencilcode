@@ -1,0 +1,62 @@
+.tooltipster-pc-quick-ref {
+	border-radius: 5px; 
+	border: 1px solid #cccccc;
+	background: #ededed;
+	color: #666666;
+}
+
+.tooltipster-pc-quick-ref .tooltipster-content {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	line-height: 16px;
+	padding: 8px 10px;
+}
+
+.tooltipster-pc-quick-ref .category-label {
+  font-weight: 400;
+  color: #000;
+  font-family: Lato,Verdana,Helvetica,sans-serif;
+  font-size: 16px;
+}
+
+.tooltipster-pc-quick-ref ul {
+	list-style-type: none;
+	margin-top: 6px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.tooltipster-pc-quick-ref li {
+	margin:left: 5px;
+}
+.tooltipster-pc-quick-ref .ref-link {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-left: 7px;
+  margin-bottom: 7px;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;  
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  box-shadow: 3px 3px 2px #888888;
+} 
+
+.tooltipster-pc-quick-ref .ref-link:hover {
+  border-color: black;
+  opacity: .8;
+  box-shadow: 0px 0px 0px;
+}
+
+.tooltipster-pc-quick-ref a {
+	text-decoration: none;
+}

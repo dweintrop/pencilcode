@@ -324,7 +324,7 @@ $(function() {
 
         var filename = $('#assignment').val();
         // if guest login - go to different file based on entered name
-        if ($('#user').val() == 'guest2015') {
+        if ($('#user').val() == 'nuguest') {
           var filename = $('#guest_name').val().toLowerCase().replace(/ /g,'');
         } 
         
@@ -347,7 +347,7 @@ $(function() {
     // just assume the default PC unless student overrides (maybe change this to hybrid in the future)
     $("#condition").val("default-PC");  
     $("#studentID").val("99");
-    $("#user").val("guest2015");
+    $("#user").val("nuguest");
     $("#pass").val("password");  
     $("#assignment").val("guest_play");  
   });

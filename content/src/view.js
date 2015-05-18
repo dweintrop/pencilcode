@@ -791,7 +791,8 @@ $('#refframe').on('load', function(e) {
     var width = $('#ref-overlay .ref-overlay-box').width();
 
     // hack to make window wider for reference to gym.pencilcode.net documentation
-    if ($('#ref-overlay .ref-overlay-box').attr("frame-src").includes('gym')) {
+    $('#ref-overlay .ref-overlay-box').attr("frame-src").
+    if ($('#ref-overlay .ref-overlay-box').attr("frame-src").indexOf("gym") > 0) {
       width += 300;
     }
 

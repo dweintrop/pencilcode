@@ -703,7 +703,7 @@ function showButtons(buttonlist) {
     content: $(quickRefContent),
     functionReady: hideTooltipsterListener,
     interactive: true,
-    minWidth: '200',
+    minWidth: '222',
     multiple: true,
     position: 'bottom',
     theme: 'tooltipster-pc-quick-ref'

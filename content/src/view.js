@@ -687,9 +687,9 @@ function showButtons(buttonlist) {
     '<a target="reference" class="ref-link" href="' + gymHome + 'if.html">if and if/else</a></li></ul>' +
     
     '<span class="category-label">Operators:</span><ul>' + 
+    '<li><a target="reference" class="ref-link" href="' + gymHome + 'arithmetic.html">arithmetic</a>' +
+    '<a target="reference" class="ref-link" href="' + gymHome + 'random.html">random</a></li>' +
     '<li><a target="reference" class="ref-link" href="' + gymHome + 'variables.html">variables</a>' +
-    '<a target="reference" class="ref-link" href="' + gymHome + 'arithmetic.html">arithmetic</a></li>' +
-    '<li><a target="reference" class="ref-link" href="' + gymHome + 'random.html">random</a>' +
     '<a target="reference" class="ref-link" href="' + gymHome + 'functions.html">functions</a></li>' +
     '</ul></div>'
 
@@ -791,9 +791,8 @@ $('#refframe').on('load', function(e) {
     var width = $('#ref-overlay .ref-overlay-box').width();
 
     // hack to make window wider for reference to gym.pencilcode.net documentation
-    $('#ref-overlay .ref-overlay-box').attr("frame-src").
     if ($('#ref-overlay .ref-overlay-box').attr("frame-src").indexOf("gym") > 0) {
-      width += 300;
+      width += 300; 
     }
 
     $('#ref-overlay .ref-overlay-box').css({width: 0});

@@ -2861,10 +2861,12 @@ input {
 
 .study_materials {
     padding-left: 5%;
+    padding-bottom: 22px;
 }
 
 .study_materials_list {
     padding-left: 3%;
+    line-height: 2;
 }
 
 .study_materials_list a{

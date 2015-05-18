@@ -3,6 +3,9 @@
 	border: 1px solid #cccccc;
 	background: #ededed;
 	color: #666666;
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 80%;
 }
 
 .tooltipster-pc-quick-ref .tooltipster-content {

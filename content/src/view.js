@@ -657,32 +657,45 @@ function showButtons(buttonlist) {
   });
 
 // DW-TODO: be more clever about how to add this
-  var refHome = "http://ref.pencilcode.net/";
+  var refHome = "http://ref.pencilcode.net/turtle";
+  var gymHome = "http://gym.pencilcode.net/ref/";
+
   var quickRefContent = '<div><span class="category-label">Move:</span><ul>' +
-    '<li><a target="reference" class="ref-link" href="' + refHome + 'turtle/fd.html">fd</a>' + 
-    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/bk.html">bk</a>' + 
-    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/rt.html">rt</a>' + 
-    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/lt.html">lt</a></li>' + 
-    '<li><a target="reference" class="ref-link" href="http://gym.pencilcode.net/ref/curves.html">curves</a>' +
-    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/speed.html">speed</a></li>' +
-    '<li><a target="reference" class="ref-link" href="' + refHome + '/turtle/home.html">home</a>' +
-    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/turnto.html">turnto</a></li>' +
-    '<li><a target="reference" class="ref-link" href="' + refHome + '/turtle/moveto.html">moveto</a>' +
-    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/movexy.html">movexy</a></li>' +
-    '<li><a target="reference" class="ref-link" href="' + refHome + '/turtle/jumpto.html">jumpto</a>' +
-    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/jumpxy.html">jumpxy</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + '/fd.html">fd</a>' + 
+    '<a target="reference" class="ref-link" href="' + refHome + '/bk.html">bk</a>' + 
+    '<a target="reference" class="ref-link" href="' + refHome + '/rt.html">rt</a>' + 
+    '<a target="reference" class="ref-link" href="' + refHome + '/lt.html">lt</a></li>' + 
+    '<li><a target="reference" class="ref-link" href="' + gymHome + 'curves.html">curves</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + '/speed.html">speed</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + '/home.html">home</a></li>' +
+    // '<a target="reference" class="ref-link" href="' + refHome + '/turnto.html">turnto</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + '/moveto.html">moveto</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + '/movexy.html">movexy</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + '/jumpto.html">jumpto</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + '/jumpxy.html">jumpxy</a></li></ul>' +
     
     '<span class="category-label">Art:</span><ul>' + 
-    '<li><a target="reference" class="ref-link" href="' + refHome + '/turtle/colors.html">colors</a></li>' +
-    '<li><a target="reference" class="ref-link" href="' + refHome + '/turtle/pen.html">pen</a>' +
-    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/dot.html">dot</a>' +
-    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/box.html">box</a>' +
-    '<a target="reference" class="ref-link" href="' + refHome + '/turtle/fill.html">fill</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + '/colors.html">colors</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + '/pen.html">pen</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + '/dot.html">dot</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + '/box.html">box</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + '/fill.html">fill</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + '/wear.html">wear</a></li></ul>' +
+    
+    '<span class="category-label">Control:</span><ul>' + 
+    '<li><a target="reference" class="ref-link" href="' + gymHome + 'for.html">for loops</a>' +
+    '<a target="reference" class="ref-link" href="' + gymHome + 'if.html">if and if/else</a></li></ul>' +
+    
+    '<span class="category-label">Operators:</span><ul>' + 
+    '<li><a target="reference" class="ref-link" href="' + gymHome + 'variables.html">variables</a>' +
+    '<a target="reference" class="ref-link" href="' + gymHome + 'arithmetic.html">arithmetic</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + gymHome + 'random.html">random</a>' +
+    '<a target="reference" class="ref-link" href="' + gymHome + 'functions.html">functions</a></li>' +
     '</ul></div>'
 
   $('#reference').tooltipster({ 
     animation: 'fade',
-    autoClose: false, //for debugging
+    // autoClose: false, //for debugging
     content: $(quickRefContent),
     functionReady: hideTooltipsterListener,
     interactive: true,
@@ -769,24 +782,30 @@ function showMiddleButton(which) {
 //  QUICK REFERENCE
 ///////////////////////////////////////////////////////////////////////////
 
-$('#refframe').on('load', function() {
+$('#refframe').on('load', function(e) {
   try {
     // Do nothing if there is nothing to show.
     if (this.contentWindow.location.href == 'about:blank') { return; }
   } catch (e) { }
   if (!$('#ref-overlay').is(':visible')) {
-    var width = $('#ref-overlay .ref-overlay-box-50').width();
-    $('#ref-overlay .ref-overlay-box-50').css({width: 0});
+    var width = $('#ref-overlay .ref-overlay-box').width();
+
+    // hack to make window wider for reference to gym.pencilcode.net documentation
+    if ($('#ref-overlay .ref-overlay-box').attr("frame-src").includes('gym')) {
+      width += 300;
+    }
+
+    $('#ref-overlay .ref-overlay-box').css({width: 0});
     $('#ref-overlay').show();
-    $('#ref-overlay .ref-overlay-box-50').animate({width: width});
+    $('#ref-overlay .ref-overlay-box').animate({width: width});
   }
 });
 
 $('#ref-overlay .closebox, #ref-overlay').on('click', function() {
-  $('#ref-overlay .ref-overlay-box-50').animate({'width': 0})
+  $('#ref-overlay .ref-overlay-box').animate({'width': 0})
   .queue(function(next) {
     $('#ref-overlay').hide();
-    $('#ref-overlay .ref-overlay-box-50').css({width: ''});
+    $('#ref-overlay .ref-overlay-box').css({width: '720'});
     $('#refframe').each(function() {
       this.contentWindow.location.href = 'about:blank';
     });
@@ -797,6 +816,7 @@ $('#ref-overlay .closebox, #ref-overlay').on('click', function() {
 function hideTooltipsterListener() {
   $('.ref-link').on('click', function() {
     $('#reference').tooltipster('hide');
+    $('#ref-overlay .ref-overlay-box').attr("frame-src", this.href);
   });
 }
 

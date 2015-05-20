@@ -278,10 +278,8 @@ view.on('block-drop', function(pane, dropType) {
   nuLogEvent('block-drop-' + dropType, pane);
 });
 
-// DW - probably want to pass the whole pane in here so I can get the floating blocks off it
 function nuLogEvent(source, pane) {
   var paneData = view.getPaneEditorData(pane);
-  var floatingBlocks = view.getPaneEditorFloatingBlocks(pane);
 
   var logData = {
     'student_id' : $('#studentID').val(),
@@ -289,10 +287,11 @@ function nuLogEvent(source, pane) {
     'project_name' : modelatpos('left').filename,
     'hostname' : location.host,
     'condition' : $('#condition').val(),
-    'editorMode' : 'blocks', // state of droplet editor
+    // DW-TODO make editor mode smarter when hybrid is introduced
+    'editorMode' : view.getPaneEditorBlockMode(pane) ? 'blocks' : 'text',
     'eventType' : source,
     'program' : paneData.data,
-    'floatingBlocks' : floatingBlocks,
+    'floatingBlocks' : view.getPaneEditorFloatingBlocks(pane),
     'projectHTML' : paneData.meta ? paneData.meta.html + '' : '',
     'projectCSS' : paneData.meta ? paneData.meta.css + '' : ''
   }

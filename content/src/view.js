@@ -697,7 +697,7 @@ function showButtons(buttonlist) {
     animation: 'fade',
     // autoClose: false, //for debugging
     content: $(quickRefContent),
-    functionReady: hideTooltipsterListener,
+    functionInit: quickRefLinkOnClick,
     interactive: true,
     minWidth: '222',
     multiple: true,
@@ -813,12 +813,33 @@ $('#ref-overlay .closebox, #ref-overlay').on('click', function() {
   });
 });
 
-function hideTooltipsterListener() {
-  $('.ref-link').on('click', function() {
+function quickRefLinkOnClick(origin, content) {
+  content.find('.ref-link').on('click', function() {
     $('#reference').tooltipster('hide');
     $('#ref-overlay .ref-overlay-box').attr("frame-src", this.href);
+  
+    var logData = {
+      'student_id' : $('#studentID').val(),
+      'assignment' : $('#assignment').val(),
+      'hostname' : location.host,
+      'condition' : $('#condition').val(),
+      'editorMode' : getPaneEditorBlockMode(paneid('left')) ? 'blocks' : 'text',
+      'page' : this.innerHTML
+    }
+
+    console.log( "posted: " + JSON.stringify(logData));
+
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:8000/pencilCodeQuickRef/",
+      data: logData
+    }).done(function( msg ) {
+      console.log(msg);
+    });
+
   });
 }
+
 
 ///////////////////////////////////////////////////////////////////////////
 //  SHARE DIALOG

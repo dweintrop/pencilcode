@@ -174,12 +174,6 @@ return {
         }, {
           block: '@pd()',
           title: 'Put the pen down'
-        }, {
-          block: '@drawon s',
-          title: 'Draw on sprite s'
-        }, {
-          block: '@drawon document',
-          title: 'Draw on the document'
         }
       ])
     }, {
@@ -281,17 +275,28 @@ return {
           block: 'p = new Piano()',
           title: 'Make a visible instrument',
           id: 'newpiano'
-        }, {
-          block: 'q = new Pencil()',
-          title: 'Make an invisible and fast drawing sprite'
-        }, {
+        }, 
+        // {
+        //   block: 'q = new Pencil()',
+        //   title: 'Make an invisible and fast drawing sprite'
+        // }, 
+        {
           block: 't.',
           title: 'template to give Turtle/Sprite specific commands'
-        } , {
-          block: 'if @touches x\n  ``',
+        }, {
+          block: 'drawon s',
+          title: 'Draw on sprite s'
+        }, {
+          block: 'sync s',
+          title: 'Syncronize sprite actions'
+        }, {
+          block: 'remove s',
+          title: 'Remove sprite'
+        }, {
+          block: 'if s.@touches x\n  ``',
           title: 'Do something only if touching the object x'
         }, {
-          block: 'if @inside window\n  ``',
+          block: 'if s.@inside window\n  ``',
           title: 'Do something only if inside the window'
         }
       ])
@@ -546,11 +551,11 @@ return {
     silence: {color: 'indigo'},
     speed: {color:'lightblue'},
     wear: {color:'purple'},
-    drawon: {color:'purple'},
+    drawon: {color:'teal'},
     label: {color: 'pink'},
     reload: {},
     see: {},
-    sync: {},
+    sync: {color: 'teal'},
     send: {},
     recv: {},
     click: {color: 'orange'},
@@ -629,7 +634,8 @@ return {
     Turtle: {value: true, color: 'teal'},
     Sprite: {value: true, color: 'teal'},
     Piano: {value: true, color: 'teal'},
-    Pencil: {value: true, color: 'teal'}
+    Pencil: {value: true, color: 'teal'},
+    remove: {color: 'teal'}
   },
 
   CATEGORIES: {

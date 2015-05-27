@@ -317,9 +317,6 @@ module.exports = {
         //   title: 'Make an invisible and fast drawing sprite'
         // }, 
         {
-          block: 't.',
-          title: 'template to give Turtle/Sprite specific commands'
-        }, {
           block: 'drawon s',
           title: 'Draw on sprite s'
         }, {
@@ -329,10 +326,10 @@ module.exports = {
           block: 'remove s',
           title: 'Remove sprite'
         }, {
-          block: 'if s.@touches x\n  ``',
+          block: 'if @touches x\n  ``',
           title: 'Do something only if touching the object x'
         }, {
-          block: 'if s.@inside window\n  ``',
+          block: 'if @inside window\n  ``',
           title: 'Do something only if inside the window'
         }
       ])

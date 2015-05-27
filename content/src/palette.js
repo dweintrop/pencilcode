@@ -118,6 +118,9 @@ module.exports = {
         {
           block: 'for [1..3]\n  ``',
           title: 'Do something multiple times'
+        },{
+          block: 'for x in [1..3]\n  ``',
+          title: 'Do something multiple times'
         }, {
           block: 'while `` < ``\n  ``',
           title: '  Repeat while a condition is true'
@@ -318,6 +321,9 @@ module.exports = {
           block: 'q = new Pencil()',
           title: 'Make an invisible and fast drawing sprite'
         }, {
+          block: 't.',
+          title: 'template to give Turtle/Sprite specific commands'
+        } , {
           block: 'if @touches x\n  ``',
           title: 'Do something only if touching the object x'
         }, {
@@ -364,14 +370,8 @@ module.exports = {
       color: 'deeporange',
       blocks: filterblocks([
         {
-          block: "forever 10, ->\n  turnto lastmouse\n  fd 2",
+          block: "forever ->\n  turnto lastmouse\n  fd 2",
           title: 'Continually move towards the last mouse position'
-        }, {
-          block: "forever 10, ->\n  if pressed 'W'\n    fd 2",
-          title: 'Poll a key and move while it is depressed'
-        }, {
-          block: "forever 1, ->\n  fd 25\n  if not inside window\n    stop()",
-          title: 'Move once per second until not inside window'
         }, {
           block: "click (e) ->\n  moveto e",
           title: 'Move to a location when document is clicked'
@@ -382,8 +382,11 @@ module.exports = {
           block: "keydown \'X\', ->\n  write 'x pressed'",
           title: 'Do something when a keyboard key is pressed'
         }, {
-          block: "click (e) ->\n  moveto e",
-          title: 'Move to a location when document is clicked'
+          block: "forever 10, ->\n  if pressed 'W'\n    fd 2",
+          title: 'Poll a key and move while it is depressed'
+        }, {
+          block: "forever 1, ->\n  fd 25\n  if not inside window\n    stop()",
+          title: 'Move once per second until not inside window'
         }
       ])
     }

@@ -1,0 +1,16 @@
+Ideas/Todo/Questions
+
+debuggin:
+	not getting any src linked up - any thoughts?
+
+code base:
+	how/where are shpaes of blocks defined?
+
+
+TODO:
+	add logging event when opening project in new window
+	make top level directory filter to be only nu* directories
+
+Blocks <-> text
+	flag in latest version of droplet
+	pencilcode.view._state.pane.bravo.dropletEditor.showPaletteInTextMode = true 

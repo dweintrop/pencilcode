@@ -5,7 +5,7 @@ debuggin:
 
 code base:
 	how/where are shpaes of blocks defined?
-	the button block can be dropped inside the right side of: 'x =  ' -> why?
+
 
 TODO:
 	add logging event when opening project in new window

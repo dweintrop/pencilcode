@@ -183,12 +183,6 @@ module.exports = {
         }, {
           block: '@pd()',
           title: 'Put the pen down'
-        }, {
-          block: '@drawon s',
-          title: 'Draw on sprite s'
-        }, {
-          block: '@drawon document',
-          title: 'Draw on the document'
         }
       ])
     }, {
@@ -317,17 +311,28 @@ module.exports = {
           block: 'p = new Piano()',
           title: 'Make a visible instrument',
           id: 'newpiano'
-        }, {
-          block: 'q = new Pencil()',
-          title: 'Make an invisible and fast drawing sprite'
-        }, {
+        }, 
+        // {
+        //   block: 'q = new Pencil()',
+        //   title: 'Make an invisible and fast drawing sprite'
+        // }, 
+        {
           block: 't.',
           title: 'template to give Turtle/Sprite specific commands'
-        } , {
-          block: 'if @touches x\n  ``',
+        }, {
+          block: 'drawon s',
+          title: 'Draw on sprite s'
+        }, {
+          block: 'sync s',
+          title: 'Syncronize sprite actions'
+        }, {
+          block: 'remove s',
+          title: 'Remove sprite'
+        }, {
+          block: 'if s.@touches x\n  ``',
           title: 'Do something only if touching the object x'
         }, {
-          block: 'if @inside window\n  ``',
+          block: 'if s.@inside window\n  ``',
           title: 'Do something only if inside the window'
         }
       ])
@@ -924,26 +929,26 @@ module.exports = {
   ],
 
   KNOWN_FUNCTIONS: {
-    '?.fd': {color: 'lightblue', dropdown: [distances]},
-    '?.bk': {color: 'lightblue', dropdown: [distances]},
-    '?.rt': {color: 'lightblue', dropdown: [angles]},
-    '?.lt': {color: 'lightblue', dropdown: [angles]},
-    '?.slide': {color: 'lightblue', dropdown: [sdistances]},
-    '?.move': {color: 'lightblue', dropdown: [sdistances, sdistances]},
-    '?.movexy': {color: 'lightblue', dropdown: [sdistances, sdistances]},
-    '?.moveto': {color: 'lightblue', dropdown: [sdistances, sdistances]},
-    '?.jump': {color: 'lightblue', dropdown: [sdistances, sdistances]},
-    '?.jumpxy': {color: 'lightblue', dropdown: [sdistances, sdistances]},
-    '?.jumpto': {color: 'lightblue', dropdown: [sdistances, sdistances]},
-    '?.turnto': {color: 'lightblue', dropdown: [turntoarg]},
+    '?.fd': {color: 'lightblue'},
+    '?.bk': {color: 'lightblue'},
+    '?.rt': {color: 'lightblue'},
+    '?.lt': {color: 'lightblue'},
+    '?.slide': {color: 'lightblue'},
+    '?.move': {color: 'lightblue'},
+    '?.movexy': {color: 'lightblue'},
+    '?.moveto': {color: 'lightblue'},
+    '?.jump': {color: 'lightblue'},
+    '?.jumpxy': {color: 'lightblue'},
+    '?.jumpto': {color: 'lightblue'},
+    '?.turnto': {color: 'lightblue'},
     '?.home': {color: 'lightblue'},
-    '?.pen': {color: 'purple', dropdown: [colors]},
-    '?.fill': {color: 'purple', dropdown: [colors]},
-    '?.dot': {color: 'purple', dropdown: [colors, sizes]},
-    '?.box': {color: 'purple', dropdown: [colors, sizes]},
+    '?.pen': {color: 'purple'},
+    '?.fill': {color: 'purple'},
+    '?.dot': {color: 'purple'},
+    '?.box': {color: 'purple'},
     '?.mirror': {color: 'purple'},
-    '?.twist': {color: 'purple', dropdown: [sangles]},
-    '?.scale': {color: 'purple', dropdown: [scales]},
+    '?.twist': {color: 'purple'},
+    '?.scale': {color: 'purple'},
     '?.pause': {},
     '?.st': {color: 'purple'},
     '?.ht': {color: 'purple'},
@@ -960,12 +965,12 @@ module.exports = {
     '?.silence': {color: 'indigo'},
     '?.speed': {color:'lightblue'},
     '?.wear': {color:'purple'},
-    '?.drawon': {color:'purple'},
+    '?.drawon': {color:'teal'},
     '?.label': {color: 'pink'},
     '?.reload': {},
     remove: {color: 'pink'},
     see: {},
-    sync: {},
+    sync: {color: 'teal'},
     send: {},
     recv: {},
     '?.click': {color: 'orange'},
@@ -1070,7 +1075,8 @@ module.exports = {
     Turtle: {value: true, color: 'teal'},
     Sprite: {value: true, color: 'teal'},
     Piano: {value: true, color: 'teal'},
-    Pencil: {value: true, color: 'teal'}
+    Pencil: {value: true, color: 'teal'},
+    remove: {color: 'teal'}
   },
 
   CATEGORIES: {

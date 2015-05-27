@@ -661,40 +661,51 @@ function showButtons(buttonlist) {
   });
 
 // DW-TODO: be more clever about how to add this
-  var refHome = "http://ref.pencilcode.net/turtle";
+  var refHome = "http://ref.pencilcode.net/turtle/";
   var gymHome = "http://gym.pencilcode.net/ref/";
 
   var quickRefContent = '<div><span class="category-label">Move:</span><ul>' +
-    '<li><a target="reference" class="ref-link" href="' + refHome + '/fd.html">fd</a>' + 
-    '<a target="reference" class="ref-link" href="' + refHome + '/bk.html">bk</a>' + 
-    '<a target="reference" class="ref-link" href="' + refHome + '/rt.html">rt</a>' + 
-    '<a target="reference" class="ref-link" href="' + refHome + '/lt.html">lt</a></li>' + 
+    '<li><a target="reference" class="ref-link" href="' + refHome + 'fd.html">fd</a>' + 
+    '<a target="reference" class="ref-link" href="' + refHome + 'bk.html">bk</a>' + 
+    '<a target="reference" class="ref-link" href="' + refHome + 'rt.html">rt</a>' + 
+    '<a target="reference" class="ref-link" href="' + refHome + 'lt.html">lt</a></li>' + 
     '<li><a target="reference" class="ref-link" href="' + gymHome + 'curves.html">curves</a>' +
-    '<a target="reference" class="ref-link" href="' + refHome + '/speed.html">speed</a></li>' +
-    '<li><a target="reference" class="ref-link" href="' + refHome + '/home.html">home</a></li>' +
+    '<a target="reference" class="ref-link" href="' + refHome + 'speed.html">speed</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + 'home.html">home</a></li>' +
     // '<a target="reference" class="ref-link" href="' + refHome + '/turnto.html">turnto</a></li>' +
-    '<li><a target="reference" class="ref-link" href="' + refHome + '/moveto.html">moveto</a>' +
-    '<a target="reference" class="ref-link" href="' + refHome + '/movexy.html">movexy</a></li>' +
-    '<li><a target="reference" class="ref-link" href="' + refHome + '/jumpto.html">jumpto</a>' +
-    '<a target="reference" class="ref-link" href="' + refHome + '/jumpxy.html">jumpxy</a></li></ul>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + 'moveto.html">moveto</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + 'movexy.html">movexy</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + 'jumpto.html">jumpto</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + 'jumpxy.html">jumpxy</a></li></ul>' +
     
     '<span class="category-label">Art:</span><ul>' + 
-    '<li><a target="reference" class="ref-link" href="' + refHome + '/colors.html">colors</a>' +
-    '<a target="reference" class="ref-link" href="' + refHome + '/pen.html">pen</a>' +
-    '<a target="reference" class="ref-link" href="' + refHome + '/dot.html">dot</a></li>' +
-    '<li><a target="reference" class="ref-link" href="' + refHome + '/box.html">box</a>' +
-    '<a target="reference" class="ref-link" href="' + refHome + '/fill.html">fill</a>' +
-    '<a target="reference" class="ref-link" href="' + refHome + '/wear.html">wear</a></li></ul>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + 'colors.html">colors</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + 'pen.html">pen</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + 'dot.html">dot</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + refHome + 'box.html">box</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + 'fill.html">fill</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + 'wear.html">wear</a></li></ul>' +
     
     '<span class="category-label">Control:</span><ul>' + 
     '<li><a target="reference" class="ref-link" href="' + gymHome + 'for.html">for loops</a>' +
-    '<a target="reference" class="ref-link" href="' + gymHome + 'if.html">if and if/else</a></li></ul>' +
+    '<a target="reference" class="ref-link" href="' + gymHome + 'if.html">if and if/else</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + gymHome + 'button.html">buttons</a>' +
+    '<a target="reference" class="ref-link" href="' + refHome + 'click.html">click</a></li></ul>' +
     
     '<span class="category-label">Operators:</span><ul>' + 
     '<li><a target="reference" class="ref-link" href="' + gymHome + 'arithmetic.html">arithmetic</a>' +
     '<a target="reference" class="ref-link" href="' + gymHome + 'random.html">random</a></li>' +
     '<li><a target="reference" class="ref-link" href="' + gymHome + 'variables.html">variables</a>' +
     '<a target="reference" class="ref-link" href="' + gymHome + 'functions.html">functions</a></li>' +
+    '</ul>' +
+
+    '<span class="category-label">Sprites:</span><ul>' + 
+    '<li><a target="reference" class="ref-link" href="' + gymHome + 'Turtle.html">Turtle</a>' +
+    '<a target="reference" class="ref-link" href="' + gymHome + 'Sprite.html">Sprite</a>' +
+    '<a target="reference" class="ref-link" href="' + gymHome + 'Piano.html">Piano</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + gymHome + 'drawon.html">drawon</a>' +
+    '<a target="reference" class="ref-link" href="' + gymHome + 'sync.html">sync</a>' +
+    '<a target="reference" class="ref-link" href="' + gymHome + 'remove.html">remove</a></li>' +
     '</ul></div>'
 
   $('#reference').tooltipster({ 
@@ -703,7 +714,7 @@ function showButtons(buttonlist) {
     content: $(quickRefContent),
     functionInit: quickRefLinkOnClick,
     interactive: true,
-    minWidth: '222',
+    minWidth: '262',
     multiple: true,
     position: 'bottom',
     theme: 'tooltipster-pc-quick-ref'

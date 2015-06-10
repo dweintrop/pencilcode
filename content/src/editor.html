@@ -47,16 +47,14 @@ window.preload = function(data) {
 }
 function htmlEscape(s){return s.replace(
   /[<>&]/g,function(c){return c=='<'?'&lt;':c =='>'?'&gt;':'&amp;';});}
-document.write([
-'<a href="/edit/"><span id="owner" title="Top directory">',
-pencilcode.owner,
-'</span></a><a href="../"><img id="folder" title="Parent directory" src="//',
-pencilcode.domain,
-'/image/folder_32.png',
-'" height="32" width="32"></a>',
-'<span id="filename" title="Edit to move or rename" style="user-select:text;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text">',
-htmlEscape(location.pathname.replace(/^\/(?:[^\/]*\/)?|\/$/g, '')),
-'</span>'].join(''));
+
+document.write('<a href="/edit/"><span id="owner" title="Top directory">' + pencilcode.owner + '</span></a>');
+
+// TODO add logic here so students can nav outside their user
+document.write('<a href="../"><img id="folder" title="Parent directory" src="//' + pencilcode.domain +
+'/image/folder_32.png" height="32" width="32"></a>');
+
+document.write('<span id="filename" title="Edit to move or rename" style="user-select:text;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text">' + htmlEscape(location.pathname.replace(/^\/(?:[^\/]*\/)?|\/$/g, '')) + '</span>');
 
 document.getElementById('studentID').value = getParameterByName('studentID');
 document.getElementById('condition').value = getParameterByName('condition');

@@ -284,10 +284,10 @@ return {
           block: '@drawon s',
           title: 'Draw on sprite s'
         }, {
-          block: '@sync s',
+          block: 'sync s',
           title: 'Syncronize sprite actions'
         }, {
-          block: '@remove s',
+          block: 'remove s',
           title: 'Remove sprite'
         }, {
           block: 'if @touches x\n  ``',

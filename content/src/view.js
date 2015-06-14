@@ -2719,7 +2719,7 @@ function getPaneEditorFloatingBlocks(pane) {
   paneState.dropletEditor.floatingBlocks;
   var floatingBlocksString = '';
   paneState.dropletEditor.floatingBlocks.map(function(block){
-    floatingBlocksString += block.block.stringify() + '|';
+    floatingBlocksString += block.block.stringify({empty : "``", emptyIndent : "``"}) + '|';
   });
   return floatingBlocksString;
 }

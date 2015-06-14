@@ -174,7 +174,7 @@ describe('test of server json apis', function() {
       assert.ok(obj.list.length > 0);
       // Check for expected files
       var expected = { aaa: 'drwx', bbb: 'drwx', callie: 'drwx',
-        calvin: 'drwx', ccc: 'drwx', first: 'rw', intro: 'rw',
+        calvin: 'drwx', carl: 'drwx', ccc: 'drwx', first: 'rw', intro: 'rw',
         livetest: 'drwx', withpass: 'drwx', zzz: 'drwx' };
       var count = 0;
       for (var i = 0; i < obj.list.length; i++) {
@@ -184,18 +184,13 @@ describe('test of server json apis', function() {
           count += 1;
         }
       }
-      assert.equal(count, 10);
-      done();
-    });
-  });
-  /*
-  it('loads the root with a prefix', function(done) {
-    json(null, '/load/?prefix=ca', function(s, obj) {
+  it('loads the root with an exact match', function(done) {
+    json(null, '/load/?prefix=carl', function(s, obj) {
       assert.equal(obj.directory, '/');
-      assert.equal(obj.list.length, 2);
+      assert.equal(obj.list.length, 1);
       // Check for expected files
       var count = 0;
-      var expected = { callie: 'drwx', calvin: 'drwx' };
+      var expected = { carl: 'drwx' };
       for (var i = 0; i < obj.list.length; i++) {
         if (expected.hasOwnProperty(obj.list[i].name)) {
           assert.equal(obj.list[i].mode, expected[obj.list[i].name]);
@@ -203,11 +198,10 @@ describe('test of server json apis', function() {
           count += 1;
         }
       }
-      assert.equal(count, 2);
+      assert.equal(count, 1);
       done();
     });
   });
-  */
   it('loads a file thats present', function(done) {
     json('zzz', '/load/newfile', function(s, obj) {
       assert.equal(obj.file, '/zzz/newfile');

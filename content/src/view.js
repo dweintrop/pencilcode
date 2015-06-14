@@ -182,6 +182,9 @@ window.pencilcode.view = {
       $('#middle').hide();
     }
   },
+  showToggleButton: function(enable) {
+    $('body').toggleClass('notoggletab', !enable);
+  },
   // Sets editable name.
   setNameText: function(s) {
     state.nameText = s;
@@ -862,18 +865,24 @@ function showShareDialog(opts) {
     opts = { };
   }
 
+  // Adds a protocol ('http:') to a string path if it does not yet have one.
   function addProtocol(path) {
     if (/^\w+:/.test(path)) { return path; }
     return 'http:' + path;
   }
 
-  bodyText = 'Check out this program that I created on http://pencilcode.net!\r\n\r\n';
-  bodyText = bodyText + 'Posted program: ' +
-     addProtocol(opts.shareStageURL) + '\r\n\r\n';
-  bodyText = bodyText + 'Latest program: ' +
-     addProtocol(opts.shareRunURL) + '\r\n\r\n';
-  bodyText = bodyText + 'Program code: ' +
-     addProtocol(opts.shareEditURL) + '\r\n\r\n';
+  var newLines = '\r\n\r\n';
+  bodyText = 'Check out this program that I created on ' + window.pencilcode.domain
+     + newLines;
+  if (opts.shareStageURL) {
+    bodyText += 'Posted program: ' + addProtocol(opts.shareStageURL) + newLines;
+  }
+  if (opts.shareRunURL) {
+    bodyText += 'Latest program: ' + addProtocol(opts.shareRunURL) + newLines;
+  }
+  if (opts.shareEditURL) {
+    bodyText += 'Program code: ' + addProtocol(opts.shareEditURL) + newLines;
+  }
 
   subjectText = 'Pencilcode program: ' + opts.title;
 
@@ -886,6 +895,7 @@ function showShareDialog(opts) {
     embedText = '<iframe src="' + opts.shareRunURL + '" ' +
        'width="640" height="640" frameborder="0" allowfullScreen></iframe>';
   }
+
   opts.prompt = (opts.prompt) ? opts.prompt : 'Shared &#x2713;';
   opts.content = (opts.content) ? opts.content :
       '<div class="content">' +
@@ -2408,6 +2418,8 @@ function setupAceEditor(pane, elt, editor, mode, text) {
     }
   });
 
+  var lineArr = text.split('\n');
+  var lines = lineArr.length;
   var dimensions = getTextRowsAndColumns(text);
   // A big font char is 14 pixels wide and 29 pixels high.
   var big = { width: 14, height: 29 };
@@ -2464,6 +2476,26 @@ function setupAceEditor(pane, elt, editor, mode, text) {
   });
   $(elt).data('changeHandler', changeHandler);
   editor.getSession().on('change', changeHandler);
+  // Fold any blocks with a line that ends with "# fold" or "// fold"
+  function autoFold() {
+    editor.getSession().off('tokenizerUpdate', autoFold);
+    var foldMarker = /(?:#|\/\/)\s*fold$/;
+    for (var i = 0, line; (line = lineArr[i]) !== undefined; i++) {
+      var match = foldMarker.exec(line);
+      if (match) {
+        var data = editor.getSession().getParentFoldRangeData(i + 1);
+        if (data && data.range && data.range.start && data.range.end) {
+          editor.getSession().foldAll(data.range.start.row, data.range.end.row);
+        } else if (match.index == 0) {
+          // If the # fold is not in a block and is at the 0th column,
+          // then use it as an indicator to fold all the blocks in the file.
+          editor.getSession().foldAll(0, lineArr.length);
+          return;
+        }
+      }
+    }
+  }
+  editor.getSession().on('tokenizerUpdate', autoFold);
   if (long) {
     editor.gotoLine(0);
   } else {
@@ -3044,4 +3076,3 @@ window.fontloader = fontloader;
 return window.pencilcode.view;
 
 });
-

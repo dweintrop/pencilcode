@@ -112,6 +112,7 @@
 
 
 <div class="row topline">
+
   <div id="study_materials" class="study_materials">
     <div id="student_surveys" style="line-height:18pt">
       <h3 style="cursor:pointer; margin-bottom: 0; padding: 0;"><span id="survey-arrow" style="font-size:16px;">►</span>&nbsp;Student Online Forms</h3>
@@ -163,18 +164,7 @@
 </div>
 
 </body>
-<script> 
-// Preload support.
-function loadusers(data) {
-  loadusers.data = data;
-  loadusers.callback && loadusers.callback(data);
-}
-loadusers.then = function(callback) {
-  if (loadusers.data) { callback(loadusers.data); }
-  else { loadusers.callback = callback; }
-}
-</script>
-<script src="/load/?callback=loadusers"></script>
+
 <script src="/lib/jquery.js"></script>
 <script src="/lib/jquery-ui.min.js"></script>
 <script src="/lib/jquery.autocomplete.min.js"></script>
@@ -182,18 +172,47 @@ loadusers.then = function(callback) {
 <script src="/lib/selectBoxIt.min.js"></script>
 <script>
 $(function() {
-  loadusers.then(function(data) {
-
-//  // populate dropdown w/ users
 
 
+// (function() {
+  
+  // var usernames = {};
+  // $('#showlogin').css('opacity', 1);
+  // $('#user').on('change', validateUser);
+  // $('#user').autocomplete({
+  //   autoSelectFirst: true,
+  //   triggerSelectOnValidInput: false,
+  //   serviceUrl: '/load/',
+  //   paramName: 'prefix',
+  //   preventBadQueries: false, // To allow exact-match probing.
+  //   params: { count: 12 },
+  //   transformResult: function(response) {
+  //     response = JSON.parse(response);
+  //     return {
+  //       suggestions: response.list.filter(function(item) {
+  //         return item.mode.indexOf('d') >= 0;
+  //       }).map(function(item) {
+  //         usernames[item.name] = true;
+  //         return { value: item.name }
+  //       })
+  //     };
+  //   },
+  //   forceFixPosition: true,
+  //   onSelect: function() { validateUser(); setTimeout(function() {
+  //     if (!document.activeElement ||
+  //         !$(document.activeElement).closest('.loginblock').length) {
+  //       $('#pass').select().focus();
+  //     }
+  //   }, 0)}
+  // });
 
-  if (!data || data.directory != '/' || !data.list) return;
-  var users = data.list.filter(function(x) {
-    return /d/.test(x.mode); });
-  users.sort(function(a, b) { return b.mtime - a.mtime; });
-  var usernames = users.map(function(u) { return u.name; });
-  });
+  // function validateUser(e) {
+  //   var user = $('#user').val().toLowerCase().trim();
+  //   var found = usernames.hasOwnProperty(user);
+  //   $('#asuser').text(found ? ' as ' + user : '');
+  //   $('#login').prop('disabled', !found);
+  //   return true;
+  // };
 
   function keyFromPassword(username, p) {
     if (!p) { return ''; }
@@ -316,12 +335,12 @@ $(function() {
         $(data['values']).each(function(index, element) {
           $('#student_dropdown').data("selectBox-selectBoxIt").add({ studentID: element.studentID, condition: element.condition, value: element.username, text: element.name, password: element.password });
         });
-        $('#assignment_dropdown').data("selectBox-selectBoxIt").enable();
+      $('#assignment_dropdown').data("selectBox-selectBoxIt").enable();
 
-        // reset the hidden fields in case they were set by guest
-        $("#user").val("");
-        $("#assignment").val("");
-      });
+      // reset the hidden fields in case they were set by guest
+      $("#user").val("");
+      $("#assignment").val("");
+    });
     // });
 
     // var period = $(this).val();
@@ -378,11 +397,13 @@ function advance() {
      "//promo.pencilcode.net/home/promo" + (index++);
   if (index >= count) { index = 0; }
 }
+
 // Now start the animation and things.
 advance();
 setInterval(advance, 26000);
 window.addEventListener('mousemove', motion);
 window.addEventListener('touchstart', motion);
+
 // New account link
 $('#newaccount').on('click', function() {
   window.location = '/edit/intro#new';

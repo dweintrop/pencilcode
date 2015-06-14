@@ -233,7 +233,7 @@
     for (_i = 0, _len = fragments.length; _i < _len; _i++) {
       fragment = fragments[_i];
       if (options.sourceMap) {
-        if (fragment.locationData && !/^;?\s*$/.test(fragment.code)) {
+        if (fragment.locationData && !/^[;\s]*$/.test(fragment.code)) {
           map.add([fragment.locationData.first_line, fragment.locationData.first_column], [currentLine, currentColumn], {
             noReplace: true
           });

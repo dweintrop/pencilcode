@@ -5,80 +5,14 @@
 <meta name="description" content="Pencil is a collaborative programming site for drawing art, playing music, and creating games. Pencil is also a place to experiment with mathematical functions, geometry, graphing, webpages, simulations, and algorithms. Programs are open for all to see and copy.">
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:400|Source+Code+Pro:400,700">
-<link rel="stylesheet" type="text/css" href="//<!--#echo var="site"-->/welcome.css">
-<link rel="stylesheet" type="text/css" href="//<!--#echo var="site"-->/lib/font-awesome.css">
-<link rel="icon" sizes="192x192" href="//<!--#echo var="site"-->/apple-touch-icon.png">
-<link rel="shortcut icon" sizes="16x16" href="//<!--#echo var="site"-->/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/nuLogin.css">
+<link rel="stylesheet" type="text/css" href="/lib/selectBoxIt.css">
+<link rel="icon" sizes="192x192" href="/apple-touch-icon.png">
+<link rel="shortcut icon" sizes="16x16" href="/favicon.ico" />
 <style>
 </style>
 <body>
-<div id="overlay">
-<div class="about" id="intro">
-<h1 style="margin-top:0">About Pencil Code</h1>
-<p>Pencil Code is a collaborative programming site for drawing
-art, playing music, and creating games.  It is also
-a place to experiment with mathematical functions, geometry,
-graphing, webpages, simulations, and algorithms.  Programs are
-open for all to see and copy.
-<p><a target="_blank"
-href="//www.youtube.com/watch?v=JJzFD4EdeuY"
-data-vimeo="79743491"
->Watch a video overview</a> or
-<a href="//www.youtube.com/watch?v=edN07wcbj2w"
-data-vimeo="79743492" target="_blank"
->watch a video tutorial</a>.
-</p>
-<div id="video"></div>
-<p>The main language is Coffeescript.  Professional software engineers
-use Coffeescript to build complex websites, but Coffeescript code can
-also be very simple.
-<p>Pencil Code can also be used to explore and learn Javascript, HTML,
-and CSS: when you are ready, just find the "gear" button to adjust languages.
-<p>Programs preload the pencilcode library to use
-turtle graphics functions.
-Pencil Code is all <a href="/license.html" target="_blank">open source</a>.
-Hang out on the <a href="/group" target="_blank">Pencil Code
-discussion forum</a> or check out
-<a href="//pencilcode.net/material/reference.pdf" target="_blank"
->the quick reference</a>
-or
-<a href="//guide.pencilcode.net/" target="_blank">the online guide</a>
-to find out more.  There is also an illustrated
-<a href="//pencilcode.net/book" target="_blank">Pencil Code book</a> with more than 100 small projects.
-<p>Anybody can save programs and web pages, but read the
-<a href="/terms.html" target="_blank">Terms of Service</a> and the
-<a href="/privacy.html" target="_blank">Privacy Policy</a> first.
-Two rules:
-<p><u>Be Nice.</u> Do not mess up other peoples' work.
-<strong>Do not post content that detracts from education on the site.</strong>
-This a learning space that is not locked down
-(for example, passwords are optional). So feel free to explore, create,
-and link, but also please be considerate.
-<p><u>Be Careful.</u> Do not depend on Pencil Code to keep your data safe.
-Data posted here is public, and data is not secured from loss.
-<strong>Do not post private or personally identifiable
-information.</strong>  Passwords on Pencil Code
-do not prevent malicious interference.
-<p class="bottomnote"
-><a href="/team.html">The Pencil Code Foundation</a>
-is devoted to advancing computer
-science education by making programming as simple and as
-universal as using a pencil.
-Contribute to the development of Pencil Code at
-<a href="http://dev.pencilcode.net/" target="_blank"
->dev.pencilcode.net</a> or
-<a href="https://github.com/PencilCode">github</a>.
-&nbsp;&mdash;
-<a href="mailto:info@pencilcode.net" target="_top"
->info@pencilcode.net</a>.
-</div>
-<div class="loginblock">
-<label class="toggler">
-<span id=msg></span>&nbsp; <i class="fa fa-sign-in loginicon"></i> Login</ul></label>
-<label>Name: <input id=user></label>
-<label>Password: <input type=password id=pass></label>
-<label><button id=login disabled>Login <span id=asuser></span></button></label>
-</div>
+
 </div>
 <!-- end of overlay -->
 
@@ -90,8 +24,6 @@ Contribute to the development of Pencil Code at
 <a class="pclogo pull-left aboutlink" href="#about"><div class="pctext"><div class="pcline1">Pencil</div><div class="pcline2">Code</div></div><img src="/image/vpencil-20-64.png"></a>
 </div>
 <div class="col-xs-6 vpadding">
-<!-- login bar -->
-<ul class="pull-right list-inline"><li class="btn btn-clear" id="newaccount"><i class="fa fa-star newicon"></i> New Account<li class="btn btn-clear" style="opacity:0" id="showlogin"><i class="fa fa-sign-in loginicon"></i> Login</ul>
 </div>
 </div>
 <!--# include file="promoline.html" -->
@@ -174,6 +106,7 @@ Contribute to the development of Pencil Code at
 </div>
 </div>
 <div class="row topline">
+
   <div id="study_materials" class="study_materials">
     <div id="student_surveys" style="line-height:18pt">
       <h3 style="cursor:pointer; margin-bottom: 0; padding: 0;"><span id="survey-arrow" style="font-size:16px;">►</span>&nbsp;Student Online Forms</h3>
@@ -231,59 +164,56 @@ title="Image credit: http://jumpfer-stock.deviantart.com/art/Steam-Dragon-01-PNG
 anything, <a href="/edit/myprogram">start on a blank page</a>.
 </div>
 </div>
-<div class="row topline">
-<div class="col-sm-12 vpadding text-center">
-<h2 style="padding:10px 0">Resources</h2>
-<ul class="list-inline spaced">
-<li><a class="aboutlink" href="#about">About Pencil Code</a>
-<li><a href="//guide.pencilcode.net/">Material for Teachers</a>
-<li><a href="//book.pencilcode.net/">Pencil Code Book</a>
-</ul>
-<ul class="list-inline spaced">
-<li><a href="/edit/untitled">Open Blank Editor</a>
-<li><a href="//share.pencilcode.net/">Shared Student Projects</a>
-<li><a href="/home/">Browse All Users</a>
-</ul>
-<ul class="list-inline spaced">
-<li><a href="//activity.pencilcode.net/">Printable Activities</a>
-<li><a href="//blog.pencilcode.net/">Pencil Code Blog</a>
-<li><a href="/team.html">Who We Are</a>
-</ul>
-</div>
-</div>
-<div class="row topline">
-<div class="col-sm-12 vpadding text-center">
-<p>Pencil Code supports CoffeeScript, Javascript, CSS, and HTML.
-<p>Everything posted on Pencil Code is public and free to view, share,
-and copy.
-</div>
-</div>
-</div>
 </body>
+
 <script src="/lib/jquery.js"></script>
 <script src="/lib/jquery.autocomplete.min.js"></script>
 <script src="/lib/seedrandom.js"></script>
 <script>
 $(function() {
-  loadusers.then(function(data) {
-
-//  // populate dropdown w/ users
 
 
 
-  if (!data || data.directory != '/' || !data.list) return;
-  var users = data.list.filter(function(x) {
-    return /d/.test(x.mode); });
-  users.sort(function(a, b) { return b.mtime - a.mtime; });
-  var usernames = users.map(function(u) { return u.name; });
-  });
-  function validateUser(e) {
-    var user = $('#user').val().toLowerCase().trim();
-    var found = usernames.hasOwnProperty(user);
-    $('#asuser').text(found ? ' as ' + user : '');
-    $('#login').prop('disabled', !found);
-    return true;
-  };
+// (function() {
+  
+  // var usernames = {};
+  // $('#showlogin').css('opacity', 1);
+  // $('#user').on('change', validateUser);
+  // $('#user').autocomplete({
+  //   autoSelectFirst: true,
+  //   triggerSelectOnValidInput: false,
+  //   serviceUrl: '/load/',
+  //   paramName: 'prefix',
+  //   preventBadQueries: false, // To allow exact-match probing.
+  //   params: { count: 12 },
+  //   transformResult: function(response) {
+  //     response = JSON.parse(response);
+  //     return {
+  //       suggestions: response.list.filter(function(item) {
+  //         return item.mode.indexOf('d') >= 0;
+  //       }).map(function(item) {
+  //         usernames[item.name] = true;
+  //         return { value: item.name }
+  //       })
+  //     };
+  //   },
+  //   forceFixPosition: true,
+  //   onSelect: function() { validateUser(); setTimeout(function() {
+  //     if (!document.activeElement ||
+  //         !$(document.activeElement).closest('.loginblock').length) {
+  //       $('#pass').select().focus();
+  //     }
+  //   }, 0)}
+  // });
+
+  // function validateUser(e) {
+  //   var user = $('#user').val().toLowerCase().trim();
+  //   var found = usernames.hasOwnProperty(user);
+  //   $('#asuser').text(found ? ' as ' + user : '');
+  //   $('#login').prop('disabled', !found);
+  //   return true;
+  // };
+
   function keyFromPassword(username, p) {
     if (!p) { return ''; }
     if (/^[0-9]{3}$/.test(p)) { return p; }
@@ -294,17 +224,9 @@ $(function() {
     }
     return key;
   }
-  $('#login').on('click', tryLogin);
-  $('#pass,#user').on('keyup', function(e) {
-    $('#msg').text('');
-    if (e.which == 13) {
-      if ($(this).attr('id') == 'user') {
-        $('#pass').focus();
-      } else {
-        tryLogin();
-      }
-    }
-  });
+
+  $('#login-btn').on('click', tryLogin);
+
   function tryLogin() {
     
     var user = $('#user').val().toLowerCase().trim();
@@ -316,6 +238,11 @@ $(function() {
     if (!$('#assignment').val()) {
       $('#msg').text('Please select an assignment.');
       return;
+    }
+
+    if ($('#user').val() == 'nuguest' && !$('#guest_name').val().trim() ) {
+      $('#msg').text('Please enter a name.');
+      return;      
     }
 
     $('#msg').text('Logging in...');
@@ -350,12 +277,14 @@ $(function() {
   $(".toggle-login").on('click', function(e) {
     $("#student-login").toggle();
     $("#guest-login").toggle();
+    $('#msg').text('');
     // just assume the default PC unless student overrides (maybe change this to hybrid in the future)
     $("#condition").val("default-PC");  
     $("#studentID").val("99");
     $("#user").val("nuguest");
     $("#pass").val("password");  
-    $("#assignment").val("guest_play");  
+    $("#assignment").val("guest_play");
+    $('#guest_name').val("");  
   });
 
   $("select").selectBoxIt({
@@ -393,7 +322,7 @@ $(function() {
     }
 
     $.ajax( {
-      url: 'http://localhost:8000/get_data/Students/',
+      url: 'http://javaseer.herokuapp.com/get_data/Students/',
       dataType : 'json',
       data: {'filter': val} 
     })
@@ -406,9 +335,12 @@ $(function() {
         $(data['values']).each(function(index, element) {
           $('#student_dropdown').data("selectBox-selectBoxIt").add({ studentID: element.studentID, condition: element.condition, value: element.username, text: element.name, password: element.password });
         });
+      $('#assignment_dropdown').data("selectBox-selectBoxIt").enable();
 
-        $('#assignment_dropdown').data("selectBox-selectBoxIt").enable();
-      });
+      // reset the hidden fields in case they were set by guest
+      $("#user").val("");
+      $("#assignment").val("");
+    });
     // });
 
     // var period = $(this).val();
@@ -465,11 +397,13 @@ function advance() {
      "//promo.pencilcode.net/home/promo" + (index++);
   if (index >= count) { index = 0; }
 }
+
 // Now start the animation and things.
 advance();
 setInterval(advance, 26000);
 window.addEventListener('mousemove', motion);
 window.addEventListener('touchstart', motion);
+
 // New account link
 $('#newaccount').on('click', function() {
   window.location = '/edit/intro#new';

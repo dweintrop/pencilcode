@@ -21,15 +21,18 @@
 <div class="row">
 <div class="col-xs-6 vpadding">
 <!-- branding -->
-<a class="pclogo pull-left aboutlink" href="#about"><div class="pctext"><div class="pcline1">Pencil</div><div class="pcline2">Code</div></div><img src="/image/vpencil-20-64.png"></a>
+<a class="pclogo pull-left aboutlink" href="http://pencilcode.net" target="_blank"><div class="pctext"><div class="pcline1">Pencil</div><div class="pcline2">Code</div></div><img src="/image/vpencil-20-64.png"></a>
 </div>
+
 <div class="col-xs-6 vpadding">
 </div>
+
 </div>
 <!--# include file="promoline.html" -->
 <!-- splash row -->
 <div class="row topline">
 <div class="col-sm-6 vpadding">
+
 <div id="student-login">
 
   <h2 class="text-center" style="color:#4e015c;">Student Login <span class="toggle-login">(not a student?)</span></h2>
@@ -101,10 +104,13 @@
 
 <p style="text-align:center"><span id="login-btn" class="btn btn-primary" style="font-size:133%">Let's Go!</span>
 </div>
+
 <div class="col-sm-6 vpadding">
 <iframe id="demo" style="min-height:300px;height:100%;width:100%;border:0"></iframe>
 </div>
 </div>
+
+
 <div class="row topline">
 
   <div id="study_materials" class="study_materials">
@@ -145,33 +151,27 @@
     -->
   </div>
 </div>
-<div class="col-sm-3 col-xs-6 vpadding text-center">
-<h3><a href="//gym.pencilcode.net/jam/" class="nofeedback"><img src="/image/music.png" style="height:74px"
-title="Image credit: http://www.clker.com/clipart-334772.html"><br>Jam</a></h3>
-<p><a href="//gym.pencilcode.net/jam/" class="btn btn-default" style="white-space:normal">Make music</a>
-</div>
-<div class="col-sm-3 col-xs-6 vpadding text-center">
-<h3><a href="//gym.pencilcode.net/imagine/" class="nofeedback"><img src="/image/adventure.png" style="height:74px"
-title="Image credit: http://jumpfer-stock.deviantart.com/art/Steam-Dragon-01-PNG-Stock-415712374"
-><br>Imagine</a></h3>
-<p><a href="//gym.pencilcode.net/imagine/" class="btn btn-default" style="white-space:normal">Code an adventure</a>
-</div>
-<div class="col-sm-3 col-xs-6 vpadding text-center">
-<h2 style="padding:20px 0 0"><a class="nofeedback" title="Start from a blank program" href="/edit/myprogram">Get Creative</a></h2>
-<p>Get some ideas for <a href="//gym.pencilcode.net/draw/">art</a>,
-<a href="//gym.pencilcode.net/jam/">music</a>, or
-<a href="//gym.pencilcode.net/imagine/">games</a>.  Or to code
-anything, <a href="/edit/myprogram">start on a blank page</a>.
+
+<div class="row topline">
+<div class="col-sm-12 vpadding text-center">
+  <a href="http://pencil.cc">pencil.cc</a> is a research project run by <a href="http://www.sesp.northwestern.edu/profile/?p=21536&/DavidWeintrop/" target="_blank">David Weintrop</a> designed to 
+  understand the differences<br/>between blocks-based, text-based, 
+  and hybrid blocks/text programming environments.<br/>
+  It is built on top of the <a href="http://pencilcode.net/" target="_blank">Pencil Code</a> environment.<br/><br/>
+  For more information about Pencil Code, including teacher materials, sample activites, <br/> and links to the source code, please visit the main <a href="http://pencilcode.net/" target="_blank">Pencil Code</a> site.<br/><br/>
+  For more information about the study, please contact <a href="mailto:dweintrop@u.northwestern.edu">David Weintrop</a>.
 </div>
 </div>
+
 </body>
 
 <script src="/lib/jquery.js"></script>
+<script src="/lib/jquery-ui.min.js"></script>
 <script src="/lib/jquery.autocomplete.min.js"></script>
 <script src="/lib/seedrandom.js"></script>
+<script src="/lib/selectBoxIt.min.js"></script>
 <script>
 $(function() {
-
 
 
 // (function() {
@@ -408,95 +408,97 @@ window.addEventListener('touchstart', motion);
 $('#newaccount').on('click', function() {
   window.location = '/edit/intro#new';
 });
-$('#showlogin').on('click', function() {
-  if ($(this).css('opacity') == 0) return;
-  $('#overlay,.loginblock').show();
-  var ofs = $('#showlogin').offset();
-  $('.loginblock').css({
-    top: ofs.top - 8 + 1,
-    right: $(document).width() - (ofs.left + $('#showlogin').outerWidth()) - 8
-  });
-  $('#user').focus();
-});
-$('a.aboutlink').click(function() {
-  location.hash = '#about';
-  $('#overlay,.about').show();
-  return false;
-});
-function closeoverlay() {
- $('#video').html('');
- $('#overlay,.about,.loginblock').hide();
- if (location.hash.length > 1) {
-   if (window.history.pushState) {
-     window.history.pushState(null, null, window.location.pathname);
-   } else {
-     location.hash = '';
-   }
- }
-}
-$('#overlay').click(function(e) {
-  if (e.target == this || $(e.target).is('.loginblock .toggler')) {
-    closeoverlay();
-  }
-});
-$('#overlay').keydown(function(e) {
-  if (e.which == 27) {
-    closeoverlay();
-  }
-});
-$(window).on('hashchange load', function() {
-  if (/\babout\b/.test(location.hash)) {
-    $('#overlay,.about').show();
-  } else {
-    $('#overlay,.about,.loginblock').hide();
-  }
-});
-// Video clicking setup
-// Detect if youtube is blocked.
-var ytpresent = true;
-var ytprobe = new Image();
-ytprobe.onerror = function(){
-  ytpresent = false;
-};
-ytprobe.src = "//youtube.com/favicon.ico?r=" + Math.random();
-$('a[data-vimeo]').click(function(e) {
-  if (ytpresent) {
-    var href = $(this).attr('href');
-    var match = /youtube.com.*v=([^&">]*)/.exec(href);
-    if (match && match[1]) {
-      if ($('#video iframe').attr('src') &&
-          $('#video iframe').attr('src').indexOf(match[1]) >= 0) {
-        $('#video').html('');
-        return false;
-      } else {
-        $('#video').html(
-          '<iframe type="text/html" width="640" height="390" ' +
-          'src="//www.youtube.com/embed/' + match[1] +
-          '?autoplay=1&origin=' +
-          location.protocol + '//' + location.host + '" ' +
-          'frameborder="0"></iframe>');
-        return false;
-      }
-    }
-  } else {
-    var vimeo = $(this).data('vimeo');
-    if (vimeo) {
-      if ($('#video iframe').attr('src') &&
-          $('#video iframe').attr('src').indexOf(vimeo) >= 0) {
-        $('#video').html('');
-        return false;
-      } else {
-        $('#video').html(
-          '<iframe type="text/html" width="640" height="390" ' +
-          'src="//player.vimeo.com/video/' + vimeo +
-          '?autoplay=1" ' +
-          'frameborder="0"></iframe>');
-        return false;
-      }
-    }
-  }
-  return true;
-});
+
+// $('#showlogin').on('click', function() {
+//   if ($(this).css('opacity') == 0) return;
+//   $('#overlay,.loginblock').show();
+//   var ofs = $('#showlogin').offset();
+//   $('.loginblock').css({
+//     top: ofs.top - 8 + 1,
+//     right: $(document).width() - (ofs.left + $('#showlogin').outerWidth()) - 8
+//   });
+//   $('#user').focus();
+// });
+// $('a.aboutlink').click(function() {
+//   location.hash = '#about';
+//   $('#overlay,.about').show();
+//   return false;
+// });
+// function closeoverlay() {
+//  $('#video').html('');
+//  $('#overlay,.about,.loginblock').hide();
+//  if (location.hash.length > 1) {
+//    if (window.history.pushState) {
+//      window.history.pushState(null, null, window.location.pathname);
+//    } else {
+//      location.hash = '';
+//    }
+//  }
+// }
+// $('#overlay').click(function(e) {
+//   if (e.target == this || $(e.target).is('.loginblock .toggler')) {
+//     closeoverlay();
+//   }
+// });
+// $('#overlay').keydown(function(e) {
+//   if (e.which == 27) {
+//     closeoverlay();
+//   }
+// });
+// $(window).on('hashchange load', function() {
+//   if (/\babout\b/.test(location.hash)) {
+//     $('#overlay,.about').show();
+//   } else {
+//     $('#overlay,.about,.loginblock').hide();
+//   }
+// });
+
+// // Video clicking setup
+// // Detect if youtube is blocked.
+// var ytpresent = true;
+// var ytprobe = new Image();
+// ytprobe.onerror = function(){
+//   ytpresent = false;
+// };
+// ytprobe.src = "//youtube.com/favicon.ico?r=" + Math.random();
+// $('a[data-vimeo]').click(function(e) {
+//   if (ytpresent) {
+//     var href = $(this).attr('href');
+//     var match = /youtube.com.*v=([^&">]*)/.exec(href);
+//     if (match && match[1]) {
+//       if ($('#video iframe').attr('src') &&
+//           $('#video iframe').attr('src').indexOf(match[1]) >= 0) {
+//         $('#video').html('');
+//         return false;
+//       } else {
+//         $('#video').html(
+//           '<iframe type="text/html" width="640" height="390" ' +
+//           'src="//www.youtube.com/embed/' + match[1] +
+//           '?autoplay=1&origin=' +
+//           location.protocol + '//' + location.host + '" ' +
+//           'frameborder="0"></iframe>');
+//         return false;
+//       }
+//     }
+//   } else {
+//     var vimeo = $(this).data('vimeo');
+//     if (vimeo) {
+//       if ($('#video iframe').attr('src') &&
+//           $('#video iframe').attr('src').indexOf(vimeo) >= 0) {
+//         $('#video').html('');
+//         return false;
+//       } else {
+//         $('#video').html(
+//           '<iframe type="text/html" width="640" height="390" ' +
+//           'src="//player.vimeo.com/video/' + vimeo +
+//           '?autoplay=1" ' +
+//           'frameborder="0"></iframe>');
+//         return false;
+//       }
+//     }
+//   }
+//   return true;
+// });
 
 function preload(urls) {
   for (var i = 0; i < urls.length; ++i) {
@@ -517,6 +519,7 @@ setTimeout(function() {
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
 ga('create', 'UA-63837731-1', 'auto');
 ga('send', 'pageview');
 

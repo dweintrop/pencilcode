@@ -261,6 +261,11 @@ $(function() {
           var filename = $('#guest_name').val().toLowerCase().replace(/ /g,'');
         } 
         
+        // write study participant info to cookie so persists throughout session
+        setCookie('studentID', $('#studentID').val(), 12);
+        setCookie('condition', $('#condition').val(), 12);
+        setCookie('assignment', $('#assignment').val(), 12);
+
         window.location = urlRoot + '/edit/' 
                 + filename + '/#login=' + user + ':' + (key ? key : '') 
                 + '?' + queryString;
@@ -272,6 +277,13 @@ $(function() {
     }).fail(function() {
       $('#msg').text('Network error.');
     });
+  }
+
+  function setCookie(cname, cvalue, exhours) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exhours*60*60*1000));
+      var expires = "expires="+d.toUTCString();
+      document.cookie = cname + "=" + cvalue + "; " + expires + ";path=/;domain=" + location.hostname;
   }
 
   $(".toggle-login").on('click', function(e) {

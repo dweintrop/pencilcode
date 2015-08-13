@@ -282,6 +282,7 @@ function nuLogEvent(source, pane) {
     'condition' : $('#condition').val(),
     // DW-TODO make editor mode smarter when hybrid is introduced
     'editorMode' : view.getPaneEditorBlockMode(pane) ? 'blocks' : 'text',
+    'paletteVisible' : view.getPaletteVisible(pane),
     'eventType' : source,
     'program' : paneData.data,
     'floatingBlocks' : view.getPaneEditorFloatingBlocks(pane),

@@ -122,6 +122,7 @@ window.pencilcode.view = {
   getPaneEditorBlockMode: getPaneEditorBlockMode,
   setPaneEditorBlockOptions: setPaneEditorBlockOptions,
   getPaneEditorLanguage: getPaneEditorLanguage,
+  getPaletteVisible: getPaletteVisible,
   markPaneEditorLine: markPaneEditorLine,
   clearPaneEditorLine: clearPaneEditorLine,
   clearPaneEditorMarks: clearPaneEditorMarks,
@@ -2904,6 +2905,13 @@ function updateMeta(paneState) {
   }
 }
 
+function getPaletteVisible(pane) {
+  var paneState = state.pane[pane];
+  if (!paneState.editor) {
+    return null;
+  }
+  return paneState.dropletEditor.paletteWrapper.style.left == '0px'
+}
 
 function getPaneEditorData(pane) {
   var paneState = state.pane[pane];

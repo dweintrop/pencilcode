@@ -44,10 +44,12 @@
     <div class="col-sm-6">
       <select class="selectBoxIt" name="class_dropdown" id="class_dropdown">
         <option value="">Please Select Class:</option>
-        <option value="LaneTech">Lane Tech College Prep</option>
-        <option value="Lindbloom">Lindblom Girls Club</option>
-        <option value="Northwestern">Northwestern University</option>
-        <option value="Teachers">Teachers College</option>
+        <option value="Lane Tech College Prep - Period 1">Lane Tech College Prep - Period 1</option>
+        <option value="Lane Tech College Prep - Period 2">Lane Tech College Prep - Period 2</option>
+        <option value="Lane Tech College Prep - Period 3">Lane Tech College Prep - Period 3</option>
+        <option value="Lindbloom - CT4G">Lindblom Girls Club</option>
+        <option value="Northwestern - ">Northwestern University</option>
+        <option value="Teacher's College - ">Teacher's College</option>
       </select>
     </div>
   </div>
@@ -363,33 +365,6 @@ $(function() {
       $("#user").val("");
       $("#assignment").val("");
     });
-    // });
-
-    // var period = $(this).val();
-
-    // var student_dropdown = $("#student_dropdown").data("selectBox-selectBoxIt");
-    
-    // if (period != '') {
-    //  student_dropdown.enable();
-    // } else {
-    //  student_dropdown.disable();
-    //  return;             
-    // }
-
-    // // clear/initialize student dropdowns
-    // student_dropdown.remove();
-    // student_dropdown.add({ value: '0', text: 'Select Name'});
-          
-    // pair_dropdown.remove();
-    // pair_dropdown.add({ value: '0', text: 'Select Pair\'s Name'});
-
-    // for (var i = 0; i < data[period].length; i++) {
-    //   student_dropdown.add({ value: data[period][i].id, text: data[period][i].name });
-    //   pair_dropdown.add({ value: data[period][i].id, text: data[period][i].name });
-    // }
-
-    // student_dropdown.add({ value: '', text: 'I\'m not listed'});
-    // pair_dropdown.add({ value: '', text: 'I\'m not listed'});
   });
 
   $("#student_dropdown").change(function(e, select) {

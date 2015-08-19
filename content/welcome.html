@@ -16,7 +16,6 @@
 </div>
 <!-- end of overlay -->
 
-
 <div class="container shadowcard">
 <div class="row">
 <div class="col-xs-6 vpadding">
@@ -177,47 +176,6 @@
 <script src="/lib/selectBoxIt.min.js"></script>
 <script>
 $(function() {
-
-
-// (function() {
-  
-  // var usernames = {};
-  // $('#showlogin').css('opacity', 1);
-  // $('#user').on('change', validateUser);
-  // $('#user').autocomplete({
-  //   autoSelectFirst: true,
-  //   triggerSelectOnValidInput: false,
-  //   serviceUrl: '/load/',
-  //   paramName: 'prefix',
-  //   preventBadQueries: false, // To allow exact-match probing.
-  //   params: { count: 12 },
-  //   transformResult: function(response) {
-  //     response = JSON.parse(response);
-  //     return {
-  //       suggestions: response.list.filter(function(item) {
-  //         return item.mode.indexOf('d') >= 0;
-  //       }).map(function(item) {
-  //         usernames[item.name] = true;
-  //         return { value: item.name }
-  //       })
-  //     };
-  //   },
-  //   forceFixPosition: true,
-  //   onSelect: function() { validateUser(); setTimeout(function() {
-  //     if (!document.activeElement ||
-  //         !$(document.activeElement).closest('.loginblock').length) {
-  //       $('#pass').select().focus();
-  //     }
-  //   }, 0)}
-  // });
-
-  // function validateUser(e) {
-  //   var user = $('#user').val().toLowerCase().trim();
-  //   var found = usernames.hasOwnProperty(user);
-  //   $('#asuser').text(found ? ' as ' + user : '');
-  //   $('#login').prop('disabled', !found);
-  //   return true;
-  // };
 
   function keyFromPassword(username, p) {
     if (!p) { return ''; }
@@ -405,97 +363,6 @@ window.addEventListener('touchstart', motion);
 $('#newaccount').on('click', function() {
   window.location = '/edit/intro#new';
 });
-
-// $('#showlogin').on('click', function() {
-//   if ($(this).css('opacity') == 0) return;
-//   $('#overlay,.loginblock').show();
-//   var ofs = $('#showlogin').offset();
-//   $('.loginblock').css({
-//     top: ofs.top - 8 + 1,
-//     right: $(document).width() - (ofs.left + $('#showlogin').outerWidth()) - 8
-//   });
-//   $('#user').focus();
-// });
-// $('a.aboutlink').click(function() {
-//   location.hash = '#about';
-//   $('#overlay,.about').show();
-//   return false;
-// });
-// function closeoverlay() {
-//  $('#video').html('');
-//  $('#overlay,.about,.loginblock').hide();
-//  if (location.hash.length > 1) {
-//    if (window.history.pushState) {
-//      window.history.pushState(null, null, window.location.pathname);
-//    } else {
-//      location.hash = '';
-//    }
-//  }
-// }
-// $('#overlay').click(function(e) {
-//   if (e.target == this || $(e.target).is('.loginblock .toggler')) {
-//     closeoverlay();
-//   }
-// });
-// $('#overlay').keydown(function(e) {
-//   if (e.which == 27) {
-//     closeoverlay();
-//   }
-// });
-// $(window).on('hashchange load', function() {
-//   if (/\babout\b/.test(location.hash)) {
-//     $('#overlay,.about').show();
-//   } else {
-//     $('#overlay,.about,.loginblock').hide();
-//   }
-// });
-
-// // Video clicking setup
-// // Detect if youtube is blocked.
-// var ytpresent = true;
-// var ytprobe = new Image();
-// ytprobe.onerror = function(){
-//   ytpresent = false;
-// };
-// ytprobe.src = "//youtube.com/favicon.ico?r=" + Math.random();
-// $('a[data-vimeo]').click(function(e) {
-//   if (ytpresent) {
-//     var href = $(this).attr('href');
-//     var match = /youtube.com.*v=([^&">]*)/.exec(href);
-//     if (match && match[1]) {
-//       if ($('#video iframe').attr('src') &&
-//           $('#video iframe').attr('src').indexOf(match[1]) >= 0) {
-//         $('#video').html('');
-//         return false;
-//       } else {
-//         $('#video').html(
-//           '<iframe type="text/html" width="640" height="390" ' +
-//           'src="//www.youtube.com/embed/' + match[1] +
-//           '?autoplay=1&origin=' +
-//           location.protocol + '//' + location.host + '" ' +
-//           'frameborder="0"></iframe>');
-//         return false;
-//       }
-//     }
-//   } else {
-//     var vimeo = $(this).data('vimeo');
-//     if (vimeo) {
-//       if ($('#video iframe').attr('src') &&
-//           $('#video iframe').attr('src').indexOf(vimeo) >= 0) {
-//         $('#video').html('');
-//         return false;
-//       } else {
-//         $('#video').html(
-//           '<iframe type="text/html" width="640" height="390" ' +
-//           'src="//player.vimeo.com/video/' + vimeo +
-//           '?autoplay=1" ' +
-//           'frameborder="0"></iframe>');
-//         return false;
-//       }
-//     }
-//   }
-//   return true;
-// });
 
 function preload(urls) {
   for (var i = 0; i < urls.length; ++i) {

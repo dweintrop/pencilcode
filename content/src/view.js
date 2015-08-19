@@ -66,7 +66,10 @@ var state = {
     alpha: initialPaneState(),
     bravo: initialPaneState(),
     charlie: initialPaneState()
-  }
+  },
+
+  // penceil code mode, options: text, block, hybrid, default-PC
+  studyCondition: getCookie('condition')//'default-PC' // default, will be overwritten in loadFileIntoPosition
 }
 
 var dropletMarkClassColors = {
@@ -138,6 +141,9 @@ window.pencilcode.view = {
   showProtractor: showProtractor,
   hideProtractor: hideProtractor,
   setPrimaryFocus: setPrimaryFocus,
+
+  getStudyCondition: function() { return state.studyCondition; },
+
   // setPaneRunUrl: setPaneRunUrl,
   hideEditor: function(pane) {
     $('#' + pane + 'title').hide();
@@ -1748,10 +1754,15 @@ function updatePaneTitle(pane) {
           alt = 'show code'
           symbol = 'blockicon';
         }
-        label = '<a target="_blank" class="toggleblocks" href="/code/' +
-            paneState.filename + '"><span class="' + symbol +
-            '"></span> <span alt="' + alt + '">' +
-            '<span>' + label + '</span></span></a>';
+
+        if (state.studyCondition == 'default-PC') {
+          label = '<a target="_blank" class="toggleblocks" href="/code/' +
+              paneState.filename + '"><span class="' + symbol +
+              '"></span> <span alt="' + alt + '">' +
+              '<span>' + label + '</span></span></a>';
+        } else {
+          label = '<span>' + label + '</span>';
+        }
       }
       if (/pencilcode/.test(paneState.mimeType)) {
         var visibleMimeType = editorMimeType(paneState);
@@ -1917,8 +1928,12 @@ $('.pane').on('mousedown', '.blockmenu', function(e) {
   popup.append('<div class="blockmenuitem" ' +
       (!paneState.selfname ? 'checked ' : '') + 'data-item="turtle">' +
       'Use default blocks</div>');
-  popup.append('<div class="blockmenuitem" data-item="textcode">' +
-           'Show text code</div>');
+
+  if (state.studyCondition == "default-PC") {
+    popup.append('<div class="blockmenuitem" data-item="textcode">' +
+             'Show text code</div>');
+  }
+
   popup.appendTo(this);
 
   var moved = false;
@@ -2340,6 +2355,7 @@ function sizeHtmlCssPanels(pane) {
 // @param filename the filename to use.
 function setPaneEditorData(pane, doc, filename, useblocks) {
   clearPane(pane);
+
   var text = normalizeCarriageReturns(doc.data);
   var meta = copyJSON(doc.meta);
   var paneState = state.pane[pane];
@@ -2397,6 +2413,13 @@ function setPaneEditorData(pane, doc, filename, useblocks) {
   });
   dropletEditor.setEditorState(useblocks);
   dropletEditor.setValue(text);
+
+  // show blocks in text editor view
+  if (state.studyCondition == 'hybrid') {
+    dropletEditor.showPaletteInTextMode = true; 
+    // melt from blocks to text, but do so very quickly
+    dropletEditor.performMeltAnimation(1, 1);
+  }
 
   dropletEditor.on('changepalette', function() {
     $('.droplet-hover-div').tooltipster({position: 'right', interactive: true});
@@ -3105,6 +3128,28 @@ function noteNewFilename(pane, filename) {
 }
 
 eval(see.scope('view'));
+
+// setup PC state for 3-way study
+console.log('setup study stuff here?');
+if (state.studyCondition == 'block') {
+  console.log("we got blocks");
+  // setPaneEditorBlockMode('bravo', true);
+  pencilcode.view.showToggleButton(false);
+} else if (state.studyCondition == 'text') {
+  console.log("we got text");
+  // setPaneEditorBlockMode('bravo', false);
+  pencilcode.view.showToggleButton(false);
+
+} else if (state.studyCondition == 'hybrid') {
+  console.log("we got hybrid");
+  // state.pane.bravo.dropletEditor.showPaletteInTextMode = true; 
+  // setPaneEditorBlockMode('bravo', false);
+  pencilcode.view.showToggleButton(false);
+  
+} else {
+  console.log("we fell through to default");
+} 
+
 
 $('#owner,#filename,#folder').tooltipster();
 

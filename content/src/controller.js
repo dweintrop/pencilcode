@@ -1282,6 +1282,15 @@ function saveLoginCookie() {
 
 var requestedBlockMode = null;
 function loadBlockMode() {
+  if (view.getStudyCondition() == 'block') {
+    return true;
+  } else if (view.getStudyCondition() == 'text') {
+    return false;
+  } else if (view.getStudyCondition() == 'hybrid') {
+    // in hybrid, load as blocks, then 'melt' to text with blocks palette still present
+    return true;
+  }
+
   var result = requestedBlockMode;
   if (result === null) {
     if (model.ownername == 'frame') {
@@ -1932,6 +1941,7 @@ function createNewFileIntoPosition(position, filename, text, meta) {
   view.setPaneEditorData(pane, {data: text, meta: meta}, filename, mode);
   view.notePaneEditorCleanData(pane, {data: ''});
   mpp.running = false;
+
   logCodeEvent('new', filename, text, mode, view.getPaneEditorLanguage(pane));
   nuLogEvent('new', pane);
 }

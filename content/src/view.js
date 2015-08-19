@@ -855,10 +855,10 @@ function quickRefLinkOnClick(origin, content) {
     $('#ref-overlay .ref-overlay-box').attr("frame-src", this.href);
   
     var logData = {
-      'student_id' : $('#studentID').val(),
-      'assignment' : $('#assignment').val(),
+      'student_id' : getCookie('studentID'),
+      'assignment' : getCookie('assignment'),
       'hostname' : location.host,
-      'condition' : $('#condition').val(),
+      'condition' : getStudyCondition(),
       'editorMode' : getPaneEditorBlockMode(paneid('left')) ? 'blocks' : 'text',
       'page' : this.innerHTML
     }

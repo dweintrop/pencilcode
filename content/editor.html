@@ -61,10 +61,6 @@ if (getCookie('studentID') < 99) {
 
 document.write('<span id="filename" title="Edit to move or rename" style="user-select:text;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text">' + htmlEscape(location.pathname.replace(/^\/(?:[^\/]*\/)?|\/$/g, '')) + '</span>');
 
-document.getElementById('studentID').value = getCookie('studentID');
-document.getElementById('condition').value = getCookie('condition');
-document.getElementById('assignment').value = getCookie('assignment');
-
 })();
 
 function getCookie(cname) {
@@ -77,13 +73,6 @@ function getCookie(cname) {
     }
     return "";
 }
-
-// function getParameterByName(name) {
-//     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-//     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-//         results = regex.exec(location.href);
-//     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-// }
 
 </script></nobr></td>
 <td id="topright"><nobr id="buttonbar"></nobr></td></tr></table>

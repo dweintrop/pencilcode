@@ -275,11 +275,11 @@ function nuLogEvent(source, pane) {
   var paneData = view.getPaneEditorData(pane);
 
   var logData = {
-    'student_id' : $('#studentID').val(),
-    'assignment' : $('#assignment').val(),
+    'student_id' : getCookie('studentID'),
+    'assignment' : getCookie('assignment'),
     'project_name' : modelatpos('left').filename,
     'hostname' : location.host,
-    'condition' : $('#condition').val(),
+    'condition' : view.getStudyCondition(),
     // DW-TODO make editor mode smarter when hybrid is introduced
     'editorMode' : view.getPaneEditorBlockMode(pane) ? 'blocks' : 'text',
     'paletteVisible' : view.getPaletteVisible(pane),

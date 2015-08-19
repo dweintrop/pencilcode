@@ -50,24 +50,28 @@ window.preload = function(data) {
 function htmlEscape(s){return s.replace(
   /[<>&]/g,function(c){return c=='<'?'&lt;':c =='>'?'&gt;':'&amp;';});}
 
-document.write('<a href="/edit/"><span id="owner" title="Top directory">' + pencilcode.owner + '</span></a>');
+document.write('<a href="/edit/"><span id="owner" title="Top directory">' + getCookie('name') + '</span></a>');
 
-// TODO add logic here so students can nav outside their user
-document.write('<a href="../"><img id="folder" title="Parent directory" src="//' + pencilcode.domain +
-'/image/folder_32.png" height="32" width="32"></a>');
+// hack -> teachers/admins have double digit DB IDs, students have 3 digit ids
+if (getCookie('studentID') < 99) {
+  document.write('<a href="../"><img id="folder" title="Parent directory" src="//' + pencilcode.domain + '/image/folder_32.png" height="32" width="32"></a>');
+} else {
+  document.write('&nbsp;&gt;&nbsp;');
+}
 
 document.write('<span id="filename" title="Edit to move or rename" style="user-select:text;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text">' + htmlEscape(location.pathname.replace(/^\/(?:[^\/]*\/)?|\/$/g, '')) + '</span>');
 
-document.getElementById('studentID').value = getParameterByName('studentID');
-document.getElementById('condition').value = getParameterByName('condition');
-document.getElementById('assignment').value = getParameterByName('assignment');
 })();
 
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.href);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
 }
 
 </script></nobr></td>
@@ -120,12 +124,12 @@ function getParameterByName(name) {
 <script src="/lib/ace/ace.js"></script>
 <script src="//<!--#echo var="site"-->/editor.js"></script></script>
 <script>
-// (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-// (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-// m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-// })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-// ga('create', 'UA-45359764-1', window.pencilcode.domain);
-// ga('send', 'pageview');
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-63837731-1', 'auto');
+ga('send', 'pageview');
 </script>
 </body>
 </html>

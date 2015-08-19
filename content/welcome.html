@@ -16,7 +16,6 @@
 </div>
 <!-- end of overlay -->
 
-
 <div class="container shadowcard">
 <div class="row">
 <div class="col-xs-6 vpadding">
@@ -44,7 +43,12 @@
     <div class="col-sm-6">
       <select class="selectBoxIt" name="class_dropdown" id="class_dropdown">
         <option value="">Please Select Class:</option>
-        <option value="Lindbloom">Lindblom Girls Club</option>
+        <option value="Lane Tech College Prep - Period 1">Lane Tech College Prep - Period 1</option>
+        <option value="Lane Tech College Prep - Period 2">Lane Tech College Prep - Period 2</option>
+        <option value="Lane Tech College Prep - Period 3">Lane Tech College Prep - Period 3</option>
+        <option value="Lindbloom - CT4G">Lindblom Girls Club</option>
+        <option value="Northwestern - ">Northwestern University</option>
+        <option value="Teacher's College - ">Teacher's College</option>
       </select>
     </div>
   </div>
@@ -173,47 +177,6 @@
 <script>
 $(function() {
 
-
-// (function() {
-  
-  // var usernames = {};
-  // $('#showlogin').css('opacity', 1);
-  // $('#user').on('change', validateUser);
-  // $('#user').autocomplete({
-  //   autoSelectFirst: true,
-  //   triggerSelectOnValidInput: false,
-  //   serviceUrl: '/load/',
-  //   paramName: 'prefix',
-  //   preventBadQueries: false, // To allow exact-match probing.
-  //   params: { count: 12 },
-  //   transformResult: function(response) {
-  //     response = JSON.parse(response);
-  //     return {
-  //       suggestions: response.list.filter(function(item) {
-  //         return item.mode.indexOf('d') >= 0;
-  //       }).map(function(item) {
-  //         usernames[item.name] = true;
-  //         return { value: item.name }
-  //       })
-  //     };
-  //   },
-  //   forceFixPosition: true,
-  //   onSelect: function() { validateUser(); setTimeout(function() {
-  //     if (!document.activeElement ||
-  //         !$(document.activeElement).closest('.loginblock').length) {
-  //       $('#pass').select().focus();
-  //     }
-  //   }, 0)}
-  // });
-
-  // function validateUser(e) {
-  //   var user = $('#user').val().toLowerCase().trim();
-  //   var found = usernames.hasOwnProperty(user);
-  //   $('#asuser').text(found ? ' as ' + user : '');
-  //   $('#login').prop('disabled', !found);
-  //   return true;
-  // };
-
   function keyFromPassword(username, p) {
     if (!p) { return ''; }
     if (/^[0-9]{3}$/.test(p)) { return p; }
@@ -261,6 +224,17 @@ $(function() {
           var filename = $('#guest_name').val().toLowerCase().replace(/ /g,'');
         } 
         
+        // write study participant info to cookie so persists throughout session
+        setCookie('studentID', $('#studentID').val(), 12);
+        setCookie('condition', $('#condition').val(), 12);
+        setCookie('assignment', $('#assignment').val(), 12);
+        if (!!$('#guest_name').val()) {
+          setCookie('name', 'PC Guest', 12);
+        } else {
+          setCookie('name', $('#student_dropdown')[0].options[$('#student_dropdown')[0].selectedIndex].text, 12);
+        }
+        setCookie('class', $('#class_dropdown').val(), 12);
+
         window.location = urlRoot + '/edit/' 
                 + filename + '/#login=' + user + ':' + (key ? key : '') 
                 + '?' + queryString;
@@ -272,6 +246,13 @@ $(function() {
     }).fail(function() {
       $('#msg').text('Network error.');
     });
+  }
+
+  function setCookie(cname, cvalue, exhours) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exhours*60*60*1000));
+      var expires = "expires="+d.toUTCString();
+      document.cookie = cname + "=" + cvalue + "; " + expires + ";path=/;domain=" + location.hostname;
   }
 
   $(".toggle-login").on('click', function(e) {
@@ -322,6 +303,7 @@ $(function() {
     }
 
     $.ajax( {
+      // url: 'http://localhost:8000/get_data/Students/',
       url: 'http://javaseer.herokuapp.com/get_data/Students/',
       dataType : 'json',
       data: {'filter': val} 
@@ -341,33 +323,6 @@ $(function() {
       $("#user").val("");
       $("#assignment").val("");
     });
-    // });
-
-    // var period = $(this).val();
-
-    // var student_dropdown = $("#student_dropdown").data("selectBox-selectBoxIt");
-    
-    // if (period != '') {
-    //  student_dropdown.enable();
-    // } else {
-    //  student_dropdown.disable();
-    //  return;             
-    // }
-
-    // // clear/initialize student dropdowns
-    // student_dropdown.remove();
-    // student_dropdown.add({ value: '0', text: 'Select Name'});
-          
-    // pair_dropdown.remove();
-    // pair_dropdown.add({ value: '0', text: 'Select Pair\'s Name'});
-
-    // for (var i = 0; i < data[period].length; i++) {
-    //   student_dropdown.add({ value: data[period][i].id, text: data[period][i].name });
-    //   pair_dropdown.add({ value: data[period][i].id, text: data[period][i].name });
-    // }
-
-    // student_dropdown.add({ value: '', text: 'I\'m not listed'});
-    // pair_dropdown.add({ value: '', text: 'I\'m not listed'});
   });
 
   $("#student_dropdown").change(function(e, select) {
@@ -409,97 +364,6 @@ $('#newaccount').on('click', function() {
   window.location = '/edit/intro#new';
 });
 
-// $('#showlogin').on('click', function() {
-//   if ($(this).css('opacity') == 0) return;
-//   $('#overlay,.loginblock').show();
-//   var ofs = $('#showlogin').offset();
-//   $('.loginblock').css({
-//     top: ofs.top - 8 + 1,
-//     right: $(document).width() - (ofs.left + $('#showlogin').outerWidth()) - 8
-//   });
-//   $('#user').focus();
-// });
-// $('a.aboutlink').click(function() {
-//   location.hash = '#about';
-//   $('#overlay,.about').show();
-//   return false;
-// });
-// function closeoverlay() {
-//  $('#video').html('');
-//  $('#overlay,.about,.loginblock').hide();
-//  if (location.hash.length > 1) {
-//    if (window.history.pushState) {
-//      window.history.pushState(null, null, window.location.pathname);
-//    } else {
-//      location.hash = '';
-//    }
-//  }
-// }
-// $('#overlay').click(function(e) {
-//   if (e.target == this || $(e.target).is('.loginblock .toggler')) {
-//     closeoverlay();
-//   }
-// });
-// $('#overlay').keydown(function(e) {
-//   if (e.which == 27) {
-//     closeoverlay();
-//   }
-// });
-// $(window).on('hashchange load', function() {
-//   if (/\babout\b/.test(location.hash)) {
-//     $('#overlay,.about').show();
-//   } else {
-//     $('#overlay,.about,.loginblock').hide();
-//   }
-// });
-
-// // Video clicking setup
-// // Detect if youtube is blocked.
-// var ytpresent = true;
-// var ytprobe = new Image();
-// ytprobe.onerror = function(){
-//   ytpresent = false;
-// };
-// ytprobe.src = "//youtube.com/favicon.ico?r=" + Math.random();
-// $('a[data-vimeo]').click(function(e) {
-//   if (ytpresent) {
-//     var href = $(this).attr('href');
-//     var match = /youtube.com.*v=([^&">]*)/.exec(href);
-//     if (match && match[1]) {
-//       if ($('#video iframe').attr('src') &&
-//           $('#video iframe').attr('src').indexOf(match[1]) >= 0) {
-//         $('#video').html('');
-//         return false;
-//       } else {
-//         $('#video').html(
-//           '<iframe type="text/html" width="640" height="390" ' +
-//           'src="//www.youtube.com/embed/' + match[1] +
-//           '?autoplay=1&origin=' +
-//           location.protocol + '//' + location.host + '" ' +
-//           'frameborder="0"></iframe>');
-//         return false;
-//       }
-//     }
-//   } else {
-//     var vimeo = $(this).data('vimeo');
-//     if (vimeo) {
-//       if ($('#video iframe').attr('src') &&
-//           $('#video iframe').attr('src').indexOf(vimeo) >= 0) {
-//         $('#video').html('');
-//         return false;
-//       } else {
-//         $('#video').html(
-//           '<iframe type="text/html" width="640" height="390" ' +
-//           'src="//player.vimeo.com/video/' + vimeo +
-//           '?autoplay=1" ' +
-//           'frameborder="0"></iframe>');
-//         return false;
-//       }
-//     }
-//   }
-//   return true;
-// });
-
 function preload(urls) {
   for (var i = 0; i < urls.length; ++i) {
     var o = new Image();
@@ -515,13 +379,12 @@ setTimeout(function() {
            '/lib/ace/theme-chrome.js', ]);
 }, 700);
 
+
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
 ga('create', 'UA-63837731-1', 'auto');
 ga('send', 'pageview');
-
 </script>
 </html>

@@ -294,7 +294,7 @@ function nuLogEvent(source, pane) {
 
   $.ajax({
     type: "POST",
-    url: "http://localhost:8000/pencilCoder/",
+    url: "http://javaseer.herokuapp.com/pencilCoder/",
     data: logData
   }).done(function( msg ) {
     console.log(msg);

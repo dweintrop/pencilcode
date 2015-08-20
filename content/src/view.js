@@ -867,7 +867,7 @@ function quickRefLinkOnClick(origin, content) {
 
     $.ajax({
       type: "POST",
-      url: "http://localhost:8000/pencilCodeQuickRef/",
+      url: "http://javaseer.herokuapp.com/pencilCodeQuickRef/",
       data: logData
     }).done(function( msg ) {
       console.log(msg);

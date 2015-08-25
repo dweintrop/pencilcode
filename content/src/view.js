@@ -1503,6 +1503,7 @@ function updatePaneLinks(pane) {
   for (j = 0; j < list.length; j++) {
     item = $('<a/>', {
       class: 'item' + (list[j].href ? '' : ' create'),
+      // style: 'width:202px;',
       href: list[j].href
     }).appendTo(col);
     figure = $('<div/>').appendTo(item);
@@ -3129,27 +3130,18 @@ function noteNewFilename(pane, filename) {
 
 eval(see.scope('view'));
 
-// setup PC state for 3-way study
-console.log('setup study stuff here?');
 if (state.studyCondition == 'block') {
   console.log("we got blocks");
-  // setPaneEditorBlockMode('bravo', true);
   pencilcode.view.showToggleButton(false);
 } else if (state.studyCondition == 'text') {
   console.log("we got text");
-  // setPaneEditorBlockMode('bravo', false);
   pencilcode.view.showToggleButton(false);
-
 } else if (state.studyCondition == 'hybrid') {
   console.log("we got hybrid");
-  // state.pane.bravo.dropletEditor.showPaletteInTextMode = true; 
-  // setPaneEditorBlockMode('bravo', false);
-  pencilcode.view.showToggleButton(false);
-  
+  pencilcode.view.showToggleButton(false);  
 } else {
   console.log("we fell through to default");
 } 
-
 
 $('#owner,#filename,#folder').tooltipster();
 

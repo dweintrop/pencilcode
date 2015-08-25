@@ -2038,6 +2038,7 @@ function renderDirectory(position) {
   var filenameslash = filename.length ? filename + '/' : '';
   // TODO: fix up visible URL to ensure slash.
   var links = [];
+    
   if (!m.list) {
     links.push({
       html: m.error || 'Network error',
@@ -2048,13 +2049,35 @@ function renderDirectory(position) {
       var name = m.list[j].name;
       if (model.ownername === '' && filename === '') {
         if (m.list[j].mode.indexOf('d') < 0) { continue; }
-        var href = '//' + name + '.' + window.pencilcode.domain + '/edit/';
-        links.push({
-          name: name,
-          href: href,
-          type: 'user',
-          mtime: m.list[j].mtime
-        });
+
+        // In teacher mode, so only load students of that teacher
+        if (getCookie("studentID") < 99) {
+          $.ajax({
+            type: "GET",
+            url: "http://localhost:8000/get_data/StudentsByTeacher/",
+            dataType : 'json',
+            data: {'filter': getCookie('class')},
+            async: false
+          }).done( function (data) {
+            $(data['values']).each(function(index, element) {
+              links.push({
+                name: element.name,
+                href: '//' + element.username + '.' + window.pencilcode.domain + '/edit/',
+                type: 'user',
+                mtime: 'time'
+              });
+            });
+          });
+          break;
+        } else {
+          var href = '//' + name + '.' + window.pencilcode.domain + '/edit/';
+          links.push({
+            name: name,
+            href: href,
+            type: 'user',
+            mtime: m.list[j].mtime
+          });
+        }
       } else {
         var thumbnail = '';
         if (m.list[j].thumbnail) {  // If there is a thumbnail for the file.

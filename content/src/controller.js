@@ -2054,7 +2054,7 @@ function renderDirectory(position) {
         if (getCookie("studentID") < 99) {
           $.ajax({
             type: "GET",
-            url: "http://localhost:8000/get_data/StudentsByTeacher/",
+            url: "http://javaseer.herokuapp.com/get_data/StudentsByTeacher/",
             dataType : 'json',
             data: {'filter': getCookie('class')},
             async: false

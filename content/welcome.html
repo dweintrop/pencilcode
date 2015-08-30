@@ -71,9 +71,6 @@
     <div class="col-sm-6"> 
       <select class="selectBoxIt" id="assignment_dropdown" name="assignment_dropdown" disabled>
         <option value="">Please Select Assignment:</option>
-        <option value="pcDay1">Pencil Code Day 1</option>
-        <option value="pcDay2">Pencil Code Day 2</option>
-        <option value="pcDay3">Pencil Code Day 3</option>
       </select>
     </div>
   </div>
@@ -302,6 +299,7 @@ $(function() {
       return;
     }
 
+    // get students
     $.ajax( {
       // url: 'http://localhost:8000/get_data/Students/',
       url: 'http://javaseer.herokuapp.com/get_data/Students/',
@@ -323,6 +321,30 @@ $(function() {
       $("#user").val("");
       $("#assignment").val("");
     });
+
+    // populate assignments
+    if (val.indexOf("Lane") > -1) {
+      assignments = [
+        {value: "quilt", text: "1 - Quilt"},
+        {value: "madlib", text: "2 - MadLibs"},
+        {value: "tipcalc", text: "3 - Tip Calculator"},
+        {value: "Tinkering", text: "Tinkering"}
+      ];
+    } else if (val.indexOf("Lindb") > -1) {
+      assignments = [
+        {value: "pcDay1", text: "pcDay1"},
+        {value: "pcDay2", text: "pcDay2"},
+        {value: "pcDay3", text: "pcDay3"},
+        {value: "Tinkering", text: "Tinkering"}
+      ];
+    } else {
+      assignments = [
+        {value: "Tinkering", text: "Tinkering"}
+      ];
+    }
+    $('#assignment_dropdown').data("selectBox-selectBoxIt").remove();      
+    $('#assignment_dropdown').data("selectBox-selectBoxIt").add({ value: '', text: 'Please Select an Assignment' });
+    $('#assignment_dropdown').data("selectBox-selectBoxIt").add(assignments);      
   });
 
   $("#student_dropdown").change(function(e, select) {

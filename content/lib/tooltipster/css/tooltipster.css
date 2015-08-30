@@ -45,7 +45,7 @@
 	z-index: 9999999;
 	pointer-events: none;
 	width: auto;
-	overflow: visible;
+	/*overflow: visible;*/
 }
 .tooltipster-base .tooltipster-content {
 	overflow: hidden;

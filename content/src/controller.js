@@ -215,12 +215,12 @@ function updateTopControls(addHistory) {
           title: 'Log in and save'});
       }
     }
-    buttons.push(
-        {id: 'help', label: '<span class=helplink>?</span>' });
+    // buttons.push(
+    //     {id: 'help', label: '<span class=helplink>?</span>' });
     if (m.data && m.data.file) {
-      buttons.push({
-        id: 'guide', label: '<span class=helplink>Guide</span>',
-        title: 'Open online guide'});      
+      // buttons.push({
+      //   id: 'guide', label: '<span class=helplink>Guide</span>',
+      //   title: 'Open online guide'});      
       buttons.push({
         id: 'reference', 
         label: 'Quick Reference',

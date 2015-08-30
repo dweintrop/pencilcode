@@ -863,7 +863,7 @@ function quickRefLinkOnClick(origin, content) {
       'student_id' : getCookie('studentID'),
       'assignment' : getCookie('assignment'),
       'hostname' : location.host,
-      'condition' : getStudyCondition(),
+      'condition' : getCookie('condition'),
       'editorMode' : getPaneEditorBlockMode(paneid('left')) ? 'blocks' : 'text',
       'page' : this.innerHTML
     }

@@ -226,8 +226,19 @@ function updateTopControls(addHistory) {
         label: 'Quick Reference',
         menu: [ ]
         });
+
+      if (model.ownername || m.filename) {
+        buttons.push({
+            id: 'splitscreen',
+            title: 'Toggle split screen',
+            label: '<i class="splitscreenicon"></i>'
+        });
+      }
     }
   }
+
+
+
   // buttons.push({id: 'done', label: 'Done', title: 'tooltip text'});
   view.showButtons(buttons);
   // Update middle button.
@@ -485,6 +496,11 @@ function runAction() {
     cancelAndClearPosition('back');
     rotateModelLeft(true);
   }
+
+  if (!view.getPreviewMode()) {
+    view.setPreviewMode(true, true /* no animation */);
+  }
+
   // Hide the guide, if any
   if (guide.isVisible()) {
     guide.show(false);
@@ -768,6 +784,11 @@ view.on('toggleblocks', function(p, useblocks) {
   logCodeEvent('toggle', filename, code, useblocks,
       view.getPaneEditorLanguage(p));
   nuLogEvent('toggle', p);
+});
+
+ 
+view.on('splitscreen', function() {
+  view.setPreviewMode(!view.getPreviewMode());
 });
 
 function saveAction(forceOverwrite, loginPrompt, doneCallback) {

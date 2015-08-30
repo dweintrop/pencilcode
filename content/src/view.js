@@ -693,12 +693,17 @@ function showButtons(buttonlist) {
     '<a target="reference" class="ref-link" href="' + refHome + 'fill.html">fill</a>' +
     '<a target="reference" class="ref-link" href="' + refHome + 'wear.html">wear</a></li></ul>' +
     
+    '<span class="category-label">Text:</span><ul>' + 
+    '<li><a target="reference" class="ref-link" href="' + gymHome + 'write.html">write</a>' +
+    '<a target="reference" class="ref-link" href="' + gymHome + 'type.html">type</a></li>' +
+    '<li><a target="reference" class="ref-link" href="' + gymHome + 'read.html">read</a>' +
+    '<a target="reference" class="ref-link" href="' + gymHome + 'await.html">await</a></li></ul>' +
+    
     '<span class="category-label">Control:</span><ul>' + 
     '<li><a target="reference" class="ref-link" href="' + gymHome + 'for.html">for loops</a>' +
     '<a target="reference" class="ref-link" href="' + gymHome + 'if.html">if and if/else</a></li>' +
     '<li><a target="reference" class="ref-link" href="' + gymHome + 'button.html">buttons</a>' +
     '<a target="reference" class="ref-link" href="' + refHome + 'click.html">click</a></li></ul>' +
-    
     '<span class="category-label">Operators:</span><ul>' + 
     '<li><a target="reference" class="ref-link" href="' + gymHome + 'arithmetic.html">arithmetic</a>' +
     '<a target="reference" class="ref-link" href="' + gymHome + 'random.html">random</a></li>' +

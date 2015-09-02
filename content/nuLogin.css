@@ -2871,8 +2871,10 @@ input {
 
 .study_materials_list a{
     color: purple;
+    padding-left: 15px;
 }
 
 .study_materials_list a:hover{
     color: blueviolet;
 }
+

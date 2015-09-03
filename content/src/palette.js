@@ -252,8 +252,11 @@ module.exports = {
           block: 'x.match /pattern/',
           title: 'Test if a text pattern is found in x'
         }, {
-          block: 'f = (x) ->\n  ``',
+          block: 'f = ->\n  ``',
           title: 'Define a new function'
+        }, {
+          block: 'f = (x) ->\n  ``',
+          title: 'Define a new function with an argument'
         }, {
           block: 'f(x)',
           title: 'Use a custom function'

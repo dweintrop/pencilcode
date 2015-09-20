@@ -109,6 +109,9 @@ module.exports = {
         }, {
           block: '@jumpxy 30, 20',
           title: 'Jump changing x and y without drawing'
+        }, {
+          block: '@getxy()[0]',
+          title: 'Get the turtle\'s x position, change the 0 to 1 for the y position'
         }
       ])
     }, {

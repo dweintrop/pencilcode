@@ -2025,14 +2025,14 @@ function showPaneEditorLanguagesDialog(pane) {
   opts.content =
       '<div style="text-align:left">' +
       '<center>Languages</center>' +
-      '<div style="padding:8px 5px 4px">' +
-      '<label title="Use a Concise Indent Language">' +
-      '<input type="radio" value="text/coffeescript" name="lang"> ' +
-      'Coffeescript</label><br>' +
-      '<label title="Use the Standard Web Language">' +
-      '<input type="radio" value="text/javascript" name="lang"> ' +
-      'Javascript</label>' +
-      '</div>' +
+      // '<div style="padding:8px 5px 4px">' +
+      // '<label title="Use a Concise Indent Language">' +
+      // '<input type="radio" value="text/coffeescript" name="lang"> ' +
+      // 'Coffeescript</label><br>' +
+      // '<label title="Use the Standard Web Language">' +
+      // '<input type="radio" value="text/javascript" name="lang"> ' +
+      // 'Javascript</label>' +
+      // '</div>' +
       '<div style="padding:4px 5px 12px">' +
       '<label title="Edit Cascading Style Sheets">' +
       '<input type="checkbox" class="css"> CSS</label><br>' +

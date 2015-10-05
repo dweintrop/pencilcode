@@ -225,6 +225,10 @@ module.exports = {
           title: 'Divide two numbers',
           id: 'divide'
         }, {
+          block: '`` % ``',
+          title: 'Modularly divide two numbers',
+          id: 'mod'
+        }, {
           block: '`` and ``',
           title: 'True if both are true',
           id: 'and'

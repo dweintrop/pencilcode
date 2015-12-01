@@ -402,17 +402,17 @@ function openContentSurvey(){
   //      just change the name of the variable to cycle through the three mappings
   // on pre - the order of these vars is: 0, 1, 2
   // on mid - the order of these vars is: 1, 2, 0
-  // on post - the order of these vars is: 2, 1, 0
+  // on post - the order of these vars is: 2, 0, 1
   // The goal here is that by the end of the 3rd assessment, each students will have seen each version
 
   // Survey A
-  var contentSurveyURL1 = 'https://docs.google.com/a/u.northwestern.edu/forms/d/1ek37LYMUJn4w0jVN4QA_ae1G2Uk-9tXO_y0aEwHTajU/viewform';
+  var contentSurveyURL2 = 'https://docs.google.com/a/u.northwestern.edu/forms/d/1ek37LYMUJn4w0jVN4QA_ae1G2Uk-9tXO_y0aEwHTajU/viewform';
   
   // Survey B
-  var contentSurveyURL2 = 'https://docs.google.com/a/u.northwestern.edu/forms/d/1U0Pwko4d3uby8mQvSWyCwNHUACxuMEohqJ6tw8naxOw/viewform';
+  var contentSurveyURL0 = 'https://docs.google.com/a/u.northwestern.edu/forms/d/1U0Pwko4d3uby8mQvSWyCwNHUACxuMEohqJ6tw8naxOw/viewform';
 
   // Survey C
-  var contentSurveyURL0 = 'https://docs.google.com/a/u.northwestern.edu/forms/d/1__0dJb2WmDDksNpotQZRTykB4jvFzwLSsYb1QoWbGNA/viewform';
+  var contentSurveyURL1 = 'https://docs.google.com/a/u.northwestern.edu/forms/d/1__0dJb2WmDDksNpotQZRTykB4jvFzwLSsYb1QoWbGNA/viewform';
 
   var studentID = $('#studentID').val()
   var win = window.open(eval('contentSurveyURL' + studentID % 3), '_blank');
